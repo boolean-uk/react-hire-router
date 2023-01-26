@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Routes, Route, Link} from "react-router-dom"
+import Dashboard from "./pages/Dashboard"
 import "./styles.css"
 
 export default function App() {
@@ -10,10 +12,13 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            <Link to={`/`} hiredPeople={hiredPeople}>Dashboard</Link>
           </ul>
         </nav>
       </header>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
     </>
   )
 }

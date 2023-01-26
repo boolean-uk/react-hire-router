@@ -2,6 +2,7 @@ import PeopleListItem from "./PeopleListItem"
 
 function PeopleList(props) {
   const { people } = props
+  console.log("logging people inside PeopleList", people)
 
   return (
     <ul>
