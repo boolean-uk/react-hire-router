@@ -3,10 +3,13 @@ import { useState } from "react"
 function HireForm(props) {
   const [wage, setWage] = useState(0)
 
+  console.log("within the hire form", props)
+
   function handleSubmit(event) {
     event.preventDefault()
 
-    
+    props.setHiredPeople()
+
   }
 
   return (

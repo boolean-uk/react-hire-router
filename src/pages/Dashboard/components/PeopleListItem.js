@@ -5,20 +5,15 @@ function PeopleListItem(props) {
   const { person } = props
  
 
-  // const personToLowercase = person.id.name.toLowerCase()
-
   
 
   return (
     <>
     <li>
-      <Link to={`/view/${person.index}`} state={person}> {person.name.first} {person.name.last} </Link>
+      <Link to={`/view/${person.login.uuid}`} state={person} setHiredPeople={props.setHiredPeople}> {person.name.first} {person.name.last}</Link>
       {person.wage && <p>Wage: £{person.wage}</p>}
-      {console.log("this is the index",person.index)}
+      {console.log("this is the index", person.login.uuid)}
     </li>
-    {/* <Routes>
-      <Route path={`/view/`} element={<PersonProfile />} />
-    </Routes> */}
     </>
   )
 }

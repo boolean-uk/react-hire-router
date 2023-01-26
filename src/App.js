@@ -13,7 +13,7 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <Link to={`/`} hiredPeople={hiredPeople}>Dashboard</Link>
+            <Link to={`/`} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}>Dashboard</Link>
           </ul>
         </nav>
       </header>
