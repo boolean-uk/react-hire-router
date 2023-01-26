@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router"
-import HireForm from "./components/HireForm"
+import EditForm from "./components/EditForm"
 
-function PersonProfile({ hiredPeople, setHiredPeople }) {
+function EditPersonProfile({ hiredPeople, setHiredPeople }) {
   const [person, setPerson] = useState(null)
 
   const location = useLocation()
@@ -14,23 +14,25 @@ function PersonProfile({ hiredPeople, setHiredPeople }) {
     }
   },[location])
 
-  const hirePerson = (wage) => {
-    const newPerson = person
-    newPerson.wage = wage
-    setHiredPeople([...hiredPeople, newPerson])
+  const editPerson = (wage) => {
+    person.wage = wage
+    const updatedHiredPeople = hiredPeople.filter((hiredperson) => hiredperson.login.uuid !== person.login.uuid)
+    setHiredPeople([...updatedHiredPeople, person])
     navigate('/')
   }
 
   if (!person) return <p>Loading...</p>
+
+  console.log()
 
   return (
     <article>
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-     <HireForm person={person} hirePerson={hirePerson} />
+     <EditForm person={person} editPerson={editPerson} currentWage={person.wage} />
     </article>
   )
 }
 
-export default PersonProfile
+export default EditPersonProfile

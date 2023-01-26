@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-function HireForm({ hirePerson }) {
-  const [wage, setWage] = useState(0)
+function HireForm({ editPerson, currentWage }) {
+  const [wage, setWage] = useState(currentWage)
 
   function handleSubmit(event) {
     event.preventDefault()
-    hirePerson(wage)
+    editPerson(wage)
   }
 
   return (
