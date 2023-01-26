@@ -5,6 +5,8 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
+
+    
   }
 
   return (

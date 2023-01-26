@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { Routes, Route, Link} from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
 import Dashboard from "./pages/Dashboard"
+import PersonProfile from "./pages/PersonProfile/index"
 import "./styles.css"
 
 export default function App() {
@@ -18,6 +19,9 @@ export default function App() {
       </header>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+      </Routes>
+      <Routes>
+        <Route path={`/view/:id`} element={<PersonProfile />} />
       </Routes>
     </>
   )
