@@ -1,0 +1,90 @@
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 3px 1fr;
+}  
+
+.line {
+    margin: 5rem 0rem 1rem;
+    border: solid 2px #111;
+    border-radius: 5px;
+    background-color: #111;
+}
+
+main section h2 {
+    padding: 2.5rem 3.5rem 1rem;
+}
+
+main section ul.peopleList {
+    list-style: none;
+    padding: .5rem 2.5rem;
+}
+
+main section li.person {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+
+    margin: .5rem 0rem;
+    padding: 1rem;
+
+    background-color: #181818;
+    border-radius: 10px;
+
+    color: #aaa;
+}
+
+main section li .image {
+    padding-right: 1rem;
+    border-right: solid 2px #222;
+}
+
+main section li img {
+    border-radius: 50%;
+    width: 100px;
+}
+
+main section li .info h3 {
+    color: #ddd;
+}
+
+main section li .info {
+    line-height: 1.2;
+}
+
+main section li .info p,
+main section li .info ul {
+    margin: .5rem 0rem;
+    margin-left: .5rem;
+}
+
+main section li .info ul{
+    list-style: none;
+}
+
+main section li .info li {
+    padding-left: 1rem;
+}
+
+main section li .info span {
+    color: #888;
+}
+
+main section li .info a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+
+main section li .info a div {
+    width: 300px;
+    padding: .5rem 0;
+    text-align: center;
+    background-color: #222;
+    border-radius: 5px;
+}
+
+main section li .info a div:hover {
+    transition: all .4s;
+    background-color: #282828;
+}

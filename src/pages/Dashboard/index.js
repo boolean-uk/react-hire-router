@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import './dashboard.css'
+import { useEffect, useState, forwardRef } from "react"
 import PeopleList from "./components/PeopleList"
 
-function Dashboard(props) {
+const Dashboard = forwardRef((props, ref) => {
   const { hiredPeople } = props
 
   const [people, setPeople] = useState([])
@@ -12,20 +13,19 @@ function Dashboard(props) {
       .then(data=>setPeople(data.results))
   },[])
 
-  console.table(people)
-
   return (
     <main className="dashboard-layout">
-      <section>
-        <h2>People</h2>
-        <PeopleList people={people} />
+      <section ref={ref}>
+        <h2 >People</h2>
+        <PeopleList people={people}/>
       </section>
-      <section>
+      <div className="line" ref={ref}></div>
+      <section ref={ref}>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople}/>
       </section>
     </main>
   )
-}
+})
 
 export default Dashboard
