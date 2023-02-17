@@ -3,7 +3,7 @@ import { useEffect, useState, forwardRef } from "react"
 import PeopleList from "./components/PeopleList"
 
 const Dashboard = forwardRef((props, ref) => {
-  const { hiredPeople } = props
+  const { hiredPeople, setLoading } = props
 
   const [people, setPeople] = useState([])
 
@@ -11,6 +11,7 @@ const Dashboard = forwardRef((props, ref) => {
     fetch(`https://randomuser.me/api/?results=50`)
       .then(res=>res.json())
       .then(data=>setPeople(data.results))
+      .then(()=>setLoading(false))
   },[])
 
   return (

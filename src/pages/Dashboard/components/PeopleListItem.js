@@ -5,9 +5,9 @@ const PeopleListItem = (props) => {
 
   return (
     <li className='person'>
-      <div className='image'>
+      {/* <div className='image'>
         <img src={person.picture.large} alt="please don't see me"/>
-      </div>
+      </div> */}
       <div className='info'>
         <h3>
           {person.name.first} {person.name.last}
