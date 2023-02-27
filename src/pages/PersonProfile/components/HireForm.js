@@ -1,10 +1,17 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
+function HireForm({ hiredPeople, setHiredPeople, person }) {
+  const [wage, setWage] = useState(0);
+  const nav = useNavigate();
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    if (hiredPeople.find((hire) => hire.login.uuid === person.login.uuid)) {
+      return console.error("Person already present in employee list");
+    }
+    setHiredPeople([...hiredPeople, { ...person, wage }]);
+    nav("/");
   }
 
   return (
@@ -14,12 +21,12 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
