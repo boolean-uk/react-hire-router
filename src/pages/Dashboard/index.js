@@ -11,7 +11,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} isHired={true} />
       </section>
     </main>
   )

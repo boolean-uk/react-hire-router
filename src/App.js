@@ -3,6 +3,7 @@ import { Route, Routes, Link } from "react-router-dom"
 import "./styles.css"
 import PersonProfile from "./pages/PersonProfile"
 import Dashboard from './pages/Dashboard'
+import EditPersonProfile from "./pages/PersonProfile/EditPersonProfile"
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -19,6 +20,10 @@ export default function App() {
   function handleHire(person) {
     setHiredPeople(prev => [ ...prev, person])
   }
+// extensions function to update array with new/edited details
+  function handleSave(editedPerson) {
+    setPeople(prev => prev.map(person => person.login.uuid === editedPerson.login.uuid ? editedPerson : person ))
+  }
 
   return (
     <>
@@ -33,6 +38,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Dashboard people={people} hiredPeople={hiredPeople} />} />
         <Route path="/view/:uuid" element={<PersonProfile people={people} onHire={handleHire} />} />
+        <Route path="/edit/:uuid" element={<EditPersonProfile people={hiredPeople} onSave={handleSave} />} /> {/*  new route for editing extension */}
       </Routes>
     </>
   )
