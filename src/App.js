@@ -21,9 +21,13 @@ export default function App() {
     setHiredPeople(prev => [ ...prev, person])
   }
 // extensions function to update array with new/edited details
-  function handleSave(editedPerson) {
-    setPeople(prev => prev.map(person => person.login.uuid === editedPerson.login.uuid ? editedPerson : person ))
-  }
+    function handleSave(editedPerson) {
+      setHiredPeople(prev => prev.map(person => 
+      person.login.uuid === editedPerson.login.uuid ? editedPerson : person
+      ))
+      //Had to make a change in handleSave function because the original people list was altered.
+//      I had _setPeople_ for handling the save Edit instead of _setHiredPeople_
+    }
 
   return (
     <>
