@@ -2,18 +2,12 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 function HireForm({ person, updateHiredPeople }) {
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState(person.wage ? person.wage : 0)
   const navigate = useNavigate()
 
   function handleSubmit(event) {
     event.preventDefault()
-    /**
-     * When a user clicks "Hire"
-     * they should be redirected to the dashboard
-     * AND see the person they've hired in the hired column
-     */
-    const hiredPerson = { ...person, wage: wage }
-    updateHiredPeople(hiredPerson)
+    updateHiredPeople({ ...person, wage: wage })
     navigate('/')  // redirect to the dashboard
   }
 

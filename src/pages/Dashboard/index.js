@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import PeopleList from "./components/PeopleList"
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
+function Dashboard({ hiredPeople, handleEdit }) {
   const [people, setPeople] = useState([])
 
   async function getPeopleData() {
@@ -17,7 +15,7 @@ function Dashboard(props) {
 
     const response = await fetch(url)
     const json = await response.json()
-    const results = json.results.filter((item) => 
+    const results = json.results.filter(item => 
       (item.id.name !== '') && (item.id.value !== null)
     )
     results.splice(50)
@@ -36,7 +34,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} handleEdit={handleEdit} />
       </section>
     </main>
   )
