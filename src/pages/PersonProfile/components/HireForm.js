@@ -3,17 +3,34 @@ import { useNavigate } from "react-router-dom"
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
-  const {person, hiredPeople, setHiredPeople} = props
-
+  const [editState, setEditState] = useState(false)
+  const {person, hiredPeople, setHiredPeople, people, setPeople} = props
+  
   const navigate = useNavigate()
 
   function handleSubmit(event) {
     event.preventDefault()
-    setHiredPeople([...hiredPeople, {
-      ...person,
-      wage
-    }])
+    if (!editState) {
+      setHiredPeople([...hiredPeople, {
+        ...person,
+        wage
+      }])
+      const index = people.findIndex(notHired => notHired.login.uuid === person.login.uuid)
+      people[index].hired = true
+      setPeople([...people])
+    } else {
+      const index = hiredPeople.findIndex(hired => hired.login.uuid === person.login.uuid)
+      hiredPeople[index].wage = wage
+      setHiredPeople([...hiredPeople])
+    }
     navigate('/')
+  }
+
+  if (!editState) {
+    if (person.wage) {
+      setEditState(true)
+      setWage(person.wage)
+    }
   }
 
   return (
@@ -26,7 +43,10 @@ function HireForm(props) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">
+        {!editState && <>Hire</>}
+        {editState && <>Edit</>}
+      </button>
     </form>
   )
 }

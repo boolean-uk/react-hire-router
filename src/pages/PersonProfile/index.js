@@ -4,7 +4,7 @@ import HireForm from "./components/HireForm"
 
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
-  const {hiredPeople, setHiredPeople} = props
+  const {hiredPeople, setHiredPeople, people, setPeople} = props
   const location = useLocation()
 
   useEffect(() => {
@@ -16,12 +16,14 @@ function PersonProfile(props) {
 
   if (!person) return <p>Loading...</p>
 
+  if (person.hired) return <p>You can't hire a person, who is already hired.<br/>Please review some of your other options.</p>
+
   return (
     <article>
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} />
+      <HireForm person={person} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} people={people} setPeople={setPeople} />
     </article>
   )
 }

@@ -14,7 +14,7 @@ export default function App() {
     const json = await response.json()
     setPeople([...json.results])
   }
-  
+
   useEffect(() => {
     getPeople()
   },[])
@@ -34,7 +34,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Dashboard hiredPeople={hiredPeople} people={people} />} />
-        <Route path="/view/:id" element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} />} />
+        <Route path="/view/:id" element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} people={people} setPeople={setPeople} />} />
       </Routes>
 
     </div>

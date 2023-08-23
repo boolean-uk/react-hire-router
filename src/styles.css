@@ -13,3 +13,25 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
+.hired-person-element {
+  display: grid;
+  grid-template-areas: 
+  "name name"
+  "wage edit";
+  justify-content: center;
+  align-items: center;
+}
+
+.hired-person-name {
+  grid-area: name;
+}
+
+.hired-person-wage {
+  grid-area: wage;
+}
+
+.hired-person-edit {
+  grid-area: edit;
+  margin-left: 10px;
+}
