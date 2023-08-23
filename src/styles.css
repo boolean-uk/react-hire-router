@@ -1,10 +1,21 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+    font-family: sans-serif;
+    text-align: center;
 }
 
 .dashboard-layout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.already-hired {
+    border: 1px solid red;
+    padding: 5px;
+    color: red;
+    background-color: lightpink;
 }
