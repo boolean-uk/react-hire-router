@@ -10,7 +10,7 @@ export default function App() {
     const [people, setPeople] = useState([]);
 
     async function getData() {
-        const response = await fetch("https://randomuser.me/api/?results=5");
+        const response = await fetch("https://randomuser.me/api/?results=50");
         const jsonResponse = await response.json();
         const modifiedPeople = jsonResponse.results.map((person) => ({
             ...person,

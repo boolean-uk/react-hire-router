@@ -23,17 +23,17 @@ function PeopleListItem(props) {
                     <div className="already-hired">Already Hired!</div>
                 ) : (
                     <Link
-                        to={`/view/${person.id.value}`}
+                        to={`/view/${person.login.uuid}`}
                         state={{ person }}
                         people={people}
                         setPeople={setPeople}
                     >
-                        View Profile-{person.isHired}
+                        View Profile
                     </Link>
                 ))}
             {listName === "hiredPeople" && (
                 <Link
-                    to={`/edit/${person.id.value}`}
+                    to={`/edit/${person.login.uuid}`}
                     state={{ person }}
                     hiredPeople={hiredPeople}
                     setHiredPeople={setHiredPeople}

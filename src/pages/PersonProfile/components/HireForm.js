@@ -25,7 +25,7 @@ function HireForm(props) {
 
         if (editMode) {
             const updatedList = hiredPeople.map((p) =>
-                p.id.value === person.id.value ? { ...p, wage: wage } : p
+                p.login.uuid === person.login.uuid ? { ...p, wage: wage } : p
             );
             setHiredPeople(updatedList);
         } else {
