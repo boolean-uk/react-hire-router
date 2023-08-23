@@ -27,7 +27,7 @@ function HireForm(props) {
   }
 
   if (!editState) {
-    if (person.wage) {
+    if (person.wage>=0) {
       setEditState(true)
       setWage(person.wage)
     }
