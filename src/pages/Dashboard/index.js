@@ -1,10 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PeopleList from "./components/PeopleList"
+
 
 function Dashboard(props) {
   const { hiredPeople } = props
-
+  console.log(props)
   const [people, setPeople] = useState([])
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("https://randomuser.me/api/?results=50");
+      const data = await response.json();
+      setPeople(data.results);
+    }
+    getData();
+  }, []);
+
 
   return (
     <main className="dashboard-layout">
@@ -14,7 +25,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        {/* <PeopleList people={hiredPeople} /> */}
       </section>
     </main>
   )
