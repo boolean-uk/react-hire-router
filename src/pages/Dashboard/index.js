@@ -4,7 +4,8 @@ import PeopleList from "./components/PeopleList"
 
 function Dashboard(props) {
   const { hiredPeople } = props
-  console.log(props)
+
+
   const [people, setPeople] = useState([])
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        {/* <PeopleList people={hiredPeople} /> */}
+        <PeopleList people={hiredPeople} />
       </section>
     </main>
   )

@@ -7,24 +7,17 @@ import { Routes, Route } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([]);
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.state && location.state.person) {
+ 
+      setHiredPeople(prevHiredPeople => [...prevHiredPeople, location.state.person]);
+    }
+  }, [location.state]);
 
-  const location = useLocation()
-  const person = location.state.person;
-
-  useEffect(() =>{
-    setHiredPeople(prevHiredPeople => [...prevHiredPeople, person]);
-
-  },[])
-
-
-  // console.log("location")
-  // console.log(location.state.person)
-  // console.log(hiredPeople);
-
-
-
+  console.log(hiredPeople)
 
   return (
     <>
@@ -38,7 +31,7 @@ export default function App() {
                 path='/'
                 element={
                   <Dashboard
-                  props={hiredPeople}
+                    hiredPeople={hiredPeople}
 
                   />}
               />
@@ -46,13 +39,10 @@ export default function App() {
                 path='/view/:id'
                 element={
                   <HireForm
-                    
+
 
                   />}
               />
-
-
-
 
             </Routes>
           </ul>
