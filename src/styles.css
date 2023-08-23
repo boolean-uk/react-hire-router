@@ -1,10 +1,72 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  background-color: #02adc4;
 }
 
 .dashboard-layout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 300px;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  background-image: url('https://miro.medium.com/v2/resize:fit:902/1*MXZTaliOjutneXguvoZ5xA.gif');
+  background-size: auto;
+  color: white;
+  padding: 2px;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-bottom: 5px solid gold;
+  padding: 10px 0;
+}
+
+
+a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: black; 
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+a:hover {
+  background-color: #00FF00;
+  transform: scale(1.15);
+}
+a {
+  display: inline-block;
+  transform: perspective(500px) rotateX(25deg);
+  transform-origin: bottom center;
+}
+h1, h2, h3 {
+  transform: perspective(500px) rotateX(25deg);
+  transform-origin: bottom center;
+  color: #FFE81F;
+  }
+  .make-me-star-wars {
+    font-family: 'Star Wars', sans-serif;
+    font-size: 4rem; 
+    color: #FFE81F; 
+    text-align: left;
+    text-shadow: 1px 1px 2px #000, 0 0 25px #FFE81F, 0 0 5px #FFE500;
+    position: relative;
+    animation: crawl 500s forwards; 
+
+}
+
+@keyframes crawl {
+    0% {
+        transform: translate(0, 100%);
+    }
+    100% {
+        transform: translate(0, -300%); 
+    }
 }

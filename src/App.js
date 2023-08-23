@@ -32,7 +32,7 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>Hire Your Team</h1>
+        <h1 className="make-me-star-wars">Hire Your Team</h1>
         <nav>
           <ul>
             <li><Link to="/"></Link></li>
