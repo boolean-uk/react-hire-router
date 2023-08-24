@@ -1,21 +1,26 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { useParams, Link } from "react-router-dom";
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
-  const { people } = props
-  const { id } = useParams();
+  const { people, hiredPeople, setHiredPeople } = props
+  const { id } = useParams()
 
   function handleSubmit(event) {
     event.preventDefault()
+    const hiredPerson = people.find((person) => person.login.uuid === id)
+    setHiredPeople([...hiredPeople, hiredPerson])
   }
+
+  useEffect(() => {
+  }, [hiredPeople])
 
   return (
     <>
     {people.map((person) => {
     if (person.login.uuid === id) {
       return (
-        <div>
+        <div key={person.login.uuid}>
           <ul>
              <li>Email: {person.email}</li>
              <li>Phone: {person.phone}</li>
@@ -27,7 +32,7 @@ function HireForm(props) {
     } return null;
   })}
     
-    <form onSubmit={handleSubmit}>
+    <form onClick={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
       <input
         type="text"
@@ -36,7 +41,7 @@ function HireForm(props) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <Link to="/"><button type="submit">Hire</button></Link>
     </form>
     </>
   )

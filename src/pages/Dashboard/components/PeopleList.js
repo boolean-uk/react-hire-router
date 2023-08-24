@@ -13,6 +13,7 @@ function PeopleList(props) {
     }
     
   },[location.state])
+  
   return (
     <ul>
       {people.map((person, index) => (
