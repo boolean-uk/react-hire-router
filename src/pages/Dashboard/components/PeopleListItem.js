@@ -1,13 +1,20 @@
+import { Link } from "react-router-dom"
+
 function PeopleListItem(props) {
+  
+  
   const { person } = props
+ 
 
   return (
-    <li>
+    <li key={person.id}>
       <h3>
-        {person.name.first} {person.name.last}
+      <Link state={{person}} to={`/view/${person.id.value}`}>{person.name.first}
+      {person.wage && <p>Wage: £{person.wage}</p>} {person.name.last}</Link>
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      
     </li>
+  
   )
 }
 
