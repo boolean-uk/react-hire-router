@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom"
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
   const location = useLocation()
+  const { people } = props
 
   useEffect(() => {
     if (location.state) {
@@ -20,7 +21,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm people={people} />
     </article>
   )
 }
