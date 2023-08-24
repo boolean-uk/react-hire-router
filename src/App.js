@@ -17,11 +17,9 @@ export default function App() {
             
               <Routes>
                 <Route path="/" element={<Dashboard hiredPeople={hiredPeople}/>} />
-                <Route path='/person/person.email' element={<PersonProfile/>} /> 
+                <Route path='/person/:id' element={<PersonProfile/>} /> 
               </Routes>
-              
-              {/* couldn't pass the right path idk on what end route or link */}
-            
+                          
           </ul>
         </nav>
       </header>
