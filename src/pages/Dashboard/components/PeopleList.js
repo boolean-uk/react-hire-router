@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import PeopleListItem from "./PeopleListItem"
 
 function PeopleList(props) {
@@ -6,7 +7,7 @@ function PeopleList(props) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <Link to={`/view/${person.login.uuid}`} state={{person}}><PeopleListItem key={index} person={person} /></Link>
       ))}
     </ul>
   )
