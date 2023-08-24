@@ -3,8 +3,13 @@ import { useState } from "react"
 function HireForm(props) {
   const [wage, setWage] = useState(0)
 
+  //ive added this
+  const { person } = props
+
   function handleSubmit(event) {
     event.preventDefault()
+    person.wage=wage
+    props.addhiredPeople()
   }
 
   return (

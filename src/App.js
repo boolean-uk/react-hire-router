@@ -13,11 +13,11 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-           <li><Link to='/'>Dashboard</Link></li>
+           <li><Link to='/Dashboard'>Dashboard</Link></li>
             
               <Routes>
-                <Route path="/" element={<Dashboard hiredPeople={hiredPeople}/>} />
-                <Route path='/person/:id' element={<PersonProfile/>} /> 
+                <Route path="/Dashboard" element={<Dashboard hiredPeople={hiredPeople}/>} />
+                <Route path='/view/:id' element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>} /> 
               </Routes>
                           
           </ul>

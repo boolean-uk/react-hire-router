@@ -16,8 +16,6 @@ function Dashboard(props) {
     fetchPeople()
   }, [])
   
-  console.log(people)
-
   return (
     <main className="dashboard-layout">
       <section>
