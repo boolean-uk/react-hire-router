@@ -1,4 +1,6 @@
 import PeopleListItem from "./PeopleListItem"
+import { Link } from "react-router-dom"
+
 
 function PeopleList(props) {
   const { people } = props
@@ -6,9 +8,21 @@ function PeopleList(props) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
-      ))}
-    </ul>
+
+        < Link to={`view/${index}`}
+          key={index}
+          state={{ person,people }}
+        // onClick={(() => console.log(person.name.first))}
+        >
+
+          <PeopleListItem
+            person={person}
+          />
+
+        </Link>
+      ))
+      }
+    </ul >
   )
 }
 
