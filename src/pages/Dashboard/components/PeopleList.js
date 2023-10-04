@@ -1,15 +1,19 @@
-import PeopleListItem from "./PeopleListItem"
+import PeopleListItem from "./PeopleListItem";
 
 function PeopleList(props) {
-  const { people } = props
+  const { people } = props;
 
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
-      ))}
+      {people ? (
+        people.map((person, index) => (
+          <PeopleListItem key={index} person={person} list={PeopleList} />
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </ul>
-  )
+  );
 }
 
-export default PeopleList
+export default PeopleList;
