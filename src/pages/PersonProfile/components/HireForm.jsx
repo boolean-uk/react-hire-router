@@ -1,10 +1,15 @@
 import { useState } from 'react'
 
-function HireForm(props) {
+function HireForm({hiredPeople, setHiredPeople, person}) {
   const [wage, setWage] = useState(0)
 
   function handleSubmit(event) {
     event.preventDefault()
+    if (!hiredPeople) {
+      setHiredPeople([person])
+    } else {
+      setHiredPeople([...hiredPeople, person])
+    }
   }
 
   return (
