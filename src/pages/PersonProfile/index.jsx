@@ -4,7 +4,10 @@ import HireForm from './components/HireForm'
 
 function PersonProfile(props) {
 
+  const {hiredPeople, setHiredPeople} = props
+
   const [person, setPerson] = useState(null)
+
 
   const location = useLocation();
 
@@ -25,9 +28,9 @@ if (!person) return <p>Loading...</p>
       <p>{person.email}</p>
       <p>{person.phone}</p>
       <p>{person.location.city}</p>
-      <HireForm person={person}/>
-
-
+      <HireForm person={person} 
+      hiredPeople={hiredPeople} 
+      setHiredPeople={setHiredPeople} />
     </article>
   )
 }
