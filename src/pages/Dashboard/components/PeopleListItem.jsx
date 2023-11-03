@@ -1,13 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
-<Link to="new-path" state={{ some: "value" }} />;
+import { Link } from "react-router-dom";
 
-function PeopleListItem(props) {
-  const { person } = props;
-  const id = person.login.uuid;
-
+function PeopleListItem({person}) {
   return (
     <li>
-      <Link to={`view/${id}`} state={{ person: person }}>
+      <Link to={`view/${person.id.id}`}>
         <h3>
           {person.name.first} {person.name.last}
         </h3>

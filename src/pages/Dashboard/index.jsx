@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+
 import PeopleList from "./components/PeopleList";
 
 function Dashboard({hiredPeople, people}) {
-
   return (
     <main className="dashboard-layout">
       <section>

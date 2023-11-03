@@ -14,7 +14,13 @@ export default function App() {
   function obtainApplicants() {
     fetch(`${BASE_URL}?${NUM_RESULTS}`)
       .then((response) => response.json())
-      .then((result) => setPeople(result.results));
+      .then((result) => {
+        const output = result.results.map((entry, index) => {
+          entry.id.id = index + 1;
+          return entry
+        });
+        return setPeople(output);
+      });
   }
 
   useEffect(obtainApplicants, []);
@@ -33,8 +39,11 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route path="/view/:id" element={<PersonProfile />} />
-        <Route path="/" element={<Dashboard hiredPeople={hiredPeople} people={people} />} />
+        <Route path="/view/:id" element={<PersonProfile people={people} />} />
+        <Route
+          path="/"
+          element={<Dashboard hiredPeople={hiredPeople} people={people} />}
+        />
       </Routes>
     </>
   );

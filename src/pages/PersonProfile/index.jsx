@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import HireForm from "./components/HireForm";
-import { useLocation, useParams } from "react-router-dom";
-function PersonProfile(props) {
-  const linkedPerson = useLocation().state.person;
+
+function PersonProfile({people}) {
   const [person, setPerson] = useState(null);
+
   const params = useParams();
 
-  console.log("params", params);
-  console.log(useLocation());
-
   useEffect(() => {
-    setPerson(linkedPerson);
+    const foundPerson = people.find(entry => entry.id.id === Number(params.id))
+    console.log('foundPerson', foundPerson)
+    setPerson(foundPerson)
   }, []);
 
   if (!person) return <p>Loading.......</p>;
