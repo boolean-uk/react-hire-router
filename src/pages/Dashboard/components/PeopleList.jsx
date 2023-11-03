@@ -1,12 +1,28 @@
 import PeopleListItem from './PeopleListItem'
+import { useState, useEffect } from 'react'
 
-function PeopleList(props) {
-  const { people } = props
+function PeopleList() {
+
+  const [personData, setPersonData] = useState([])
+
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?results=50')
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        setPersonData(data.results)
+        console.log(data.results)})
+  }, [])
 
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+      {personData.map((personItem) => (
+        <PeopleListItem 
+          key={personItem.login.uuid}  
+          name={personItem.name.first + ' ' + personItem.name.last}
+          wage={personItem.wage}
+          />
       ))}
     </ul>
   )

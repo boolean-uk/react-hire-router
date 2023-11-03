@@ -1,12 +1,11 @@
-function PeopleListItem(props) {
-  const { person } = props
-
+function PeopleListItem({ name, wage }) {
+  
   return (
     <li>
       <h3>
-        {person.name.first} {person.name.last}
+        {name}
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      {wage && <p>Wage: £{wage}</p>}
     </li>
   )
 }

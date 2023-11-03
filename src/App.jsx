@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Route, Routes, Link} from 'react-router-dom'
+import PeopleList from './pages/Dashboard/components/PeopleList'
 import './App.css'
 
 export default function App() {
@@ -10,10 +12,13 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+          <Link to="/">Dashboard</Link>
           </ul>
         </nav>
       </header>
+      <Routes>
+        <Route path ="/" element={<PeopleList />} />
+      </Routes>
     </>
   )
 }
