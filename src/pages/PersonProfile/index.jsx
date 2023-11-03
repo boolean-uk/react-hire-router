@@ -1,11 +1,22 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
+import { useLocation } from 'react-router-dom'
 
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
+  const location = useLocation()
+  console.log(person)
 
-  if (!person) return <p>Loading...</p>
+
+  useEffect(() => {
+    if (location) {
+      setPerson(location.state)
+    } else if (!person) {
+      return <p>Loading...</p>
+    }
+  }, [location, person])
+
 
   return (
     <article>

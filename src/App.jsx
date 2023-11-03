@@ -22,7 +22,7 @@ export default function App() {
       </header>
       <Routes>
         <Route path='/' element={<Dashboard hiredPeople={hiredPeople}/>}/>
-        <Route path='/PersonProfile/:id' element={<PersonProfile/>}/>
+        <Route path='/PersonProfile/view/:id' element={<PersonProfile/>}/>
       </Routes>
     </>
   )
