@@ -1,14 +1,21 @@
-function PeopleListItem(props) {
-  const { person } = props
+import { Routes, Route, Link } from "react-router-dom";
+import PersonProfile from "../../PersonProfile";
+
+export default function PeopleListItem(props) {
+  const { person } = props;
 
   return (
     <li>
       <h3>
-        {person.name.first} {person.name.last}
+        <Link to={`/PersonProfile/${person.id}`}>
+          {person.name.first} {person.name.last}
+        </Link>
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
     </li>
   )
 }
 
-export default PeopleListItem
+<Routes>
+  <Route path="/PersonProfile/:personId" element={<PersonProfile />} />
+</Routes>
