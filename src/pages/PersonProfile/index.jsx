@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import HireForm from './components/HireForm'
-
+import {useLocation} from 'react-router-dom'
 function PersonProfile(props) {
+  const linkedPerson= useLocation().state.person  
   const [person, setPerson] = useState(null)
 
-  if (!person) return <p>Loading...</p>
+
+  useEffect( () =>{
+    setPerson(linkedPerson);
+  },[])
+
+  if (!person) return <p>Loading.......</p>
+  
 
   return (
     <article>
@@ -14,6 +21,8 @@ function PersonProfile(props) {
       <HireForm person={person} />
     </article>
   )
+    
+
 }
 
 export default PersonProfile
