@@ -24,6 +24,7 @@ function HireForm(props) {
   };
 
   return (
+  <>
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
       <input
@@ -36,6 +37,8 @@ function HireForm(props) {
       />
       <button type="submit">Hire</button>
     </form>
+    <button onClick={() => navigate(-1)}>Go Back</button>
+  </>
   )
 }
 
