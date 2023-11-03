@@ -9,7 +9,7 @@ function HireForm(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+      <label htmlFor="wage">Wage Offer </label>
       <input
         type="text"
         id="wage"
