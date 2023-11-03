@@ -1,20 +1,7 @@
 import { useState, useEffect } from "react";
 import PeopleList from "./components/PeopleList";
 
-const BASE_URL = "https://randomuser.me/api/";
-const NUM_RESULTS = "results=50";
-
-function Dashboard(props) {
-  const { hiredPeople } = props;
-  const [people, setPeople] = useState([]);
-
-  function obtainApplicants() {
-    fetch(`${BASE_URL}?${NUM_RESULTS}`)
-      .then((response) => response.json())
-      .then((result) => setPeople(result.results));
-  }
-
-  useEffect(obtainApplicants, []);
+function Dashboard({hiredPeople, people}) {
 
   return (
     <main className="dashboard-layout">

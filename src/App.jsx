@@ -1,11 +1,23 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import PersonProfile from "./pages/PersonProfile";
 
+const BASE_URL = "https://randomuser.me/api/";
+const NUM_RESULTS = "results=50";
+
 export default function App() {
+  const [people, setPeople] = useState([]);
   const [hiredPeople, setHiredPeople] = useState([]);
+
+  function obtainApplicants() {
+    fetch(`${BASE_URL}?${NUM_RESULTS}`)
+      .then((response) => response.json())
+      .then((result) => setPeople(result.results));
+  }
+
+  useEffect(obtainApplicants, []);
 
   return (
     <>
@@ -13,14 +25,16 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            <li>
+              <Link to="/">Dashboard</Link>
+            </li>
           </ul>
         </nav>
       </header>
 
       <Routes>
         <Route path="/view/:id" element={<PersonProfile />} />
-        <Route path="/" element={<Dashboard hiredPeople={hiredPeople} />} />
+        <Route path="/" element={<Dashboard hiredPeople={hiredPeople} people={people} />} />
       </Routes>
     </>
   );
