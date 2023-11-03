@@ -1,31 +1,24 @@
+import { Link } from 'react-router-dom'
 import PeopleListItem from './PeopleListItem'
-import { useState, useEffect } from 'react'
 
-function PeopleList() {
-
-  const [personData, setPersonData] = useState([])
-
-  useEffect(() => {
-    fetch('https://randomuser.me/api/?results=50')
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        setPersonData(data.results)
-        console.log(data.results)})
-  }, [])
+function PeopleList(props) {
+  console.log(props);
 
   return (
-    <ul>
-      {personData.map((personItem) => (
-        <PeopleListItem 
-          key={personItem.login.uuid}  
-          name={personItem.name.first + ' ' + personItem.name.last}
-          wage={personItem.wage}
-          />
-      ))}
-    </ul>
-  )
+    <>
+      <ul>
+        {props.people?.map((person) => (
+          <div key={person.login.uuid}>
+            <PeopleListItem person={person} />
+            <Link 
+            to={`/dashboard/${person.login.uuid}`}
+            state={{ person: person }}
+            >See Person Details</Link>
+          </div>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default PeopleList

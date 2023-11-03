@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes, Link} from 'react-router-dom'
-import PeopleList from './pages/Dashboard/components/PeopleList'
+import Dashboard from './pages/Dashboard/index'
 import './App.css'
+import PersonProfile from './pages/PersonProfile'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -12,12 +13,13 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-          <Link to="/">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
           </ul>
         </nav>
       </header>
       <Routes>
-        <Route path ="/" element={<PeopleList />} />
+        <Route path ="/dashboard" element={<Dashboard/>} />
+        <Route path ="/dashboard/:id" element={<PersonProfile/>} />
       </Routes>
     </>
   )
