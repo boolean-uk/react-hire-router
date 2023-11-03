@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import PeopleListItem from './PeopleListItem'
 
 function PeopleList(props) {
-  console.log(props);
 
   return (
     <>

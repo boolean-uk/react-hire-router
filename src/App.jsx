@@ -19,7 +19,10 @@ export default function App() {
       </header>
       <Routes>
         <Route path ="/dashboard" element={<Dashboard/>} />
-        <Route path ="/dashboard/:id" element={<PersonProfile/>} />
+        <Route path ="/dashboard/:id" element={<PersonProfile
+        hiredPeople={hiredPeople}
+        setHiredPeople={setHiredPeople}
+        />} />
       </Routes>
     </>
   )
