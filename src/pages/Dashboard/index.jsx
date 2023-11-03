@@ -12,7 +12,6 @@ function Dashboard({ hiredPeople }) {
     fetch(userURL)
     .then(res => res.json())
     .then(data => {
-      console.log(data.results)
       setPeople(data.results)
     })
   }, [])

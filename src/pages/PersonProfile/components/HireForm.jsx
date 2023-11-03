@@ -8,6 +8,7 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    navigate("/")
   }
 
   return (
@@ -20,7 +21,7 @@ function HireForm(props) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit" onClick={() => navigate("/" )}>Hire</button>
+      <button type="submit">Hire</button>
     </form>
   )
 }
