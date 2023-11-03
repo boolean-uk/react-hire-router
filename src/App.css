@@ -8,3 +8,15 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+.img {
+  display: block;
+}
+
+.h2 {
+  display: inline-block;
+}
+
+.email {
+  display: inline;
+}
