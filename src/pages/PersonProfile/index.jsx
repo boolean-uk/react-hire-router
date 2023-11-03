@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
 import { useLocation } from 'react-router-dom'
 
-function PersonProfile(props) {
+function PersonProfile({ hiredPeople, setHiredPeople }) {
   const [person, setPerson] = useState(null)
 
   // using useLocation to access the person's data from the state attached using Link in the PeopleListItem component:
@@ -22,7 +22,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} />
     </article>
   )
 }

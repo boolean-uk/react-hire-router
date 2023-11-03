@@ -30,7 +30,7 @@ export default function App() {
           element={ <Dashboard hiredPeople={hiredPeople} />} />
         <Route
           path="/view/:id"
-          element={ <PersonProfile /> } />
+          element={ <PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} /> } />
       </Routes>
     </>
   )

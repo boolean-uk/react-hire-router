@@ -15,7 +15,7 @@ function Dashboard({ hiredPeople }) {
       setPeople(data.results)
     })
   }, [])
-  
+  console.log(people)
 
   return (
     <main className="dashboard-layout">
