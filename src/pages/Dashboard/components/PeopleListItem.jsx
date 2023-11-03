@@ -12,6 +12,7 @@ export default function PeopleListItem(props) {
         </Link>
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
+      <Link to={`/PersonProfile/${person.id}`}><button>View Profile</button></Link>
     </li>
   )
 }

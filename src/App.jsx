@@ -26,7 +26,9 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/Dashboard" element={<Dashboard hiredPeople={hiredPeople} />} />
+      <Route path='/Dashboard' element={<Dashboard hiredPeople={hiredPeople}/>}/>
+      <Route path="/view/:id" element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>}/>
+      <Route path='/' element={<home/>}/>
       </Routes>
     </>
   )
