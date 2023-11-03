@@ -16,14 +16,13 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
-            <Link to='/Dashboard'></Link>
+            <li><Link to='/'>Dashboard</Link></li>
           </ul>
         </nav>
       </header>
       <Routes>
         <Route path='/' element={<Dashboard hiredPeople={hiredPeople}/>}/>
-        <Route path='/HireForm' element={<PersonProfile/>}/>
+        <Route path='/PersonProfile/:id' element={<PersonProfile/>}/>
       </Routes>
     </>
   )
