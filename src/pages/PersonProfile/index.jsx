@@ -11,7 +11,7 @@ function PersonProfile({hiredPeople, setHiredPeople}) {
   }
 
 
-  useEffect(displayPerson, [])
+  useEffect(displayPerson, [location])
 
   if (!person) return <p>Loading...</p>
 

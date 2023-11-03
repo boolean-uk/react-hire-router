@@ -8,7 +8,7 @@ function HireForm({hiredPeople, setHiredPeople, person}) {
     if (!hiredPeople) {
       setHiredPeople([person])
     } else {
-      setHiredPeople([...hiredPeople, person])
+      setHiredPeople([...hiredPeople, {...person , ["wage"]:wage}])
     }
   }
 
