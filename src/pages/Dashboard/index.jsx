@@ -5,8 +5,7 @@ function Dashboard({ hiredPeople }) {
 
   const [people, setPeople] = useState([])
 
-  const userURL = "https://randomuser.me/api?results=50"
-  // const userURL = "https://randomuser.me/api?inc=name&results=50"
+  const userURL = "https://randomuser.me/api?inc=name,id&results=50"
 
   useEffect(() => {
     fetch(userURL)
@@ -15,7 +14,6 @@ function Dashboard({ hiredPeople }) {
       setPeople(data.results)
     })
   }, [])
-  console.log(people)
 
   return (
     <main className="dashboard-layout">

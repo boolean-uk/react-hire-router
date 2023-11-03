@@ -13,9 +13,6 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
     setHiredPeople([...hiredPeople, newHire])
   }
 
-console.log(hiredPeople)
-// console.log(person)
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
