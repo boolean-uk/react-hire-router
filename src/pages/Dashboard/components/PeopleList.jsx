@@ -1,6 +1,7 @@
 import PeopleListItem from "./PeopleListItem";
 
 function PeopleList({ people }) {
+    console.log(people);
     return (
         <ul>
             {people.map((person, index) => (

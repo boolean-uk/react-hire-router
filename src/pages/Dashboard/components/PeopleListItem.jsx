@@ -7,7 +7,7 @@ function PeopleListItem({ person }) {
                 <h3>
                     {person.name.first} {person.name.last}
                 </h3>
-                {person.wage && <p>Wage: £{person.wage}</p>}
+                {person.wage >= 0 && <p>Wage: £{person.wage}</p>}
             </Link>
         </li>
     );

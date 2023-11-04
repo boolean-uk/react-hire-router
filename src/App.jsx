@@ -7,6 +7,8 @@ import PersonProfile from "./pages/PersonProfile";
 export default function App() {
     const [hiredPeople, setHiredPeople] = useState([]);
 
+    const addHiredPeople = (people) => setHiredPeople([...hiredPeople, people]);
+
     return (
         <>
             <header>
@@ -23,7 +25,12 @@ export default function App() {
                         path="/"
                         element={<Dashboard hiredPeople={hiredPeople} />}
                     />
-                    <Route path="/view/:id" element={<PersonProfile />} />
+                    <Route
+                        path="/view/:id"
+                        element={
+                            <PersonProfile addHiredPeople={addHiredPeople} />
+                        }
+                    />
                 </Routes>
             </header>
         </>
