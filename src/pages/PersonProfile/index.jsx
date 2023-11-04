@@ -21,7 +21,7 @@ function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
     <article className="px-4">
       <div className="flex w-min flex-col rounded-lg bg-teal-200">
         <div className="flex place-items-center">
-          <h2 className="rounded-br-lg bg-white p-2 text-2xl text-teal-500 w-max">
+          <h2 className="w-max rounded-br-lg bg-white p-2 text-2xl text-teal-500">
             {person.name.first} {person.name.last}
           </h2>
           <div className="grow p-2 text-center text-2xl text-white">
