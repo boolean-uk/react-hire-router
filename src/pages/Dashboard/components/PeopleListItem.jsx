@@ -16,21 +16,21 @@ function PeopleListItem({ person }) {
     <li>
       <Link
         to={`view/${person.id.id}`}
-        className="flex hover:drop-shadow-xl hover:contrast-75"
+        className="flex hover:contrast-75 hover:drop-shadow-xl"
       >
         <div className="profile-shot">
           <img src={person.picture.large} alt="" />
           <h3
-            className={`text-center border-l border-b border-sky-100 ${
+            className={`border-b border-l border-sky-100 text-center ${
               person.hired
-                ? "bg-emerald-500 border-none text-slate-50"
+                ? "border-none bg-emerald-500 text-slate-50"
                 : "bg-white text-teal-700"
             }`}
           >
             {person.name.first} {person.name.last}
           </h3>
         </div>
-        <ul className="person-details flex flex-col gap-2 justify-center p-4 bg-sky-100">
+        <ul className="person-details flex flex-col justify-center gap-2 bg-sky-100 p-4">
           {personDetails.map((detail) => (
             <li key={`person-detail${id}`}>
               {detail[0]}: {detail[1]}

@@ -27,11 +27,11 @@ export default function App() {
 
   return (
     <div className="container h-screen">
-      <header className="p-4 grid gap-4 text-teal-500">
+      <header className="grid gap-4 p-4 text-teal-500">
         <h1 className="text-6xl font-semibold">Hire Your Team</h1>
         <nav>
           <ul className="flex text-slate-50">
-            <li className="p-2 rounded-lg bg-teal-500">
+            <li className="rounded-lg bg-teal-500 p-2">
               <Link to="/">Dashboard</Link>
             </li>
           </ul>

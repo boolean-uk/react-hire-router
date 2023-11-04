@@ -5,7 +5,7 @@ function PeopleList(props) {
   return (
     <ul className="flex flex-col gap-4">
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person}/>
+        <PeopleListItem key={index} person={person} />
       ))}
     </ul>
   );

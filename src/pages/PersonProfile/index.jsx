@@ -10,7 +10,7 @@ function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
 
   useEffect(() => {
     const foundPerson = people.find(
-      (entry) => entry.id.id === Number(params.id)
+      (entry) => entry.id.id === Number(params.id),
     );
     setPerson(foundPerson);
   }, [params]);
