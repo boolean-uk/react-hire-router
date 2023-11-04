@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-function PeopleListItem({ person }) {
-  console.log("person", person);
+function PeopleListItem({ person, list }) {
   const {
     id: { id },
     hired,
@@ -16,22 +15,27 @@ function PeopleListItem({ person }) {
     <li className="overflow-hidden rounded-lg text-teal-700">
       <Link
         to={`view/${id}`}
-        className={`flex flex-col rounded-lg bg-white hover:contrast-75 hover:drop-shadow-xl`}
+        className={`flex flex-col rounded-lg hover:contrast-75 hover:drop-shadow-xl ${
+          hired ? "bg-emerald-500" : "bg-white"
+        }`}
       >
         <div className={`flex rounded-lg rounded-bl-none `}>
           <div className={`${hired ? "bg-emerald-500" : "bg-white"}`}>
             <img
               src={person.picture.large}
               alt=""
-              className="h-36 w-36 rounded-full object-cover p-2"
+              className="w-24 rounded-full object-cover p-2"
             />
           </div>
 
-          <ul className="person-details contents-center grid flex-grow flex-col items-center gap-2 bg-sky-100 p-4">
+          <ul className="person-details contents-center grid flex-grow flex-col items-center gap-2 rounded-bl-lg bg-sky-100 p-4">
             {personDetails.map((detail) => {
               if (detail)
                 return (
-                  <li key={`person-detail${id}`} className="grid grid-flow-col">
+                  <li
+                    key={`person-detail${list}${id}`}
+                    className="grid grid-flow-col"
+                  >
                     {detail}
                   </li>
                 );

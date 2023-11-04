@@ -18,16 +18,23 @@ function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
   if (!person) return <p>Loading.......</p>;
 
   return (
-    <article>
-      <h2>
-        {person.name.first} {person.name.last}
-      </h2>
-      <HireForm
-        params={params}
-        person={person}
-        hiredPeople={hiredPeople}
-        setHiredPeople={setHiredPeople}
-      />
+    <article className="px-4">
+      <div className="flex w-min flex-col rounded-lg bg-teal-200">
+        <div className="flex place-items-center">
+          <h2 className="rounded-br-lg bg-white p-2 text-2xl text-teal-500 w-max">
+            {person.name.first} {person.name.last}
+          </h2>
+          <div className="grow p-2 text-center text-2xl text-white">
+            {person.id.name}
+          </div>
+        </div>
+        <HireForm
+          params={params}
+          person={person}
+          hiredPeople={hiredPeople}
+          setHiredPeople={setHiredPeople}
+        />
+      </div>
     </article>
   );
 }

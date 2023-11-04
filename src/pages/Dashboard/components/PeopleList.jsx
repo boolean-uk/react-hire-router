@@ -1,11 +1,11 @@
 import PeopleListItem from "./PeopleListItem";
 
 function PeopleList(props) {
-  const { people } = props;
+  const { list, people } = props;
   return (
     <ul className="flex flex-col gap-4">
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <PeopleListItem key={`${list}-${index}`} person={person} list={list} />
       ))}
     </ul>
   );
