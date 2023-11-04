@@ -10,5 +10,15 @@
 .dashboard-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50%;
   gap: 1rem;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }

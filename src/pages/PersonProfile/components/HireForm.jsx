@@ -8,6 +8,7 @@ function HireForm({ params, person, hiredPeople, setHiredPeople }) {
   function handleSubmit(event) {
     event.preventDefault();
     person.wage = wage;
+    person.hired = true;
 
     if (hiredPeople.some((peep) => peep.id.id === person.id.id)) {
       setHiredPeople([...hiredPeople]);

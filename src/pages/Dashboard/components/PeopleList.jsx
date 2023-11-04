@@ -2,9 +2,8 @@ import PeopleListItem from "./PeopleListItem";
 
 function PeopleList(props) {
   const { people } = props;
-  console.log('people', people)
   return (
-    <ul>
+    <ul className="flex flex-col gap-4">
       {people.map((person, index) => (
         <PeopleListItem key={index} person={person}/>
       ))}

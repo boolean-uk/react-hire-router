@@ -26,12 +26,12 @@ export default function App() {
   useEffect(obtainApplicants, []);
 
   return (
-    <>
-      <header>
-        <h1>Hire Your Team</h1>
+    <div className="container h-screen">
+      <header className="p-4 grid gap-4 text-teal-500">
+        <h1 className="text-6xl font-semibold">Hire Your Team</h1>
         <nav>
-          <ul>
-            <li>
+          <ul className="flex text-slate-50">
+            <li className="p-2 rounded-lg bg-teal-500">
               <Link to="/">Dashboard</Link>
             </li>
           </ul>
@@ -54,6 +54,6 @@ export default function App() {
           element={<Dashboard hiredPeople={hiredPeople} people={people} />}
         />
       </Routes>
-    </>
+    </div>
   );
 }
