@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Route, Routes, Link} from 'react-router-dom'
 import Dashboard from './pages/Dashboard/index'
 import './App.css'
@@ -18,7 +18,10 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path ="/dashboard" element={<Dashboard/>} />
+        <Route path ="/dashboard" element={<Dashboard
+        hiredPeople={hiredPeople}
+        setHiredPeople={setHiredPeople}
+        />} />
         <Route path ="/dashboard/:id" element={<PersonProfile
         hiredPeople={hiredPeople}
         setHiredPeople={setHiredPeople}
