@@ -5,8 +5,6 @@ function HireForm({ params, person, hiredPeople, setHiredPeople }) {
   const [wage, setWage] = useState(0);
   const navigate = useNavigate();
 
-  console.log("wage", wage);
-
   function handleSubmit(event) {
     event.preventDefault();
     person.wage = wage;

@@ -29,11 +29,11 @@ function PeopleListItem({ person, list }) {
           </div>
 
           <ul className="person-details contents-center grid flex-grow flex-col items-center gap-2 rounded-bl-lg bg-sky-100 p-4">
-            {personDetails.map((detail) => {
+            {personDetails.map((detail, index) => {
               if (detail)
                 return (
                   <li
-                    key={`person-detail${list}${id}`}
+                    key={`person-detail${list}${person.login.uuid}${index}`}
                     className="grid grid-flow-col"
                   >
                     {detail}
