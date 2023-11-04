@@ -3,16 +3,17 @@ import { useParams } from "react-router-dom";
 
 import HireForm from "./components/HireForm";
 
-function PersonProfile({people}) {
+function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
   const [person, setPerson] = useState(null);
 
   const params = useParams();
 
   useEffect(() => {
-    const foundPerson = people.find(entry => entry.id.id === Number(params.id))
-    console.log('foundPerson', foundPerson)
-    setPerson(foundPerson)
-  }, []);
+    const foundPerson = people.find(
+      (entry) => entry.id.id === Number(params.id)
+    );
+    setPerson(foundPerson);
+  }, [params]);
 
   if (!person) return <p>Loading.......</p>;
 
@@ -21,7 +22,12 @@ function PersonProfile({people}) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm
+        params={params}
+        person={person}
+        hiredPeople={hiredPeople}
+        setHiredPeople={setHiredPeople}
+      />
     </article>
   );
 }

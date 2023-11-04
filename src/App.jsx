@@ -17,7 +17,7 @@ export default function App() {
       .then((result) => {
         const output = result.results.map((entry, index) => {
           entry.id.id = index + 1;
-          return entry
+          return entry;
         });
         return setPeople(output);
       });
@@ -39,7 +39,16 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route path="/view/:id" element={<PersonProfile people={people} />} />
+        <Route
+          path="/view/:id"
+          element={
+            <PersonProfile
+              people={people}
+              hiredPeople={hiredPeople}
+              setHiredPeople={setHiredPeople}
+            />
+          }
+        />
         <Route
           path="/"
           element={<Dashboard hiredPeople={hiredPeople} people={people} />}
