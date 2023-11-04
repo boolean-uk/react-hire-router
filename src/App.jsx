@@ -7,7 +7,19 @@ import PersonProfile from "./pages/PersonProfile";
 export default function App() {
     const [hiredPeople, setHiredPeople] = useState([]);
 
-    const addHiredPeople = (people) => setHiredPeople([...hiredPeople, people]);
+    const addHiredPeople = (people) => {
+        const findElement = hiredPeople.find(
+            (item) => item.login.uuid === people.login.uuid
+        );
+
+        setHiredPeople(
+            findElement
+                ? hiredPeople.map((item) =>
+                      item.login.uuid === people.login.uuid ? people : item
+                  )
+                : [...hiredPeople, people]
+        );
+    };
 
     return (
         <>
