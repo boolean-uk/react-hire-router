@@ -1,43 +1,52 @@
 import { Link } from "react-router-dom";
 
 function PeopleListItem({ person }) {
+  console.log("person", person);
   const {
-    phone,
-    email,
-    location: { country },
     id: { id },
+    hired,
+    wage,
   } = person;
   const personDetails = [
-    ["Phone", phone],
-    ["Email", email],
-    ["Country", country],
+    person.id.name,
+    `${person.location.city}, ${person.location.country}`,
+    hired && `£${wage}`,
   ];
   return (
-    <li>
+    <li className="overflow-hidden rounded-lg text-teal-700">
       <Link
-        to={`view/${person.id.id}`}
-        className="flex hover:contrast-75 hover:drop-shadow-xl"
+        to={`view/${id}`}
+        className={`flex flex-col rounded-lg bg-white hover:contrast-75 hover:drop-shadow-xl ${
+          hired ? "border-none" : "border-2 border-sky-100"
+        }`}
       >
-        <div className="profile-shot">
-          <img src={person.picture.large} alt="" />
-          <h3
-            className={`border-b border-l border-sky-100 text-center ${
-              person.hired
-                ? "border-none bg-emerald-500 text-slate-50"
-                : "bg-white text-teal-700"
-            }`}
-          >
-            {person.name.first} {person.name.last}
-          </h3>
+        <div className={`flex rounded-lg rounded-bl-none `}>
+          <div className={`${hired ? "bg-emerald-500" : "bg-white"}`}>
+            <img
+              src={person.picture.large}
+              alt=""
+              className="h-36 w-36 rounded-full object-cover p-2"
+            />
+          </div>
+
+          <ul className="person-details contents-center grid flex-grow flex-col items-center gap-2 bg-sky-100 p-4">
+            {personDetails.map((detail) => {
+              if (detail)
+                return (
+                  <li key={`person-detail${id}`} className="grid grid-flow-col">
+                    {detail}
+                  </li>
+                );
+            })}
+          </ul>
         </div>
-        <ul className="person-details flex flex-col justify-center gap-2 bg-sky-100 p-4">
-          {personDetails.map((detail) => (
-            <li key={`person-detail${id}`}>
-              {detail[0]}: {detail[1]}
-            </li>
-          ))}
-          <li>{person.wage && <p>Wage: £{person.wage}</p>}</li>
-        </ul>
+        <h3
+          className={`rounded-b-lg px-2 ${
+            hired ? "border-none bg-emerald-500 text-slate-50" : "bg-white"
+          }`}
+        >
+          {person.name.first} {person.name.last}
+        </h3>
       </Link>
     </li>
   );
