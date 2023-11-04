@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Link } from 'react'
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
