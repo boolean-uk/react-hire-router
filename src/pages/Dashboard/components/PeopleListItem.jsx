@@ -16,9 +16,7 @@ function PeopleListItem({ person }) {
     <li className="overflow-hidden rounded-lg text-teal-700">
       <Link
         to={`view/${id}`}
-        className={`flex flex-col rounded-lg bg-white hover:contrast-75 hover:drop-shadow-xl ${
-          hired ? "border-none" : "border-2 border-sky-100"
-        }`}
+        className={`flex flex-col rounded-lg bg-white hover:contrast-75 hover:drop-shadow-xl`}
       >
         <div className={`flex rounded-lg rounded-bl-none `}>
           <div className={`${hired ? "bg-emerald-500" : "bg-white"}`}>
@@ -42,7 +40,7 @@ function PeopleListItem({ person }) {
         </div>
         <h3
           className={`rounded-b-lg px-2 ${
-            hired ? "border-none bg-emerald-500 text-slate-50" : "bg-white"
+            hired ? "bg-emerald-500 text-slate-50" : "bg-white"
           }`}
         >
           {person.name.first} {person.name.last}
