@@ -39,7 +39,7 @@ function HireForm({ params, person, hiredPeople, setHiredPeople }) {
         type="submit"
         className="rounded-b-lg bg-emerald-500 p-2 text-white"
       >
-        Hire
+        {person.hired ? "Edit Rate" : "Hire"}
       </button>
     </form>
   );
