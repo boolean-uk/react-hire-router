@@ -5,6 +5,7 @@ function Dashboard({ hiredPeople }) {
   //const { hiredPeople } = props
 
   const [people, setPeople] = useState([]);
+  // Use the useEffect hook to fetch random user data when the component mounts.
   useEffect(() => {
     fetch("https://randomuser.me/api?inc=name,id&results=50")
       .then((response) => response.json())
