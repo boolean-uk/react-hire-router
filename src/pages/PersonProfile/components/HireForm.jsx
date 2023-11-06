@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function HireForm({person, setHiredPeople, hiredPeople}) {
   const [personWage, setWage] = useState(0)
@@ -11,11 +11,11 @@ function HireForm({person, setHiredPeople, hiredPeople}) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(person)
+    // console.log(person)
     setHiredPeople([...hiredPeople, {...person, wage: personWage}])
     goHome()
-    console.log("hired people state",hiredPeople)
-    console.log("wage",personWage)
+    // console.log("hired people state",hiredPeople)
+    // console.log("wage",personWage)
   }
 
   return (
