@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function HireForm({ params, person, hiredPeople, setHiredPeople }) {
+function HireForm({ person, hiredPeople, setHiredPeople }) {
   const [wage, setWage] = useState(0);
   const navigate = useNavigate();
 
@@ -44,5 +45,11 @@ function HireForm({ params, person, hiredPeople, setHiredPeople }) {
     </form>
   );
 }
+
+HireForm.propTypes = {
+  person: PropTypes.object,
+  hiredPeople: PropTypes.array,
+  setHiredPeople: PropTypes.func,
+};
 
 export default HireForm;

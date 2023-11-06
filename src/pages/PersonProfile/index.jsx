@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import HireForm from "./components/HireForm";
 
-function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
+function PersonProfile({ people, hiredPeople, setHiredPeople }) {
   const [person, setPerson] = useState(null);
 
   const params = useParams();
@@ -13,7 +14,7 @@ function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
       (entry) => entry.id.id === Number(params.id),
     );
     setPerson(foundPerson);
-  }, [params]);
+  }, [params, people]);
 
   if (!person) return <p>Loading.......</p>;
 
@@ -38,5 +39,11 @@ function PersonProfile({ people, setPeople, hiredPeople, setHiredPeople }) {
     </article>
   );
 }
+
+PersonProfile.propTypes = {
+  people: PropTypes.array,
+  hiredPeople: PropTypes.array,
+  setHiredPeople: PropTypes.func,
+};
 
 export default PersonProfile;
