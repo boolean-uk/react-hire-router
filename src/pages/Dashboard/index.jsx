@@ -3,9 +3,9 @@ import PeopleList from './components/PeopleList'
 import { useNavigate, Link } from 'react-router-dom'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { hiredPeople, people, setPeople } = props
 
-  const [people, setPeople] = useState([])
+  // const [people, setPeople] = useState([])
 
   const navigate = useNavigate()
 
@@ -14,7 +14,7 @@ function Dashboard(props) {
     .then(res => res.json())
     .then(data => {
       setPeople(data.results)
-      console.log(data)
+      console.log(data.results[0].id.value)
     })
   }
 
@@ -29,7 +29,6 @@ function Dashboard(props) {
       <section>
         <h2>Hired People</h2>
         <PeopleList people={hiredPeople}/>
-        <li>ilham</li>
       </section>
       <button onClick={() => navigate(-1)}>Go Back</button>
     </main>

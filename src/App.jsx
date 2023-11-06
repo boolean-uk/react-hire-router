@@ -7,6 +7,7 @@ import PersonProfile from './pages/PersonProfile';
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
+  const [people, setPeople] = useState([])
 
   return (
     <>
@@ -15,14 +16,14 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
         </nav>
       </header>
       <Routes>
-        <Route path='/' element={<Dashboard hiredPeople={hiredPeople}/>}/>
-        <Route path='/dashboard/:id' element={<PersonProfile />}/>
+        <Route path='/dashboard' element={<Dashboard hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}  people={people} setPeople={setPeople}/>}/>
+        <Route path='/dashboard/:personId' element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} people={people} setPeople={setPeople}/>}/>
       </Routes>
     </>
   )

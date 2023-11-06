@@ -7,8 +7,8 @@ function PeopleListItem(props) {
     <li>
       <h3>
         <Link
-        to={`/dashboard/${person.id}`}
-        state={{data: person}}
+        to={`/dashboard/${person.id.value}`}
+        // state={{data: person}}
         >{person.name.first} {person.name.last}</Link>
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
