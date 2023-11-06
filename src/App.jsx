@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { Route, Routes, Link } from 'react-router-dom';
 import DashBoard from './pages/Dashboard';
-import PersonProfile from './pages/Dashboard/index.jsx';
+import PersonProfile from './pages/PersonProfile';
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
