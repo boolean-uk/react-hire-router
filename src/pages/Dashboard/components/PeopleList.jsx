@@ -1,5 +1,5 @@
 import PeopleListItem from "./PeopleListItem";
-
+// Define the PeopleList component, which takes a prop called "people."
 function PeopleList({ people }) {
   return (
     <ul>

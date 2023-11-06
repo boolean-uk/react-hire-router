@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function HireForm({ person, hiredPeople, setHiredPeople }) {
   const [wage, setWage] = useState(0);
 
+  // Get a navigator function using the useNavigate hook from React Router.
   const navigator = useNavigate();
 
   function handleSubmit(event) {
