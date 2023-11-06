@@ -4,6 +4,7 @@ import "./App.css";
 import { Link, Route, Routes } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard/index";
+import PersonProfile from "./pages/PersonProfile";
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([]);
@@ -24,6 +25,10 @@ export default function App() {
         <Route
           path="/"
           element={<Dashboard hiredPeople={hiredPeople} />}
+        ></Route>
+        <Route
+        path="/view/:id"
+        element={<PersonProfile />}
         ></Route>
       </Routes>
     </>

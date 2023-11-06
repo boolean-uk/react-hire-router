@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import PeopleList from "./components/PeopleList";
 
-function Dashboard(props) {
-  const { hiredPeople } = props;
+function Dashboard({hiredPeople}) {
 
   const [people, setPeople] = useState([]);
 
