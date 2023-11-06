@@ -15,7 +15,7 @@ function PersonProfile({ people, hiredPeople, setHiredPeople }) {
     );
     setPerson(foundPerson);
   }, [params, people]);
-
+  console.log('person', person)
   if (!person) return <p>Loading.......</p>;
 
   return (

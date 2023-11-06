@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
+import axios from "axios";
+
+import "./App.css";
+
 import Dashboard from "./pages/Dashboard";
 import PersonProfile from "./pages/PersonProfile";
 
@@ -11,19 +14,21 @@ export default function App() {
   const [people, setPeople] = useState([]);
   const [hiredPeople, setHiredPeople] = useState([]);
 
-  function obtainApplicants() {
-    fetch(`${BASE_URL}?${NUM_RESULTS}`)
-      .then((response) => response.json())
-      .then((result) => {
-        const output = result.results.map((entry, index) => {
+  useEffect(() => {
+    async function obtainApplicantsAxios() {
+      try {
+        const {data: {results}} = await axios.get(`${BASE_URL}?${NUM_RESULTS}`);
+        const output = await results.map((entry, index) => {
           entry.id.id = index + 1;
           return entry;
         });
         return setPeople(output);
-      });
-  }
-
-  useEffect(obtainApplicants, []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    obtainApplicantsAxios()
+  }, []);
 
   return (
     <div className="container h-screen">
