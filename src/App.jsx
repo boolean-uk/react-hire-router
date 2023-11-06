@@ -7,8 +7,12 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import PersonProfile from "./pages/PersonProfile";
 
-const BASE_URL = "https://randomuser.me/api/";
-const NUM_RESULTS = "results=50";
+const instance = axios.create({
+  baseURL: "https://randomuser.me/api",
+  params: {
+    results: 50,
+  },
+});
 
 export default function App() {
   const [people, setPeople] = useState([]);
@@ -17,7 +21,9 @@ export default function App() {
   useEffect(() => {
     async function obtainApplicantsAxios() {
       try {
-        const {data: {results}} = await axios.get(`${BASE_URL}?${NUM_RESULTS}`);
+        const {
+          data: { results },
+        } = await instance.get();
         const output = await results.map((entry, index) => {
           entry.id.id = index + 1;
           return entry;
@@ -27,7 +33,8 @@ export default function App() {
         console.error(error);
       }
     }
-    obtainApplicantsAxios()
+
+    obtainApplicantsAxios();
   }, []);
 
   return (
