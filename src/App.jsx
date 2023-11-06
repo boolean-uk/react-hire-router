@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
 import PersonProfile from './pages/PersonProfile'
+import EditPage from './pages/Edit/Components/EditPage'
 
 import './App.css'
 
@@ -42,6 +43,10 @@ export default function App() {
         <Route
           path="/view/:id"
           element={ <PersonProfile people={people} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} /> } />
+        <Route
+          path="/view/edit"
+          element={ <EditPage hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>}
+          />   
       </Routes>
     </>
   )

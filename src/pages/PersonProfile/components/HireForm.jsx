@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 function HireForm({ person, hiredPeople, setHiredPeople }) {
 
   const [wage, setWage] = useState(0)
-  console.log('person', person)
 
   // navigate hook imported above and assigned to variable:
   const navigate = useNavigate()

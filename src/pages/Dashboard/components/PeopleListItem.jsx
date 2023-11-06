@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-function PeopleListItem({ person, people }) {
+function PeopleListItem({ person }) {
+
+  const navigate = useNavigate()
+
+  function editPageNav() {
+    navigate(`/view/edit`)
+  }
 
   // if person is hired, add an 'Edit wage' button & no Link
   if (person.wage !== undefined) {
@@ -8,7 +14,7 @@ function PeopleListItem({ person, people }) {
       <li>
         <h3>
           {person.name.first} {person.name.last} {'=>'} {}
-          <button>Edit wage</button>     
+          <button onClick={() => editPageNav()}>Edit wage</button>     
         </h3>
         {person.wage && <p>Wage: £{person.wage}</p>}
       </li>
