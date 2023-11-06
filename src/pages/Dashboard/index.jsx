@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import PropTypes from "prop-types"
 
 import PeopleList from "./components/PeopleList";
 
@@ -17,6 +17,15 @@ function Dashboard({ hiredPeople, people }) {
       </section>
     </main>
   );
+}
+
+Dashboard.propTypes = {
+  hiredPeople: PropTypes.arrayOf(
+    PropTypes.object
+  ),
+  people: PropTypes.arrayOf(
+    PropTypes.object
+  )
 }
 
 export default Dashboard;

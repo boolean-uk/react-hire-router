@@ -1,4 +1,5 @@
 import PeopleListItem from "./PeopleListItem";
+import PropTypes from "prop-types"
 
 function PeopleList(props) {
   const { list, people } = props;
@@ -9,6 +10,13 @@ function PeopleList(props) {
       ))}
     </ul>
   );
+}
+
+PeopleList.propTypes = {
+  list : PropTypes.string,
+  people: PropTypes.arrayOf(
+    PropTypes.object
+  )
 }
 
 export default PeopleList;
