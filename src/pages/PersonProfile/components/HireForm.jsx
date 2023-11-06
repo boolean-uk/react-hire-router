@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 function HireForm({person, setHiredPeople, hiredPeople}) {
-  const [wage, setWage] = useState(0)
+  const [personWage, setWage] = useState(0)
   const navigate = useNavigate()
 
   const goHome = () => navigate('/')
@@ -12,9 +12,10 @@ function HireForm({person, setHiredPeople, hiredPeople}) {
   function handleSubmit(event) {
     event.preventDefault()
     console.log(person)
-    setHiredPeople([...hiredPeople, person])
+    setHiredPeople([...hiredPeople, {...person, wage: personWage}])
+    goHome()
     console.log("hired people state",hiredPeople)
-    console.log("wage",wage)
+    console.log("wage",personWage)
   }
 
   return (
@@ -25,7 +26,7 @@ function HireForm({person, setHiredPeople, hiredPeople}) {
         id="wage"
         name="wage"
         onChange={e => setWage(e.target.value)}
-        value={wage}
+        value={personWage}
       />
       <button type="submit">Hire</button>
     </form>
