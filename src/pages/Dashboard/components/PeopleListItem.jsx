@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 function PeopleListItem(props) {
   const { person } = props
+  const navigate = useNavigate()
 
   return (
     <li>
