@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { hiredPeople, allPeople } = props
 
-  const [allPeople, setPeople] = useState([])
+  // const [allPeople, setPeople] = useState([])
 
-  // console.log(allPeople)
-  // console.log(hiredPeople)
+  // // console.log(allPeople)
+  // // console.log(hiredPeople)
 
-  const getPeople = () => {
-    fetch('https://randomuser.me/api/?results=50')
-      .then(res => res.json())
-      .then(data => setPeople(data.results))
-  }
+  // const getPeople = () => {
+  //   fetch('https://randomuser.me/api/?results=50')
+  //     .then(res => res.json())
+  //     .then(data => setPeople(data.results))
+  // }
 
-  useEffect(getPeople, [])
+  // useEffect(getPeople, [])
 
 
   return (
