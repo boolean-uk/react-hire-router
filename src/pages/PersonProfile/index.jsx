@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-function PersonProfile({ hiredPeople, setHiredPeople }) {
+function PersonProfile({ people, hiredPeople, setHiredPeople }) {
   const [person, setPerson] = useState(null)
 
-  // using useLocation to access the person's data from the state attached using Link in the PeopleListItem component:
-  const location = useLocation()
+  // using useParams to access :id param from URL and assign to variable:
+  const { id } = useParams()
 
-  // using useEffect to update the person state with the new data everytime the location changes:
+  // useEffect updates the person state with the new data everytime the "id"
+  // or "people" data change.
+  // "people" is the api data passed down from App.jsx as a prop
   useEffect(() => {
-    if (location.state) {
-      const { person } = location.state
-      setPerson(person)
+    if (people && id) {
+      setPerson(people.find((x) => x.id.value === id))
     }
-  }, [location])
+  }, [people, id])
 
-  if (!person) return <p>Loading...</p>
+  if (!person) return <p>Loading/No valid ID...</p>
   return (
     <article>
       <h2>

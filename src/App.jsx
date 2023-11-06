@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
@@ -8,10 +8,21 @@ import './App.css'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
+  const [people, setPeople] = useState([])
+
+  const userURL = "https://randomuser.me/api?inc=name,id&results=50"
+
+  // api request to fetch relevant data
+  useEffect(() => {
+    fetch(userURL)
+    .then(res => res.json())
+    .then(data => {
+      setPeople(data.results)
+    })
+  }, [])
 
 // link created to return to dashboard when clicked
 // routes created below to render the respective component when the 'path' matches the url
-
   return (
     <>
       <header>
@@ -27,10 +38,10 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          element={ <Dashboard hiredPeople={hiredPeople} />} />
+          element={ <Dashboard people={people} hiredPeople={hiredPeople} />} />
         <Route
           path="/view/:id"
-          element={ <PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} /> } />
+          element={ <PersonProfile people={people} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} /> } />
       </Routes>
     </>
   )

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 function HireForm({ person, hiredPeople, setHiredPeople }) {
 
   const [wage, setWage] = useState(0)
+  console.log('person', person)
 
   // navigate hook imported above and assigned to variable:
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
     // if people already in state, test whether a person exists in hiredPeople array:
     else {
       // if person already hired, return existing state:
-      if (hiredPeople.some((person) => person.id.name === newHire.id.name)) {
+      if (hiredPeople.some((person) => person.id.value === newHire.id.value)) {
         setHiredPeople([...hiredPeople])
       }
       // if person not yet hired, spread through hiredPeople state & add new person:
@@ -34,7 +35,6 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
     // navigate back to Dashboard
     navigate("/")
   }
-  console.log(hiredPeople)
 
   return (
     <form onSubmit={handleSubmit}>
