@@ -7,8 +7,6 @@ import './App.css'
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
 
-
-
   return (
     <>
       Browser

@@ -7,16 +7,15 @@ export default function PeopleListItem(props) {
   return (
     <li>
       <h3>
-        <Link to={`/PersonProfile/${person.id}`}>
           {person.name.first} {person.name.last}
-        </Link>
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
-      <Link to={`/PersonProfile/${person.id}`}><button>View Profile</button></Link>
+      <p>{person.wage && <p>Wage: £{person.wage}</p>}</p>
+      <Link to={`/view/${person.login.username}`} state={{ person }}> View Profile </Link>
     </li>
   )
 }
 
 <Routes>
-  <Route path="/PersonProfile/:personId" element={<PersonProfile />} />
+  <Route path="/PersonProfile" element={<PersonProfile PersonProfile={PersonProfile}/>} >
+  </Route>
 </Routes>
