@@ -29,8 +29,18 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path='/' element={<Dashboard hiredPeople={hiredPeople} allPeople={allPeople} />} />
-        <Route path='/PersonProfile/view/:id' element={<PersonProfile setHiredPeople={setHiredPeople} />} />
+        <Route
+          path='/'
+          element={<Dashboard
+            hiredPeople={hiredPeople}
+            allPeople={allPeople} />}
+        />
+        <Route
+          path='/PersonProfile/view/:id'
+          element={<PersonProfile
+            setHiredPeople={setHiredPeople}
+            hiredPeople={hiredPeople} />}
+        />
       </Routes>
     </>
   )

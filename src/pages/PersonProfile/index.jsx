@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
 import { useLocation } from 'react-router-dom'
 
-function PersonProfile({setHiredPeople}) {
+function PersonProfile({setHiredPeople, hiredPeople}) {
   const location = useLocation()
   const [person, setPerson] = useState(null)
 
-  console.log('location information', location)
+  // console.log('location information', location)
 
   useEffect(() => {
     if (location.state) {
@@ -19,14 +19,18 @@ function PersonProfile({setHiredPeople}) {
 if (!person) return <p>Loading...</p>
 
 
-  console.log(person)
+  // console.log(person)
 
   return (
     <article>
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} setHiredPeople={setHiredPeople} />
+      <HireForm 
+      person={person} 
+      setHiredPeople={setHiredPeople}
+      hiredPeople={hiredPeople}
+      />
     </article>
   )
 }
