@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 
 function Dashboard(props) {
   const { hiredPeople } = props
-  console.log('all people hired so far, IN DASHBOARD:',hiredPeople)
   const [people, setPeople] = useState([])
 
   const fetchPeople = () => {

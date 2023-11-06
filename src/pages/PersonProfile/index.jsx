@@ -10,7 +10,6 @@ function PersonProfile({hiredPeople, setHiredPeople}) {
     setPerson(location.state)
   }
 
-
   useEffect(displayPerson, [location])
 
   if (!person) return <p>Loading...</p>
