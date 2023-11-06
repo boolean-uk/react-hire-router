@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 function PeopleListItem({ person, list }) {
   const {
@@ -58,6 +58,6 @@ function PeopleListItem({ person, list }) {
 PeopleListItem.propTypes = {
   person: PropTypes.object,
   list: PropTypes.string,
-}
+};
 
 export default PeopleListItem;

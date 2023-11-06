@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 import PeopleList from "./components/PeopleList";
 
@@ -20,12 +20,8 @@ function Dashboard({ hiredPeople, people }) {
 }
 
 Dashboard.propTypes = {
-  hiredPeople: PropTypes.arrayOf(
-    PropTypes.object
-  ),
-  people: PropTypes.arrayOf(
-    PropTypes.object
-  )
-}
+  hiredPeople: PropTypes.arrayOf(PropTypes.object),
+  people: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default Dashboard;
