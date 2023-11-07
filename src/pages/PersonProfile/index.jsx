@@ -1,18 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import HireForm from './components/HireForm'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+// import HireForm from './components/HireForm'
 
-function PersonProfile({hiredPeople , setHiredPeople }) {
-
+function PersonProfile(props) {
   const [person, setPerson] = useState()
-  const locate = useLocation()
+ 
+  const { hiredPeople, setHiredPeople} = props
 
-  useEffect (()=>{
-    if(locate.state) {
-      const{person}=locate.state
-      setPerson(person)
+
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.state) {
+      setPerson(location.state)
     }
-  },[locate]);
+}, [location])
+
+
 
   if (!person) return <p>Loading...</p>
 
@@ -21,7 +27,7 @@ function PersonProfile({hiredPeople , setHiredPeople }) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm   hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}  person={person} />
+      <HireForm person={person} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} />
     </article>
   )
 }

@@ -1,25 +1,38 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useParams, useNavigate} from 'react-router-dom'
 
-function HireForm({ person, hiredPeople, setHiredPeople }) {
+function HireForm(props) {
+  const [wage, setWage] = useState(7)
 
-  const [wage, setWage] = useState(0)
+  // const params = useParams()
+  // const { name } = params
+  const { hiredPeople, setHiredPeople , person } = props
+  
 
-  const navBar = useNavigate()
+  const navigate = useNavigate()
+
 
 
 
   function handleSubmit(event) {
     event.preventDefault()
-    navBar("/")
-    const hireNewPeople ={...person,wage:wage}
-    setHiredPeople([...hiredPeople,hireNewPeople])
+    const wageOffer = event.target[0].value
+    person.wage = wageOffer
+    setHiredPeople([...hiredPeople, person])
+    navigate('/dashboard')
+
   }
 
-  
+
+  const goHomePage = () => {
+    console.log('this is the back button')
+    navigate(-1)
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
       <input
         type="text"
@@ -28,8 +41,12 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">Hire</button> <br />
     </form>
+    
+    <button onClick={goHomePage}> back </button>
+
+    </div>
   )
 }
 

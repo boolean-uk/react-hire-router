@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import PeopleListItem from './PeopleListItem'
 
-
-function PeopleList({people}) {
- /// const { people } = props
+function PeopleList(props) {
+  const { people } = props
 
   return (
     <ul>
