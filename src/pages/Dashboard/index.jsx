@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import PeopleList from "./components/PeopleList";
 
-function Dashboard({hiredPeople}) {
-
+function Dashboard({ hiredPeople }) {
   const [people, setPeople] = useState([]);
 
   const fetchPeople = () => {
