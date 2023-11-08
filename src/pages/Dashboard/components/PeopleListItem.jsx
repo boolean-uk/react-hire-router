@@ -1,13 +1,25 @@
+
+/* eslint-disable react/prop-types */
+
+
+import { Link } from 'react-router-dom';
+
 function PeopleListItem(props) {
   const { person } = props
 
+  const personURL = `/john/${person.name.first}`;
   return (
-    <li>
+    <Link to={personURL}  state={person} >
+    <li className='peoples-card'>
+    <img src={person.picture.large} alt="" /> <br />
       <h3>
-        {person.name.first} {person.name.last}
+        name: {person.name.first} {person.name.last}
+        
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      {person.wage && <p className='wage'>Wage: £{person.wage}</p>}
     </li>
+    </Link>
+  
   )
 }
 
