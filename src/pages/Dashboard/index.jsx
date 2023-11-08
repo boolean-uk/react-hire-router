@@ -1,23 +1,27 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import PropTypes from "prop-types";
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+import PeopleList from "./components/PeopleList";
 
-  const [people, setPeople] = useState([])
-
+function Dashboard({ hiredPeople, people }) {
   return (
-    <main className="dashboard-layout">
-      <section>
-        <h2>People</h2>
-        <PeopleList people={people} />
+    <main className="dashboard-layout bg-gradient-to-r from-teal-50 to-slate-200 p-4">
+      <section className="h-[calc(100vh-180px)] overflow-y-auto bg-slate-200 p-4">
+        <h2 className="mb-4 text-3xl font-semibold text-teal-500">People</h2>
+        <PeopleList people={people} list="applicant" />
       </section>
-      <section>
-        <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+      <section className="h-[calc(100vh-180px)] overflow-y-auto bg-teal-50 p-4">
+        <h2 className="mb-4 text-3xl font-semibold text-teal-500">
+          Hired People
+        </h2>
+        <PeopleList people={hiredPeople} list="hired" />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+  hiredPeople: PropTypes.arrayOf(PropTypes.object),
+  people: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default Dashboard;

@@ -1,15 +1,20 @@
-import PeopleListItem from './PeopleListItem'
+import PeopleListItem from "./PeopleListItem";
+import PropTypes from "prop-types";
 
 function PeopleList(props) {
-  const { people } = props
-
+  const { list, people } = props;
   return (
-    <ul>
+    <ul className="flex flex-col gap-4">
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <PeopleListItem key={`${list}-${index}`} person={person} list={list} />
       ))}
     </ul>
-  )
+  );
 }
 
-export default PeopleList
+PeopleList.propTypes = {
+  list: PropTypes.string,
+  people: PropTypes.arrayOf(PropTypes.object),
+};
+
+export default PeopleList;
