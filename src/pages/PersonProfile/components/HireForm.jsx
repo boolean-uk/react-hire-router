@@ -3,9 +3,20 @@ import { useState } from 'react'
 function HireForm(props) {
   const [wage, setWage] = useState(0)
 
+  const {person, hiredPeople, setHiredPeople} = props
+
+  const navigate = useNavigate()
+
   function handleSubmit(event) {
     event.preventDefault()
+    const hiredPerson = {...person, wage: wage}
+    setHiredPeople([...hiredPeople, hiredPerson])
+    navigate("/Dashboard")
   }
+  console.log("hiredPeople=", hiredPeople)
+  function handleSubmit(event) {
+    event.preventDefault()
+  }x
 
   return (
     <form onSubmit={handleSubmit}>
