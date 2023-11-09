@@ -3,7 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
 import PersonProfile from './pages/PersonProfile'
-import EditPage from './pages/Edit/Components/EditPage'
+import EditPage from './pages/Edit/components/EditPage'
 
 import './App.css'
 

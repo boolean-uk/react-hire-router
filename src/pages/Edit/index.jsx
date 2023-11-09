@@ -1,4 +1,4 @@
-import EditPage from "./Components/EditPage"
+import EditPage from "./components/EditPage"
 
 function Edit() {
 
