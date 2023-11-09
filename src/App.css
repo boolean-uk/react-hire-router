@@ -3,6 +3,7 @@
   text-align: center;
 }
 
+
 .dashboard-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
