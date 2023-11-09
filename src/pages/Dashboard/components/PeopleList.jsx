@@ -1,6 +1,7 @@
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
+export default function PeopleList(props) {
+  // eslint-disable-next-line react/prop-types
   const { people } = props
 
   return (
@@ -11,5 +12,3 @@ function PeopleList(props) {
     </ul>
   )
 }
-
-export default PeopleList
