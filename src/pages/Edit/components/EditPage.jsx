@@ -14,7 +14,6 @@ function EditPage({ hiredPeople, setHiredPeople }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const updatedHiredPeople = hiredPeople.map((person) => {
       if (person.id.value === personToUpdate.id.value) {
         person.wage = updatedWage;
