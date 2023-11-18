@@ -7,7 +7,7 @@ function Dashboard(props) {
   const [people, setPeople] = useState([])
 
   const fetchUser = () => {
-  fetch("https://randomuser.me/api/?results=50")
+  fetch("https://randomuser.me/api/?results=10")
   .then((response) => response.json())
   .then((data) => setPeople(data.results))
   }
