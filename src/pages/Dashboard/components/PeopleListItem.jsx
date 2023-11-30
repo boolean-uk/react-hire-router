@@ -9,8 +9,7 @@ function PeopleList(props) {
         {props.people?.map((person) => (
           <div key={person.login.uuid}>
             <PeopleListItem person={person} />
-            <Link 
-            to={`/dashboard/${person.login.uuid}`}
+            <Link to={`/dashboard/${person.login.uuid}`}
             state={{ person: person }}
             >See Person Details</Link>
           </div>
@@ -20,4 +19,4 @@ function PeopleList(props) {
   );
 }
 
-export default PeopleListItem
+export default PeopleList

@@ -1,34 +1,24 @@
-import { useState, useEffect } from 'react'
-import PeopleList from './components/PeopleList'
+import { useState, useEffect } from 'react';
+import PeopleList from './components/PeopleList';
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
+function Dashboard() {
+  const [peoples, setPeople] = useState([]);
 
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=50')
-      .then((response) => {
-        return response.json()
-      })
+      .then((response) => response.json())
       .then((data) => {
-        setPeople(data.results)
-        console.log(data.results)
-      })
-  }, [])
+        setPeople(data.results);
+        console.log(data.results);
+      });
+  }, []);
 
   return (
-    <main className="dashboard-layout">
-      <section>
-        <h2>People</h2>
-        <PeopleList people={people} />
-      </section>
-      <section>
-        <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
-      </section>
+    <main className='dashboard-layout'>
+      {/* Pass the entire array of people to PeopleList */}
+      <PeopleList people={peoples} />
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
