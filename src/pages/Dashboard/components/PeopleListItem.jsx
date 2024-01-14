@@ -1,19 +1,16 @@
-import {Link} from 'react-router-dom'
+/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
 
-function PeopleListItem({ person, isHiredList }) {
+export default function PeopleListItem({ person }) {
   return (
     <li>
       <h3>
-        <Link to={`/people/${person.id.value}`} state={{person}}>
-          {person.name.first} {person.name.last}
-        </Link>
-        { isHiredList && (<Link to={`/people/${person.id.value}/edit`} state={{person}}>
-          edit
-        </Link>)}
+        {person.name.first} {person.name.last}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
+      <Link to={`/view/${person.login.username}`} state={{ person }}>
+        View Profile
+      </Link>
     </li>
-  )
+  );
 }
-
-export default PeopleListItem

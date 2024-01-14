@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import PeopleListItem from "./PeopleListItem"
 
-function PeopleList({ people, isHiredList}) {
+function PeopleList({ people }) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} isHiredList={isHiredList} />
+        <PeopleListItem key={index} person={person} />
       ))}
     </ul>
   )
