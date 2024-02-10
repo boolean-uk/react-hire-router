@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <>
-    <AppContext.Provider value={{ hiredPeople, setHiredPeople, people, setHiredPeople }}>
+    <AppContext.Provider value={{ hiredPeople, setHiredPeople, people, setPeople }}>
       <header>
         <h1>Hire Your Team</h1>
         <nav>
