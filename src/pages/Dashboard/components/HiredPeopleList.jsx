@@ -4,14 +4,14 @@ import PeopleListItem from './PeopleListItem'
 import { AppContext } from '../../../App'
 
 function PeopleList() {
-  const { people } = useContext(AppContext)
+  const { hiredPeople } = useContext(AppContext)
 
   return (
     <>
       <ul>
-        {people.map((person, index) => (
+        {hiredPeople.map((person, index) => (
           <PeopleListItem key={index} person={person} />
-        ))}
+          ))}
       </ul>
     </>
   )

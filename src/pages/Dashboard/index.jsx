@@ -1,4 +1,5 @@
 import PeopleList from './components/PeopleList'
+import HiredPeopleList from './components/HiredPeopleList'
 
 function Dashboard() {
   return (
@@ -9,7 +10,7 @@ function Dashboard() {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList/>
+        <HiredPeopleList/>
       </section>
     </main>
   )
