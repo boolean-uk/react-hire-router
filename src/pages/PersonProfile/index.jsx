@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import HireForm from './components/HireForm'
 
-function PersonProfile(props) {
+function PersonProfile() {
   const [person, setPerson] = useState(null)
 
   if (!person) return <p>Loading...</p>

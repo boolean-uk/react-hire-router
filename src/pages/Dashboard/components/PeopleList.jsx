@@ -1,7 +1,9 @@
+import { useContext } from 'react'
+import AppContext from '../../../context/AppContext'
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
-  const { people } = props
+function PeopleList() {
+  const { people } = useContext(AppContext)
 
   return (
     <ul>

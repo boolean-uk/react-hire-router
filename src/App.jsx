@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useState, useContext, createContext } from 'react'
 import './App.css'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
+  const [people, setPeople] = useState([])
+
+  const AppContext = createContext(null)
 
   return (
     <>
+    <AppContext.Provider value={{ hiredPeople, setHiredPeople, people, setHiredPeople }}>
       <header>
         <h1>Hire Your Team</h1>
         <nav>
@@ -14,6 +18,7 @@ export default function App() {
           </ul>
         </nav>
       </header>
+    </AppContext.Provider>
     </>
   )
 }
