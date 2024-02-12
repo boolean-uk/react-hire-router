@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import './App.css'
-import PeopleListItem from './pages/Dashboard/components/PeopleListItem'
+import PersonProfile from './pages/PersonProfile'
 
 export const AppContext = createContext(null)
 
@@ -26,7 +26,7 @@ export default function App() {
       </header>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/profile/:id" element={<PeopleListItem />} />
+        <Route path="/profile/:id" element={<PersonProfile />} />
       </Routes>
     </AppContext.Provider>
     </>

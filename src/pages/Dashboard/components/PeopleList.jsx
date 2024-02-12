@@ -1,10 +1,22 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import PeopleListItem from './PeopleListItem'
 
 import { AppContext } from '../../../App'
 
+const API_URL = 'https://randomuser.me/api/?results=50&seed=boolean'
+
 function PeopleList() {
-  const { people } = useContext(AppContext)
+  const { people, setPeople } = useContext(AppContext)
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setPeople(data.results);
+        }
+      });
+  }, []);
 
   return (
     <>
