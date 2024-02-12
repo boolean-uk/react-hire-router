@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function PeopleListItem({ person }) {
   return (
@@ -13,4 +13,4 @@ function PeopleListItem({ person }) {
   )
 }
 
-export default PeopleListItem
+export default PeopleListItem;

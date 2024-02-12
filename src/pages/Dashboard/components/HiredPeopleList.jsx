@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import PeopleListItem from './PeopleListItem'
+import { useContext } from 'react';
+import PeopleListItem from './PeopleListItem';
 
-import { AppContext } from '../../../App'
+import { AppContext } from '../../../App';
 
 function HiredPeopleList() {
-  const { hiredPeople } = useContext(AppContext)
+  const { hiredPeople } = useContext(AppContext);
 
   return (
     <>

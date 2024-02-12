@@ -1,12 +1,12 @@
-import { useContext, useEffect } from 'react'
-import PeopleListItem from './PeopleListItem'
+import { useContext, useEffect } from 'react';
+import PeopleListItem from './PeopleListItem';
 
-import { AppContext } from '../../../App'
+import { AppContext } from '../../../App';
 
-const API_URL = 'https://randomuser.me/api/?results=50&seed=boolean'
+const API_URL = 'https://randomuser.me/api/?results=50&seed=boolean';
 
 function PeopleList() {
-  const { people, setPeople } = useContext(AppContext)
+  const { people, setPeople } = useContext(AppContext);
 
   useEffect(() => {
     fetch(API_URL)
@@ -29,4 +29,4 @@ function PeopleList() {
   )
 }
 
-export default PeopleList
+export default PeopleList;
