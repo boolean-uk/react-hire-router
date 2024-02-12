@@ -3,7 +3,7 @@ import PeopleListItem from './PeopleListItem'
 
 import { AppContext } from '../../../App'
 
-function PeopleList() {
+function HiredPeopleList() {
   const { hiredPeople } = useContext(AppContext)
 
   return (
@@ -17,4 +17,4 @@ function PeopleList() {
   )
 }
 
-export default PeopleList
+export default HiredPeopleList
