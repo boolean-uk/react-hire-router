@@ -1,33 +1,33 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function HireForm({ person, hiredPeople, setHiredPeople }) {
-  const [wage, setWage] = useState(0);
-  const navigate = useNavigate();
+function HireForm({person, setHiredPeople, hiredPeople}) {
+  const [personWage, setWage] = useState(0)
+  const navigate = useNavigate()
+
+  const goHome = () => navigate('/')
 
   function handleSubmit(event) {
-    event.preventDefault();
-    const newHire = { ...person, wage: wage };
-    const newPeople = [...hiredPeople, newHire];
-    setHiredPeople(newPeople);
-    navigate('/');
+    event.preventDefault()
+    setHiredPeople([...hiredPeople, {...person, wage: personWage}])
+    goHome()
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <label htmlFor="wage">Wage Offer</label>
       <input
         type="text"
         id="wage"
         name="wage"
-        onChange={(e) => setWage(e.target.value)}
-        value={wage}
+        onChange={e => setWage(e.target.value)}
+        value={personWage}
       />
       <button type="submit">Hire</button>
     </form>
-  );
+  )
 }
 
-export default HireForm;
-
+export default HireForm
