@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 function PeopleListItem(props) {
-  const { person } = props
+  const { person } = props;
 
   return (
     <li>
@@ -7,8 +9,10 @@ function PeopleListItem(props) {
         {person.name.first} {person.name.last}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
+      {person.wage && <Link to={`/view/${person.id}/edit`}>Edit hired</Link>}
+      {!person.wage && <Link to={`/view/${person.id}`}>View profile</Link>}
     </li>
-  )
+  );
 }
 
-export default PeopleListItem
+export default PeopleListItem;
