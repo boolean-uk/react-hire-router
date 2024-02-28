@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
+function HireForm({ person, makeHire, makeEdit }) {
+  const [wage, setWage] = useState(0);
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
   }
+
+  console.log("hireform pereson: ", person.wage);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -14,12 +17,26 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      {person.wage === undefined ? (
+        <button type="submit" onClick={(e) => makeHire(e, person, wage)}>
+          Hire
+        </button>
+      ) : (
+        <button type="submit" onClick={(e) => makeEdit(e, person, wage)}>
+          Edit
+        </button>
+      )}
     </form>
-  )
+  );
 }
 
-export default HireForm
+HireForm.propTypes = {
+  person: PropTypes.object,
+  makeHire: PropTypes.func,
+  makeEdit: PropTypes.func,
+};
+
+export default HireForm;
