@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+//import { useEffect, useState } from "react";
+import PeopleList from "./components/PeopleList";
+import PropTypes from "prop-types";
 
 function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
+  const { hiredPeople, people } = props;
 
   return (
     <main className="dashboard-layout">
@@ -17,7 +16,11 @@ function Dashboard(props) {
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
+Dashboard.propTypes = {
+  hiredPeople: PropTypes.arrayOf(PropTypes.object),
+  people: PropTypes.arrayOf(PropTypes.object),
+};
