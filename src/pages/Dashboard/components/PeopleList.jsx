@@ -1,15 +1,17 @@
-import PeopleListItem from './PeopleListItem'
-
-function PeopleList(props) {
-  const { people } = props
-
-  return (
-    <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
-      ))}
-    </ul>
-  )
+import PeopleListItem from "./PeopleListItem";
+import PropTypes from "prop-types";
+function PeopleList({ people }) {
+	return (
+		<ul>
+			{people.map((person) => (
+				<PeopleListItem key={person.login.uuid} person={person} />
+			))}
+		</ul>
+	);
 }
 
-export default PeopleList
+export default PeopleList;
+
+PeopleList.propTypes = {
+	people: PropTypes.array,
+};
