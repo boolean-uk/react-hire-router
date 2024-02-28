@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom"
+
 function PeopleListItem(props) {
   const { person } = props
 
+  const navigate = useNavigate()
+
   return (
-    <li>
+    <li onClick ={() => {navigate(`people/${person.id.value}`)}}>
       <h3>
         {person.name.first} {person.name.last}
       </h3>
