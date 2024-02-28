@@ -12,18 +12,14 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const parsedWage = parseInt(wage);
     if (isNaN(parsedWage)) {
       return;
     }
-
     person.wage = parseInt(parsedWage);
-
     navigate("/");
     setHiredPeople((prevHired) => {
       console.log(wage);
-
       if (prevHired.includes(person)) {
         return [...prevHired];
       } else {
@@ -34,6 +30,7 @@ function HireForm(props) {
 
   function handleFirePerson(event) {
     event.preventDefault();
+    delete person.wage;
     setHiredPeople((prevHired) => prevHired.filter((h) => h !== person));
     navigate("/");
   }
