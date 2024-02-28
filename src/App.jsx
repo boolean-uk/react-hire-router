@@ -10,7 +10,22 @@ export default function App() {
 
   const addToHired = (data) =>
   {
-    setHiredPeople([...hiredPeople, data.person])
+    // Sees if the person is already in list (has been edited)
+    let found = false
+    for (let i = 0; i < hiredPeople.length; i++)
+    {
+      if (hiredPeople[i] === data.person)
+      {
+        console.log("NOT NEW PERSON!")
+        found = true
+      }
+    }
+
+    // Wasn't found in the list
+    if (!found)
+    {
+      setHiredPeople([...hiredPeople, data.person])
+    }
   }
 
   useEffect(() =>
@@ -19,7 +34,6 @@ export default function App() {
     .then((response) => response.json())
     .then((data) =>
     {
-      //console.log("DATA", data)
       setPeople(data.results)
     })}, [])
 
