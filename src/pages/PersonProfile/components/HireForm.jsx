@@ -12,11 +12,7 @@ function HireForm(props) {
     tempPerson.wage = wage;
     console.log(tempPerson.wage);
     console.log(props.hiredPeople);
-    if (props.hiredPeople === undefined) {
-      props.setHiredPeople([tempPerson]);
-    } else {
-      props.setHiredPeople([...props.hiredPeople, tempPerson]);
-    }
+    props.setHiredPeople([...props.hiredPeople, tempPerson]);
 
     navigate("/");
   }
