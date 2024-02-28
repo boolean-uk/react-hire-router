@@ -4,7 +4,7 @@ import HireForm from "./components/HireForm";
 import { useParams } from "react-router-dom";
 
 function PersonProfile(props) {
-  const { allPeople, setHiredPeople } = props;
+  const { allPeople, newHire } = props;
   const { id } = useParams();
   const [person, setPerson] = useState(null);
 
@@ -23,7 +23,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} setHiredPeople={setHiredPeople}/>
+      <HireForm person={person} newHire={newHire}/>
     </article>
   );
 }
