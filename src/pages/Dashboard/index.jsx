@@ -1,12 +1,13 @@
 import { useState } from "react";
 import PeopleList from "./components/PeopleList";
+import PropTypes from "prop-types";
 
 function Dashboard(props) {
   console.log("Dashboard props: ", props);
-  const { peopleList, onHire } = props;
+  const { peopleList, hiredPeople } = props;
   //console.log("people: ", people);
   //console.log("hiredPeople in dachboard ", hiredPeople);
-  const [people, setPeople] = useState([]);
+  //const [people, setPeople] = useState([]);
 
   return (
     <main className="dashboard-layout">
@@ -16,10 +17,14 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={people} />
+        <PeopleList people={hiredPeople} />
       </section>
     </main>
   );
 }
 
+Dashboard.propTypes = {
+  peopleList: PropTypes.array,
+  hiredPeople: PropTypes.array,
+};
 export default Dashboard;

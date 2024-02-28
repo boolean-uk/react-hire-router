@@ -1,6 +1,6 @@
 //randomuser.me/api/import { useEffect, useState } from "react";
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Link, Routes } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard/index.jsx";
@@ -25,7 +25,7 @@ export default function App() {
     fetchData();
   }, [URL]);
 
-  const hirePerson = (person) => {
+  const handleHirePerson = (person) => {
     setHiredPeople((prevHiredPerson) => [...prevHiredPerson, person]);
   };
   console.log("PeopleList: ", peopleList);
@@ -46,11 +46,13 @@ export default function App() {
         <Route
           path="/"
           element={
-            <Dashboard
-              //hiredPeople={hiredPeople}
-              peopleList={peopleList}
-              onHire={hirePerson}
-            />
+            <Dashboard hiredPeople={hiredPeople} peopleList={peopleList} />
+          }
+        ></Route>
+        <Route
+          path="/view/:id"
+          element={
+            <PersonProfile peopleList={peopleList} onHire={handleHirePerson} />
           }
         ></Route>
       </Routes>
