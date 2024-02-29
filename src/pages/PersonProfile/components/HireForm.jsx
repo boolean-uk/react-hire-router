@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function HireForm(props) {
@@ -10,10 +10,20 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    person.wage = wage
-    hirePerson(person)
+    if(!person.wage) {
+      person.wage = wage
+      hirePerson(person)
+    }
+    else {
+      person.wage = wage
+    }
     navigate('/')
   }
+
+  useEffect(() => {
+  if (person.wage) 
+    setWage(person.wage)
+  }, [])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -23,10 +33,10 @@ function HireForm(props) {
         id="wage"
         name="wage"
         placeholder='£'
-        value={person.wage}
+        value={wage}
         onChange={e => setWage(e.target.value)}
       />
-      <button type="submit" onClick={handleSubmit}>Hire</button>
+      <button type="submit">{person.wage ? "edit" : "Hire"}</button>
     </form>
   )
 }

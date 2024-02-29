@@ -2,13 +2,13 @@
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
-  const { people, hiredPeople } = props
+  const { applicants, hiredPeople } = props
 
   return (
     <main className="dashboard-layout">
       <section>
-        <h2>Not employees</h2>
-        <PeopleList people={people} />
+        <h2>Applicants</h2>
+        <PeopleList people={applicants} />
       </section>
       <section>
         <h2>Employees</h2>

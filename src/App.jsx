@@ -7,6 +7,7 @@ import PersonProfile from './pages/PersonProfile';
 
 export default function App() {
   const [people, setPeople] = useState([])
+  const [applicants, setApplicants] = useState([])
   const [hiredPeople, setHiredPeople] = useState([])
 
   useEffect(() => {
@@ -19,6 +20,7 @@ export default function App() {
         const data = await response.json();
 
         setPeople(data.results);
+        setApplicants(data.results);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -26,12 +28,11 @@ export default function App() {
 
     fetchData()
   }, [])
-  
+
   const hirePerson = (person) => {
     setHiredPeople((hiredPeople) => [...hiredPeople, person]);
-    setPeople((people) => people.filter((p) => p.login.uuid !== person.login.uuid));
+    setApplicants((people) => people.filter((p) => p.login.uuid !== person.login.uuid));
   }
-
 
 
   if (!hiredPeople) {
@@ -51,7 +52,7 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<Dashboard people={people} hiredPeople={hiredPeople} />} />
+        <Route path="/" element={<Dashboard applicants={applicants} hiredPeople={hiredPeople} />} />
         <Route path="/view/:id" element={<PersonProfile people={people} hirePerson={hirePerson}/>} />
       </Routes>
     </div>

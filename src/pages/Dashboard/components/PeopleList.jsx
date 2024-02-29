@@ -4,6 +4,8 @@ import PeopleListItem from './PeopleListItem'
 function PeopleList(props) {
   const { people } = props
 
+  if (!people) {return <h1>Loading...</h1>}
+  
   return (
     <ul>
       {people.map((person, index) => (
