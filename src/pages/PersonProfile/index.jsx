@@ -1,8 +1,8 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
 import HireForm from './components/HireForm'
 import { useParams } from 'react-router-dom'
 
-function PersonProfile({ people }) {
+function PersonProfile({ people, hirePerson}) {
   const { id } = useParams();
   const person = people.find((person) => person.login.uuid === id)
   
@@ -13,7 +13,7 @@ function PersonProfile({ people }) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} hirePerson={hirePerson}/>
     </article>
   )
 }

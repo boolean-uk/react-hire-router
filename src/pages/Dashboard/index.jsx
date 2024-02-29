@@ -7,11 +7,11 @@ function Dashboard(props) {
   return (
     <main className="dashboard-layout">
       <section>
-        <h2>People</h2>
+        <h2>Not employees</h2>
         <PeopleList people={people} />
       </section>
       <section>
-        <h2>Hired People</h2>
+        <h2>Employees</h2>
         <PeopleList people={hiredPeople} />
       </section>
     </main>

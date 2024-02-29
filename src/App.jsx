@@ -27,6 +27,12 @@ export default function App() {
     fetchData()
   }, [])
   
+  const hirePerson = (person) => {
+    setHiredPeople((hiredPeople) => [...hiredPeople, person]);
+    setPeople((people) => people.filter((p) => p.login.uuid !== person.login.uuid));
+  }
+
+
 
   if (!hiredPeople) {
     return <h1>Loading...</h1>
@@ -46,7 +52,7 @@ export default function App() {
       </header>
       <Routes>
         <Route path="/" element={<Dashboard people={people} hiredPeople={hiredPeople} />} />
-        <Route path="/view/:id" element={<PersonProfile people={people} />} />
+        <Route path="/view/:id" element={<PersonProfile people={people} hirePerson={hirePerson}/>} />
       </Routes>
     </div>
   );
