@@ -3,7 +3,7 @@ import PeopleList from "./components/PeopleList";
 
 function Dashboard(props) {
   const { hiredPeople, people } = props;
-
+  //console.log("Dashboard: ", hiredPeople, people);
   return (
     <main className="dashboard-layout">
       <section>
