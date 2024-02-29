@@ -10,7 +10,7 @@ function HireForm({person, addHired}) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    addHired(person) 
+    addHired(person, wage) 
     navigate("/")
   }
 

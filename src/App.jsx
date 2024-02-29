@@ -10,8 +10,8 @@ export default function App() {
 
   const baseURL = "https://randomuser.me/api/?results=50"
 
-  function addHiredPeople(newPerson) {
-    setHiredPeople([...hiredPeople, newPerson])
+  function addHiredPeople(newPerson, wage) {
+    setHiredPeople([...hiredPeople, {...newPerson, wage: wage}])
   }
 
   useEffect(() => {
