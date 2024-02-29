@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+//import Alert from '@mui/material/Alert'
 
 function HireForm(props) {
   const {person, hiredPeople, setHiredPeople} = props
@@ -9,7 +10,20 @@ function HireForm(props) {
   function handleSubmit(event) {
     event.preventDefault()
     // Spread person to hiredPeople and also add wage attribute:
-    setHiredPeople([...hiredPeople, {...person, wage}]) 
+    if (hiredPeople.find(p => p.id.value === person.id.value)) {
+      // Map hiredPeople => if true -> set new wage else return the same
+      const updatedPeople = hiredPeople.map(p => {
+        if (p.id.value === person.id.value) {
+          return { ...p, wage: wage }; // Update the wage for the existing person
+        }
+        return p; // Return other people without changes
+      });
+        setHiredPeople(updatedPeople)
+    }
+
+    else{
+        setHiredPeople([...hiredPeople, {...person, wage}]) 
+    }
     
     navigate('/')   // Switch to dashboard
   }

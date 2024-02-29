@@ -27,7 +27,7 @@ export default function App() {
           path='/'
           element={<Dashboard hiredPeople={hiredPeople}/>}
         />
-        {/* 2. PersonProfile: */}
+        {/* 2. PersonProfile: !!!! when navigate this from within the Dashboard component, only person profile component will render */}
         <Route 
           path='/view/:id'
           element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>}

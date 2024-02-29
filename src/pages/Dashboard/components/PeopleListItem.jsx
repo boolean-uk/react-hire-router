@@ -6,15 +6,12 @@ PeopleListItem.propTypes = {
   person: PropTypes.object
 }
 
-function handleClick(event) {
-  console.log("HAHHA");
-  <Link to={"/"}>Dashboard</Link>
-}
 
 function PeopleListItem(props) {
   const {  person } = props
   // const navigate = useNavigate();
 
+  
   return (
     <li>
       {/* <h3 onClick={() => navigate('....')}> */}
@@ -24,6 +21,9 @@ function PeopleListItem(props) {
         {/* <Link to={`/view/${person.login.uuid}`}>{person.wage ? "Edit" : "View Profile"}</Link> */}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
+      {person.wage && <button className='edit' type='button'>
+        <Link to={`/view/${person.id.value}`} state={{from: person}}>Edit</Link>
+        </button>}
     </li>
   )
 }
