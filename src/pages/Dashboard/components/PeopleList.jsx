@@ -1,5 +1,5 @@
 import PeopleListItem from './PeopleListItem'
-
+/* eslint react/prop-types:0 */ 
 function PeopleList(props) {
   const { people } = props
 
