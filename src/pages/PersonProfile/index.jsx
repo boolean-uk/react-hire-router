@@ -1,8 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import HireForm from './components/HireForm'
+import { useParams } from 'react-router-dom'
 
-function PersonProfile(props) {
+
+function PersonProfile({people}) {
   const [person, setPerson] = useState(null)
+  const {id}= useParams()
+  console.log("ID: ",id)
+  console.log(people)
+
+  const matchingPerson = people.find(x => x.id.value === id)
+
+  useEffect(() => {
+    setPerson(matchingPerson)
+  },[person])
 
   if (!person) return <p>Loading...</p>
 
