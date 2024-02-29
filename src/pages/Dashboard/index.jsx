@@ -1,11 +1,7 @@
-import { useState } from 'react'
 import PeopleList from './components/PeopleList'
+import PropTypes from 'prop-types';
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+function Dashboard({ people, hiredPeople }) {
   return (
     <main className="dashboard-layout">
       <section>
@@ -21,3 +17,9 @@ function Dashboard(props) {
 }
 
 export default Dashboard
+
+
+Dashboard.propTypes = {
+  people: PropTypes.array.isRequired,
+  hiredPeople: PropTypes.array.isRequired,
+};
