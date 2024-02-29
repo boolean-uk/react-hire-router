@@ -1,10 +1,24 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import { useEffect, useState } from "react";
+import PeopleList from "./components/PeopleList";
+import { useLocation } from "react-router-dom";
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+function Dashboard() {
+  const [people, setPeople] = useState([]);
+  const [hiredPeople, setHiredPeople] = useState([]);
+  const { state } = useLocation();
 
-  const [people, setPeople] = useState([])
+  const fetchPeople = async () => {
+    const response = await fetch("https://randomuser.me/api/?results=50");
+    const json = await response.json();
+    setPeople(json.results);
+  };
+
+  useEffect(() => {
+    fetchPeople();
+    if (state) {
+      setHiredPeople([...hiredPeople, state]);
+    }
+  }, []);
 
   return (
     <main className="dashboard-layout">
@@ -17,7 +31,7 @@ function Dashboard(props) {
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

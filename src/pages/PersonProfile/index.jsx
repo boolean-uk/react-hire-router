@@ -1,10 +1,18 @@
-import { useState } from 'react'
-import HireForm from './components/HireForm'
+import { useEffect, useState } from "react";
+import HireForm from "./components/HireForm";
+import { useLocation } from "react-router-dom";
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+function PersonProfile() {
+  const [person, setPerson] = useState(null);
+  const { state } = useLocation();
 
-  if (!person) return <p>Loading...</p>
+  useEffect(() => {
+    if (state) {
+      setPerson(state);
+    }
+  }, [state]);
+
+  if (!person) return <p>Loading...</p>;
 
   return (
     <article>
@@ -13,7 +21,7 @@ function PersonProfile(props) {
       </h2>
       <HireForm person={person} />
     </article>
-  )
+  );
 }
 
-export default PersonProfile
+export default PersonProfile;
