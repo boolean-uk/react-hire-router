@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function HireForm({ person, hiredPeople, setHiredPeople }) {
-    const [wage, setWage] = useState(0);
-    const nav = useNavigate();
     const isHired = hiredPeople.filter((p) => p.id === person.id).length === 1;
+    const [wage, setWage] = useState(
+        isHired ? hiredPeople.filter((p) => p.id === person.id)[0].wage : 0
+    );
+    const nav = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
