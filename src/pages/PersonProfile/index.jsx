@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
 import HireForm from "./components/HireForm";
 import { useLocation } from "react-router-dom";
 
 function PersonProfile() {
-  const [person, setPerson] = useState(null);
-  const { state } = useLocation();
-
-  useEffect(() => {
-    if (state) {
-      setPerson(state);
-    }
-  }, [state]);
+  const location = useLocation();
+  const { person } = location.state;
 
   if (!person) return <p>Loading...</p>;
 
