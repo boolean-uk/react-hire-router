@@ -49,10 +49,7 @@ export default function App() {
             path="/"
             element={<Dashboard people={people} hiredPeople={hiredPeople} />}
           />
-          <Route
-            path="/view/:id"
-            element={<PersonProfile setHiredPeople={setHiredPeople} />}
-          />
+          <Route path="/view/:id" element={<PersonProfile />} />
         </Routes>
       </PeopleContext.Provider>
     </>
