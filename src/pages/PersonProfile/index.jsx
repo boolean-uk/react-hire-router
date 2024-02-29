@@ -1,10 +1,15 @@
-import { useState } from 'react'
-import HireForm from './components/HireForm'
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+import HireForm from "./components/HireForm";
+import { useParams } from "react-router-dom";
 
 function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+  const { id } = useParams();
+  console.log(id);
+  const { people } = props;
+  const person = people.find((p) => p.login.uuid === id);
 
-  if (!person) return <p>Loading...</p>
+  if (!people) return <p>Loading...</p>;
 
   return (
     <article>
@@ -13,7 +18,7 @@ function PersonProfile(props) {
       </h2>
       <HireForm person={person} />
     </article>
-  )
+  );
 }
 
-export default PersonProfile
+export default PersonProfile;
