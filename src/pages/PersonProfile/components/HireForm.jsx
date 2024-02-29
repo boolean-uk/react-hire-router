@@ -1,11 +1,25 @@
 import { useState } from 'react'
-
-function HireForm(props) {
+import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types';
+function HireForm({ person, hiredPeople, setHiredPeople }) {
   const [wage, setWage] = useState(0)
-
+  const navigate = useNavigate()
   function handleSubmit(event) {
     event.preventDefault()
+    if (hiredPeople.find(hiredPerson => hiredPerson.login.uuid === person.login.uuid)) {
+      setHiredPeople(hiredPeople.map(hiredPerson => {
+        if (hiredPerson.login.uuid === person.login.uuid) {
+          return { ...person, wage }
+        }
+        return hiredPerson
+      }))
+    }
+    else {
+      setHiredPeople([...hiredPeople, { ...person, wage }])
+    }
+    navigate('/')
   }
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -22,4 +36,9 @@ function HireForm(props) {
   )
 }
 
+HireForm.propTypes = {
+  person: PropTypes.object.isRequired,
+  hiredPeople: PropTypes.array.isRequired,
+  setHiredPeople: PropTypes.func.isRequired,
+};
 export default HireForm
