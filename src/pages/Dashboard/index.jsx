@@ -14,11 +14,18 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    fetchPeople();
+    const peopleString = localStorage.getItem("people");
+    if (!peopleString) {
+      fetchPeople();
+      localStorage.setItem("people", JSON.stringify(people));
+    } else {
+      setPeople(JSON.parse(peopleString));
+    }
+
     if (state) {
       setHiredPeople([...hiredPeople, state]);
     }
-  }, []);
+  }, [state]);
 
   return (
     <main className="dashboard-layout">
