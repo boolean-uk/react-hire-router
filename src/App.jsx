@@ -33,7 +33,7 @@ export default function App() {
             path="/"
             element={<Dashboard hiredPeople ={hiredPeople} people = {people}/>}
           />
-          <Route path="/view/:id" element={<PersonProfile setHiredPeople={setHiredPeople} people={people} />} />
+          <Route path="/view/:id" element={<PersonProfile setHiredPeople={setHiredPeople} people={people} hiredPeople={hiredPeople} />} />
       </Routes>
     </>
   )
