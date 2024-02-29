@@ -11,7 +11,20 @@ export default function App() {
   const baseURL = "https://randomuser.me/api/?results=50"
 
   function addHiredPeople(newPerson, wage) {
-    setHiredPeople([...hiredPeople, {...newPerson, wage: wage}])
+    const alreadyHired = hiredPeople.some(person => person.id.value === newPerson.id.value)
+    
+    if(!alreadyHired) {
+      setHiredPeople([...hiredPeople, {...newPerson, wage: wage}])
+      setPeople(p => p.filter(person => person.id.value !== newPerson.id.value))
+    }else {
+      const existingPerson = hiredPeople.findIndex(person => person.id.value === newPerson.id.value)
+      if (existingPerson !== -1) {
+        const updatedHiredPeople = [...hiredPeople]
+        updatedHiredPeople[existingPerson].wage = wage;
+        setHiredPeople(updatedHiredPeople)
+      }
+    }
+
   }
 
   useEffect(() => {
@@ -37,7 +50,7 @@ export default function App() {
         />
         <Route
           path='/view/:id'
-          element={<PersonProfile people={people} addHired={addHiredPeople}/>}
+          element={<PersonProfile people={people} hiredPeople={hiredPeople} addHired={addHiredPeople}/>}
         />
       </Routes>
     </>
