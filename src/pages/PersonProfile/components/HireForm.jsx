@@ -2,36 +2,27 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function HireForm({ onHire }) {
+function HireForm(props) {
   const [wage, setWage] = useState(0);
-  const { person, addToHired } = onHire;
+  const { person, HirePerson } = props;
+  const navigate = useNavigate();
 
-  HireForm.propTypes = {
-    onHire: PropTypes.shape({
-      person: PropTypes.object.isRequired,
-      addToHired: PropTypes.func.isRequired,
-    }).isRequired,
-  };
-
-  const handleSubmit = (event) => {
+  // Function to handle the form submission
+  // It prevents the default form submission
+  // It checks if the wage is a valid number
+  // If not, it alerts the user
+  function handleSubmit(event) {
     event.preventDefault();
-    const wageAmount = parseFloat(wage);
-    if (isNaN(wageAmount) || wageAmount <= 0) {
+    const personWithWage = { ...person, wage: wage };
+    if (isNaN(personWithWage.wage) || personWithWage.wage <= 0) {
       alert("Please enter a valid wage amount.");
       return;
     }
-    onHire(wageAmount);
-    setWage("");
-  };
-
-  const navigate = useNavigate();
-
-  const handleClick = () => {
+    HirePerson(personWithWage);
     navigate("/");
-    person.wage = wage > 0 ? wage : undefined;
-    addToHired({ person });
-  };
+  }
 
+  // Return a form with an input field for the wage and a submit button
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
@@ -43,9 +34,13 @@ function HireForm({ onHire }) {
         onChange={(e) => setWage(e.target.value)}
       />
       <button type="submit">Hire</button>
-      <botton onClick={() => handleClick}>Hire</botton>
     </form>
   );
 }
+
+HireForm.propTypes = {
+  HirePerson: PropTypes.func,
+  person: PropTypes.object,
+};
 
 export default HireForm;
