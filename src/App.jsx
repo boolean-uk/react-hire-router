@@ -10,6 +10,10 @@ export default function App() {
 
   const baseURL = "https://randomuser.me/api/?results=50"
 
+  function addHiredPeople(newPerson) {
+    setHiredPeople([...hiredPeople, newPerson])
+  }
+
   useEffect(() => {
     fetch(baseURL)
     .then(res => res.json())
@@ -33,7 +37,7 @@ export default function App() {
         />
         <Route
           path='/view/:id'
-          element={<PersonProfile people={people}/>}
+          element={<PersonProfile people={people} addHired={addHiredPeople}/>}
         />
       </Routes>
     </>

@@ -3,11 +3,9 @@ import HireForm from './components/HireForm'
 import { useParams } from 'react-router-dom'
 
 
-function PersonProfile({people}) {
+function PersonProfile({people, addHired}) {
   const [person, setPerson] = useState(null)
   const {id}= useParams()
-  console.log("ID: ",id)
-  console.log(people)
 
   const matchingPerson = people.find(x => x.id.value === id)
 
@@ -22,7 +20,7 @@ function PersonProfile({people}) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} addHired={addHired} />
     </article>
   )
 }
