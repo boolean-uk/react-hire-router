@@ -11,19 +11,25 @@ function Dashboard() {
     const response = await fetch("https://randomuser.me/api/?results=50");
     const json = await response.json();
     setPeople(json.results);
+    localStorage.setItem("people", JSON.stringify(json.results));
   };
 
   useEffect(() => {
     const peopleString = localStorage.getItem("people");
     if (!peopleString) {
       fetchPeople();
-      localStorage.setItem("people", JSON.stringify(people));
     } else {
       setPeople(JSON.parse(peopleString));
     }
 
-    if (state) {
-      setHiredPeople([...hiredPeople, state]);
+    const sessionHiredPeople = sessionStorage.getItem("hiredPeople");
+    if (sessionHiredPeople) {
+      setHiredPeople(JSON.parse(sessionHiredPeople));
+      setPeople(
+        JSON.parse(peopleString).filter(
+          (p) => !hiredPeople.find((h) => h.id.value === p.id.value)
+        )
+      );
     }
   }, [state]);
 
