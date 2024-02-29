@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const HireForm = (props) => {
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState(props.person.wage || 0)
   const navigate = useNavigate()
 
   function handleSubmit(e) {

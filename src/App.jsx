@@ -12,18 +12,21 @@ export default function App() {
 
   const hirePerson = (person, wage) => {
     if (parseFloat(wage) <= 0) {return}
-    person.wage = parseFloat(wage)
-    // Remove hired person from the "people" list
-    setPeople([...people.slice(0, people.indexOf(person)), ...people.slice(people.indexOf(person) + 1)])
+    const val = people[people.indexOf(person)]
+    val.wage = parseFloat(wage)
+    setPeople([...people])
     // Append the hired person to the "hiredPeople" list
-    setHiredPeople([...hiredPeople, person])
+    if (hiredPeople.includes(person)) {
+      hiredPeople[hiredPeople.indexOf(person)].wage = parseFloat(wage)
+    } else {
+      setHiredPeople([...hiredPeople, person])
+    }
   }
 
   const fetchPeople = async () => {
     await fetch(apiUrl, apiOptions)
         .then((res) => res.json())
         .then((res) => res.results)
-        .then((res) => res.filter((a) => !hiredPeople.some((b) => b.login.uuid === a.login.uuid)))
         .then((res) => setPeople(res))
   }
 
@@ -49,7 +52,7 @@ export default function App() {
         />
         <Route 
           path="/"
-          element={<Dashboard people={people} hiredPeople={hiredPeople}/>}
+          element={<Dashboard people={people.filter((p) => !hiredPeople.includes(p))} hiredPeople={hiredPeople}/>}
         />
       </Routes>
     </>
