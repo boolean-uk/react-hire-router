@@ -1,39 +1,47 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function HireForm(props) {
-  const {person, hirePeople, firePeople} = props
-  const [wage, setWage] = useState(person.wage? person.wage : 0)
-  const navigate = useNavigate()
+function HireForm({ person, hirePeople, firePeople }) {
+  const [wage, setWage] = useState(person.wage || 0);
+  const [newWage, setNewWage] = useState(person.wage || 0);
+  const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    person.wage = wage
-    person.hired = true
-    hirePeople(person)
-    navigate("/")
-  }
-  
-  const fire = (event) => {
-    person.hired = false
-    firePeople(person)
-    navigate("/")
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    person.wage = wage;
+    person.hired = true;
+    hirePeople(person);
+    navigate('/');
+  };
+
+  const handleEdit = () => {
+    // Update the person's wage with the new wage value
+    person.wage = newWage;
+    hirePeople(person);
+    navigate('/'); // Navigate back to Dashboard
+  };
+
+  const handleFire = () => {
+    person.hired = false;
+    firePeople(person);
+    navigate('/');
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+      <label htmlFor="wage">{person.hired ? 'New Wage Offer' : 'Wage Offer'}</label>
       <input
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
-        value={wage}
+        onChange={(e) => person.hired ? setNewWage(e.target.value) : setWage(e.target.value)}
+        value={person.hired ? newWage : wage}
       />
-      <button type="submit">{!person.hired? 'Hire' : 'Edit'}</button>
-      {person.hired && <button onClick={fire}>Fire</button>}
+      <button type="submit">{!person.hired ? 'Hire' : 'Edit'}</button>
+      {person.hired && <button onClick={handleFire}>Fire</button>}
+      {person.hired && <button type="button" onClick={handleEdit}>Save</button>}
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;

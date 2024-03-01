@@ -6,7 +6,6 @@ import PersonProfile from './pages/PersonProfile';
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([]);
-
   const [people, setPeople] = useState([]);
   useEffect(() => {
     console.log("Fetching users...")
@@ -50,7 +49,7 @@ export default function App() {
           <Dashboard hiredPeople={hiredPeople} people={people}/>} />
         <Route path="/people/:id" 
           element={
-          <PersonProfile people={people} hirePeople={hirePerson} firePerson={firePerson} />} />
+          <PersonProfile people={people} hirePeople={hirePerson} firePeople={firePerson} />} />
       </Routes>
     </>
   );

@@ -1,8 +1,8 @@
-import PeopleList from './components/PeopleList'
+import PeopleList from "./components/PeopleList";
 
 function Dashboard(props) {
   const { hiredPeople, people } = props
-  
+
   return (
     <main className="dashboard-layout">
       <section>
