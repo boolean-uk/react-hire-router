@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard'
 import PersonProfile from './pages/PersonProfile'
 import Edit from './pages/PersonProfile/Edit'
 
-const URL = "https://randomuser.me/api/?results=1"
+const URL = "https://randomuser.me/api/?results=50"
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
