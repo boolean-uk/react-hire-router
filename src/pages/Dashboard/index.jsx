@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { hiredPeople, peopleData } = props
 
   const [people, setPeople] = useState([])
+  useEffect(() => {
+    setPeople(peopleData)
+    // console.log("USEEFFECT", people);
+  }, [peopleData, people]);
+  // console.log()
 
   return (
     <main className="dashboard-layout">
