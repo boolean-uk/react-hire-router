@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 /* eslint react/prop-types:0 */ 
 function HireForm(props) {
   const {person, setHiredPeople} = props
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState("")
   const navigate = useNavigate();
 
 
