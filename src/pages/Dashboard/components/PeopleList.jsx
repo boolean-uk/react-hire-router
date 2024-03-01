@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import PeopleListItem from './PeopleListItem'
 
 function PeopleList(props) {
