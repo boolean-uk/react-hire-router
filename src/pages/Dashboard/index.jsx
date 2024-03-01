@@ -8,11 +8,11 @@ function Dashboard(props) {
     <main className="dashboard-layout">
     <section className="dashboard-section">
       <h2>People</h2>
-      <PeopleList people={people}/>
+      {people !== undefined && <PeopleList people={people} hired={false} />}
     </section>
     <section className="dashboard-section">
       <h2>Hired People</h2>
-      <PeopleList people={hiredPeople}/>
+      <PeopleList people={hiredPeople} hired={true} />
     </section>
   </main>
   )
