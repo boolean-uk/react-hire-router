@@ -25,9 +25,10 @@ function PersonEdit(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const updatedPerson = {...person, wage: newWage}
+        console.log("Current person: ", person)
+        console.log("Hired people: ", hiredPeople)
         const updatedHiredPeople = hiredPeople.map(
-            (hiredPerson) => hiredPerson.uuid === person.uuid ? updatedPerson : hiredPerson
+            (hiredPerson) => hiredPerson.login.uuid === person.login.uuid ? {...hiredPerson, wage: newWage} : hiredPerson
         )
         setHiredPeople(updatedHiredPeople)
         navigate("/")

@@ -22,18 +22,18 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <img src={person.picture.medium} alt={`${person.name.title} ${person.name.first} ${person.name.last}`}/>
+      <img src={person.picture.large} alt={`${person.name.title} ${person.name.first} ${person.name.last}`}/>
       <h3>Contact information</h3>
       <p>E-Mail: {person.email}</p>
       <p>Phone: {person.phone}</p>
       <p>Cellphone: {person.cell}</p>
       {hiredPeople.filter((hiredPerson) => hiredPerson.login.uuid === person.login.uuid).length === 0 && (
-      <HireForm 
-        person={person} 
-        hiredPeople={hiredPeople}
-        setHiredPeople={setHiredPeople}
-      />)
-      }
+        <HireForm 
+          person={person} 
+          hiredPeople={hiredPeople}
+          setHiredPeople={setHiredPeople}
+        />
+      )}
     </article>
   )
 }
