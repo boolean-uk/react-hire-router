@@ -35,6 +35,7 @@ function PersonProfile(props) {
       <h4>Contact</h4>
       <p>Email: {person.email}</p>
       <p>Phone: {person.phone}</p>
+      <p>Address: {person.location.street.name} {person.location.street.number}</p>
 
       <h4>Location</h4>
       <p>Country: {person.location.country}</p>
