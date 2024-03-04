@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 function HireForm(props) {
   const { onPersonUpdate, person } = props;
 
-  const [wage, setWage] = useState(person?.wage || "");
+  const [wage, setWage] = useState(person?.wage || "0");
   
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function HireForm(props) {
     event.preventDefault();
     const updatedPerson = { ...person, wage };
     onPersonUpdate(id, updatedPerson);
-    navigate("/"); 
+    navigate(-1);
   };
 
   return (

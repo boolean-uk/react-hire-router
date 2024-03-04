@@ -25,13 +25,21 @@ export default function App() {
     }
   };
 
-  const onPersonUpdate = (uuid, updatedPerson) => {
-    setHiredPeople((currentHiredPeople) =>
-      currentHiredPeople.map((person) =>
-        person.login.uuid === uuid ? { ...person, ...updatedPerson } : person
+
+  const onPersonUpdate = (uuid, updatedPersonInfo) => {
+    // Update in hiredPeople list:
+    setHiredPeople((prevHired) =>
+      prevHired.map((person) =>
+        person.login.uuid === uuid ? { ...person, ...updatedPersonInfo } : person
       )
     );
 
+    // Update people list:
+    setPeople((prevPeople) =>
+      prevPeople.map((person) =>
+        person.login.uuid === uuid ? { ...person, ...updatedPersonInfo } : person
+      )
+    );
   };
 
 
@@ -65,6 +73,7 @@ export default function App() {
             <PersonProfile
               people={people}
               hiredPeople={hiredPeople}
+              onHire={handleHire} 
               onPersonUpdate={onPersonUpdate}
             />
           }

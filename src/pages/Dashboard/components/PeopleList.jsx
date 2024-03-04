@@ -9,8 +9,8 @@ function PeopleList(props) {
         <PeopleListItem
           key={person.login.uuid}
           person={person}
-          onHire={() => onHire(person)}
-          onView={() => onView(person.login.uuid)}
+          onHire={onHire}
+          onView={onView} 
         />
       ))}
     </ul>

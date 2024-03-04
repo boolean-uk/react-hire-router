@@ -17,6 +17,7 @@ function Dashboard(props) {
         <PeopleList
           people={people}
           onHire={onHire}
+          onView={viewProfile}
         />
       </section>
       <section>
