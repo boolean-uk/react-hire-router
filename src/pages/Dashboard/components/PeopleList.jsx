@@ -1,5 +1,6 @@
 import PeopleListItem from './PeopleListItem'
 
+
 function PeopleList(props) {
   const { people } = props
 
