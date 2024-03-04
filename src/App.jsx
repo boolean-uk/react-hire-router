@@ -51,7 +51,7 @@ export default function App() {
           }
         />
         <Route
-          path="people/:id"
+          path="view/:id"
           element={
             <PersonProfile
               people={people}

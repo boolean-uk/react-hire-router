@@ -7,9 +7,10 @@ function PeopleListItem(props) {
   return (
     <li className="people-list-item">
       <div
+        className="person-info"
         onClick={() => {
           if (!props.person.hired) {
-            navigate(`people/${props.id || props.person.id}`);
+            navigate(`view/${props.id || props.person.id}`);
           } else {
             // Navigate to a different link if person is not hired
             navigate(`hired/${props.id || props.person.id}`);
