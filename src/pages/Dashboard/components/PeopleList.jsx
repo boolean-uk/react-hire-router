@@ -1,15 +1,22 @@
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
-  const { people } = props
+import PropTypes from 'prop-types'
 
+PeopleList.propTypes = {
+  people: PropTypes.array,
+  ignoreHired: PropTypes.bool
+}
+
+export default function PeopleList({ people, ignoreHired }) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <div key={index}>
+          {(!ignoreHired || !person.hired) &&
+          <PeopleListItem person={person} />
+        }
+        </div>
       ))}
     </ul>
   )
 }
-
-export default PeopleList
