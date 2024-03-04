@@ -6,9 +6,14 @@ function PeopleListItem(props) {
 
   return (
     <li className="container">
-      <h3>
-        {person.name.first} {person.name.last}
-      </h3>
+      <img className="profile-pic" src={person.picture.thumbnail} />
+
+      <div className="name">
+        <h3>
+          {person.name.first} {person.name.last}
+        </h3>
+      </div>
+      
       {person.wage && (
         <div className="details">
           <p>Wage: £{person.wage}</p>
@@ -25,6 +30,7 @@ PeopleListItem.propTypes = {
     name: PropTypes.object,
     wage: PropTypes.number,
     id: PropTypes.number,
+    picture: PropTypes.object
   }),
 };
 
