@@ -5,17 +5,17 @@ function PeopleListItem(props) {
   const { person } = props;
 
   return (
-    <li>
+    <li className="container">
       <h3>
         {person.name.first} {person.name.last}
       </h3>
       {person.wage && (
-        <div>
+        <div className="details">
           <p>Wage: £{person.wage}</p>
-          <Link to={`/view/${person.id.value}/edit`}>Edit</Link>
+          <Link className="link-button" to={`/view/${person.id.value}/edit`}>Edit</Link>
         </div>
       )}
-      <Link to={`/view/${person.id.value}`}>View profile</Link>
+      <Link className="link-button" to={`/view/${person.id.value}`}>View profile</Link>
     </li>
   );
 }

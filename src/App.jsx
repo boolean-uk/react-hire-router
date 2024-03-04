@@ -22,7 +22,7 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Dashboard</Link>
+              <Link className="link" to="/">Dashboard</Link>
             </li>
           </ul>
         </nav>
