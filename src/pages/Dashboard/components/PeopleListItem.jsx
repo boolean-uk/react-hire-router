@@ -7,7 +7,8 @@ function PeopleListItem(props) {
     <li>
       <h3>
         {person.name.first} {person.name.last + " "}
-        <Link to={`/view/${person.index}`}>View profile</Link>
+        {!person.wage && <Link to={`/view/${person.index}`}>View profile</Link>}
+        {person.wage && <Link to={`/edit/${person.index}`}> Edit</Link>}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
     </li>

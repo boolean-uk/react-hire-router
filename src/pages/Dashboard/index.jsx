@@ -6,7 +6,6 @@ import { Link, Route, Routes } from "react-router-dom";
 function Dashboard(props) {
   const { hiredPeople, people, setHiredPeople } = props
 
-// console.log(people)
   return (
     <main className="dashboard-layout">
       <section>

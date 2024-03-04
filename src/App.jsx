@@ -53,7 +53,23 @@ export default function App() {
         <Route
           path="/view/:id"
           element={
-            <PersonProfile people={people} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople}/>
+            <PersonProfile
+              people={people}
+              setHiredPeople={setHiredPeople}
+              hiredPeople={hiredPeople}
+              view={true}
+            />
+          }
+        />
+        <Route
+          path="/edit/:id"
+          element={
+            <PersonProfile
+              people={people}
+              setHiredPeople={setHiredPeople}
+              hiredPeople={hiredPeople}
+              view={false}
+            />
           }
         />
       </Routes>
