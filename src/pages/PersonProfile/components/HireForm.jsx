@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HireForm(props) {
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState(0);
+  const navigate = useNavigate();
+  const { person, setHiredPeople, hiredPeople } = props;
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!hiredPeople.includes(person)) {
+      setHiredPeople([...hiredPeople, person]);
+    }
+    console.log(hiredPeople);
+    navigate("/dashboard");
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -14,12 +23,12 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
