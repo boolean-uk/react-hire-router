@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import './App.css'
+
+import PersonProfile from './pages/PersonProfile'
+import Dashboard from './pages/Dashboard'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -12,7 +15,7 @@ export default function App() {
       .then(setPeople)
   }, [])
 
-  console.log("People is ", people.results )
+  if(people.results === undefined) return <h3>Loading...</h3>
 
   return (
     <>
@@ -20,19 +23,20 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            <Link to="/">Dashboard</Link>
           </ul>
         </nav>
-        <main>
-          <h2>Available for hire</h2>
-          {people.results.map((person, index) =>
-            <li key={index}>
-            <Link key={index} to={"/view/:id"}>{`${person.name.title} ${person.name.first} ${person.name.last}`}</Link>
-            </li>
-          )
-        }
-        </main>
       </header>
+    <Routes>
+      <Route 
+        path="/"
+        element={<Dashboard hiredPeople={hiredPeople} people={people}/>}
+      />
+      <Route
+        path="view/:id"
+        element={<PersonProfile people={people}/>}
+      />
+    </Routes>
     </>
   )
 }
