@@ -40,6 +40,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
+      <p>{person.email}</p>
       {!person.hired && (
         <>
           <p>Available for hire</p>
