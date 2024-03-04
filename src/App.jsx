@@ -12,10 +12,11 @@ export default function App() {
 
   function onHire(person) {
     setHiredPeople([...hiredPeople, person]);
+    setPeople(people.filter(p=>p.login.uuid!==person.login.uuid))
   }
   function onEdit(person, index) {
     setHiredPeople(prevHiredPeople =>
-      prevHiredPeople.map((p, i) => (i === index ? person : p))
+      prevHiredPeople.map((p) => (p.login.uuid === index ? person : p))
     );  }
 
   useEffect(() => {
@@ -50,10 +51,10 @@ export default function App() {
         {people.map((person, index) => {
           return (
             <Route
-              key={"hire" + index}
-              path={`/view/${index}/`}
+              key={index}
+              path={`/view/${person.login.uuid}/`}
               element={
-                <PersonProfile person={person} id={index} onHire={onHire} />
+                <PersonProfile person={person} id={person.login.uuid} onHire={onHire} />
               }
             />
           );
@@ -61,9 +62,9 @@ export default function App() {
         {hiredPeople.map((person, index) => {
           return (
             <Route
-              key={"edit+" + index}
-              path={`/edit/${index}/`}
-              element={<EditForm person={person} id={index} onEdit={onEdit} />}
+              key={index}
+              path={`/edit/${person.login.uuid}/`}
+              element={<EditForm person={person} id={person.login.uuid} onEdit={onEdit} />}
             />
           );
         })}

@@ -5,12 +5,12 @@ function PeopleList(props) {
   const { people, hired } = props;
   return (
     <ul>
-      {people.map((person, index) => {
+      {people.map((person) => {
         return (
           <PeopleListItem
-            key={index}
+            key={person.login.uuid}
             person={person}
-            id={index}
+            id={person.login.uuid}
             hired={hired}
           />
         );
