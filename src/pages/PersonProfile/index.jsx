@@ -27,7 +27,8 @@ function PersonProfile(props) {
       <p>E-Mail: {person.email}</p>
       <p>Phone: {person.phone}</p>
       <p>Cellphone: {person.cell}</p>
-      {hiredPeople.filter((hiredPerson) => hiredPerson.login.uuid === person.login.uuid).length === 0 && (
+      {/* Display hire form if the perosn is not already hired */
+        hiredPeople.filter((hiredPerson) => hiredPerson.login.uuid === person.login.uuid).length === 0 && (
         <HireForm 
           person={person} 
           hiredPeople={hiredPeople}
