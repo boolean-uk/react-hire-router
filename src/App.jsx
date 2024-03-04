@@ -3,6 +3,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Dashboard';
 import PersonProfile from './pages/PersonProfile';
+import EditForm from './pages/EditForm';
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -26,13 +27,29 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route 
+        <Route
           path="/"
-          element={<Home people={people} hiredPeople={hiredPeople} />} 
-          />
-        <Route 
-          path="/view/:id" 
-          element={<PersonProfile people={people} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>} 
+          element={<Home people={people} hiredPeople={hiredPeople} />}
+        />
+        <Route
+          path="/view/:id"
+          element={
+            <PersonProfile
+              people={people}
+              hiredPeople={hiredPeople}
+              setHiredPeople={setHiredPeople}
+            />
+          }
+        />
+        <Route
+          path="/view/:id/edit"
+          element={
+            <EditForm
+              hiredPeople={hiredPeople}
+              setHiredPeople={setHiredPeople}
+              people={people}
+            />
+          }
         />
       </Routes>
     </>
