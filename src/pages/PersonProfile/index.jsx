@@ -10,8 +10,13 @@ function PersonProfile(props) {
   const { people, setHiredPeople, hiredPeople, view } = props;
 
   useEffect(() => {
-    if (people && id) {
-      setPerson(people[id]);
+    if (people && id && hiredPeople) {
+      // determines if we should search for the person in the people or hiredPeople list
+      if (view) {
+        setPerson(people[id]);
+      } else {
+        setPerson(hiredPeople.find((p) => p.index === Number(id)));
+      }
     }
   }, [people, id]);
   if (!person) return <p>Loading...</p>;
