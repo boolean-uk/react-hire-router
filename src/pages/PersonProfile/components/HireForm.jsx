@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function HireForm(props) {
@@ -10,15 +10,24 @@ function HireForm(props) {
 
   const navigateToDashboard = () => navigate("/");
 
+  // Checks if person is hired
+  const personIsHired = () => {
+    if (
+      hiredPeople.find(
+        (hiredPerson) => hiredPerson.login.uuid === person.login.uuid
+      )
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   function handleSubmit(event) {
     event.preventDefault();
+    // Only possible to submit if a wage is given
     if (wage) {
-      // Person have a wage if already hired, want to edit
-      if (
-        hiredPeople.find(
-          (hiredPerson) => hiredPerson.login.uuid === person.login.uuid
-        )
-      ) {
+      // Want to edit wage if already hired
+      if (personIsHired()) {
         setHiredPeople(
           hiredPeople.map((hiredPerson) =>
             hiredPerson.login.uuid === person.login.uuid
@@ -26,10 +35,11 @@ function HireForm(props) {
               : hiredPerson
           )
         );
-      } else {
+      }
+      // Adds person with wage if not already hired
+      else {
         setHiredPeople([...hiredPeople, { ...person, wage }]);
       }
-      // Todo: automatically fill in wage if in hire
       navigateToDashboard();
     }
   }
@@ -44,7 +54,7 @@ function HireForm(props) {
         onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">{personIsHired() ? "Update Wage" : "Hire"}</button>
     </form>
   );
 }
