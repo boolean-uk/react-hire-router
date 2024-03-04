@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Dashboard';
-import PersonProfile from './pages/PersonProfile';
-import EditForm from './pages/EditForm';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./pages/Dashboard";
+import PersonProfile from "./pages/PersonProfile";
+import EditForm from "./pages/EditForm";
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([])
-  const [people, setPeople] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([]);
+  const [people, setPeople] = useState([]);
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=50")
       .then((response) => response.json())
-      .then((item) => setPeople(item.results))
-    }, []);
+      .then((item) => setPeople(item.results));
+  }, []);
 
   return (
     <>
@@ -21,7 +21,9 @@ export default function App() {
         <h1>Hire Your Team</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            <li>
+              <Link to="/">Dashboard</Link>
+            </li>
           </ul>
         </nav>
       </header>

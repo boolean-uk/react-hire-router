@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function PeopleListItem(props) {
-  const { person } = props
+  const { person } = props;
 
   return (
     <li>
@@ -17,7 +17,7 @@ function PeopleListItem(props) {
       )}
       <Link to={`/view/${person.id.value}`}>View profile</Link>
     </li>
-  )
+  );
 }
 
 PeopleListItem.propTypes = {
@@ -25,7 +25,7 @@ PeopleListItem.propTypes = {
     name: PropTypes.object,
     wage: PropTypes.number,
     id: PropTypes.number,
-  })
-}
+  }),
+};
 
-export default PeopleListItem
+export default PeopleListItem;

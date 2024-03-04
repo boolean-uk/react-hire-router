@@ -1,12 +1,8 @@
-/* eslint-disable no-unused-vars */
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
-import PropTypes from "prop-types"
+import PeopleList from "./components/PeopleList";
+import PropTypes from "prop-types";
 
 function Dashboard(props) {
-  const { hiredPeople, people } = props
-
-  // const [people, setPeople] = useState([])
+  const { hiredPeople, people } = props;
 
   return (
     <main className="dashboard-layout">
@@ -20,12 +16,11 @@ function Dashboard(props) {
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 Dashboard.propTypes = {
   hiredPeople: PropTypes.array,
   people: PropTypes.array,
 };
 
-
-export default Dashboard
+export default Dashboard;

@@ -1,15 +1,16 @@
-/* eslint-disable react/prop-types */
-import { useState } from 'react'
-import PropTypes from "prop-types"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function HireForm(props) {
-  const [wage, setWage] = useState(0)
-  const { person, hiredPeople, setHiredPeople, navigate } = props
+  const [wage, setWage] = useState(0);
+  const { person, hiredPeople, setHiredPeople } = props;
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    setHiredPeople([...hiredPeople, {...person, wage: wage}])
+    setHiredPeople([...hiredPeople, { ...person, wage: wage }]);
     // TODO setPeople?
     navigate("/");
   }
@@ -21,18 +22,18 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
 HireForm.propTypes = {
   person: PropTypes.object,
   hiredPeople: PropTypes.array,
   setHiredPeople: PropTypes.func,
-}
+};
 
-export default HireForm
+export default HireForm;
