@@ -21,9 +21,8 @@ function PersonProfile(props) {
     <article>
       <h2>
         {person.name.first} {person.name.last}
-      <p>reaches into return step</p>
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} hiredPeople={props.hiredPeople} setHiredPeople={props.setHiredPeople}/>
     </article>
   )
 }
