@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { hiredPeopleContext } from '../../App'
 import PeopleList from './components/PeopleList'
 
