@@ -20,6 +20,7 @@ function EditProfile(props) {
 
     return(
         <article>
+            {/* Making sure that the person one is trying to update is not null because of asynchronous rendering */}
             {person && (
                 <>
                     <h2>

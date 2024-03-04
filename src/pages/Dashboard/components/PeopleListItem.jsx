@@ -11,12 +11,13 @@ function PeopleListItem(props) {
       {person.wage && 
         <p>
           Wage: £{person.wage} 
+          {/* Added a link with a button that routes to the edit page */}
           <Link to={`/view/${person.id.value}/edit`}>
             <button>edit</button>
           </Link>
         </p>}
       {/*Adding a link to the PersonProfile*/}
-      <Link to={`/view/${person.id.value}`}>View profile</Link>
+      <Link to={`/view/${person.id.value}`}><button>View profile</button></Link>
     </li>
   )
 }

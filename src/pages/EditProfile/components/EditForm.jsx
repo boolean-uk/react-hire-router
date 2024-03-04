@@ -9,18 +9,18 @@ function EditForm(props) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        //adding the current person to the hired people list with a wage value
         const findPersonIndex = hiredPeople.findIndex((p) => p.id.value === person.id.value)
-        
+        //using the index to update the current persons wage
         const updateHiredPeople = hiredPeople.map((per, index) => {
             if(index === findPersonIndex){
                 return {...per, wage: wage}
             }
             return per
         })
+        //updating the entire hiredPeople list
         setHiredPeople(updateHiredPeople)
         console.log(hiredPeople)
-        //route back to the home page
+        //route back to the home the page
         navigate("/")
       }
     return(
