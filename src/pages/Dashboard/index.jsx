@@ -1,10 +1,18 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import { useEffect } from "react";
+import PeopleList from "./components/PeopleList";
+
+import PropTypes from "prop-types";
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { people, hiredPeople, setPeople } = props;
 
-  const [people, setPeople] = useState([])
+  useEffect(() => {
+    // Remove people from the list of available people if they are hired
+    const availablePeople = people.filter(
+      (person) => !hiredPeople.includes(person)
+    );
+    setPeople(availablePeople);
+  }, [hiredPeople]);
 
   return (
     <main className="dashboard-layout">
@@ -14,10 +22,16 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} isHiredList={true} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+  people: PropTypes.array.isRequired,
+  hiredPeople: PropTypes.array.isRequired,
+  setPeople: PropTypes.func.isRequired,
+};
+
+export default Dashboard;

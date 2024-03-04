@@ -8,3 +8,30 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+.people-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  list-style: none;
+  padding: 20px;
+}
+.people-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
+}
+.people-list-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.person-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
