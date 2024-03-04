@@ -1,20 +1,18 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { hiredPeopleContext } from '../../../App';
+import HireForm from '../../PersonProfile/components/HireForm';
 
 export default function ViewPerson(props) {
   const { people } = props;
   const { index } = useParams()
   const navigate = useNavigate()
   const { hiredPeople, setHiredPeople } = useContext(hiredPeopleContext);
+  const [wage, setWage] = useState(0);
+  
+  const handleEditPerson = () => {
 
-
-  const handleHirePerson = () => {
-    setHiredPeople([...hiredPeople, people[index]])
-    console.log("PERSON HIRED!")
-    navigate("/")
-  }
-
+    }
 
   if(!people)
     return (
@@ -24,6 +22,8 @@ export default function ViewPerson(props) {
     const isPersonHired = hiredPeople.some(
       hiredPerson => hiredPerson.login.uuid === people[index].login.uuid
     );
+
+    if(isPersonHired) console.log("PROPS: ", props)
 
   return (
     <div>
@@ -36,7 +36,14 @@ export default function ViewPerson(props) {
       <p>Age: {people[index].dob.age}</p>
       <img src={people[index].picture.large} alt="person" />
       <div>
-      {!isPersonHired && <button onClick={handleHirePerson}>Hire person</button>}
+      {!isPersonHired && <HireForm person={people[index]} wage={wage} setWage={setWage} index={index} />}
+      {isPersonHired && <p>Wage: £ {people[index].wage || 0}</p>}
+      {isPersonHired && 
+      <>
+        <p>Person is already hired!</p>
+        <button onClick={handleEditPerson}>EDIT</button>
+      </>
+      }
       </div>
     </div>
   )

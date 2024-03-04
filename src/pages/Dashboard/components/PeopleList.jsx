@@ -7,7 +7,14 @@ function PeopleList(props) {
     return (
       <>
         <p>Loading...</p>
-        <button onClick={() => console.log(people)}>CLICK</button>
+      </>
+    )
+  }
+
+  if(people.length === 0){
+    return (
+      <>
+        <p>No people in list!</p>
       </>
     )
   }
