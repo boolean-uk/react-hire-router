@@ -4,6 +4,7 @@ import './App.css'
 
 import PersonProfile from './pages/PersonProfile'
 import Dashboard from './pages/Dashboard'
+import PersonEdit from './pages/PersonEdit'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -41,6 +42,15 @@ export default function App() {
           setPeople={setPeople}
           />}
       />
+      <Route
+        path="view/:id/edit"
+        element={
+          <PersonEdit
+            hiredPeople={hiredPeople}
+            setHiredPeople={setHiredPeople} />
+        }
+        />
+
     </Routes>
     </>
   )
