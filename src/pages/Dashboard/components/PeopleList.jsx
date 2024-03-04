@@ -1,8 +1,12 @@
+import { useEffect } from 'react'
 import PeopleListItem from './PeopleListItem'
 
 function PeopleList(props) {
+  console.log("Inside PeopleList: ", { props });
+
   const { people } = props
 
+  
   return (
     <ul>
       {people.map((person, index) => (
