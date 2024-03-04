@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { hiredPeopleContext } from '../../App'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+  const { people } = props
+  const {hiredPeople} = useContext(hiredPeopleContext)
   return (
     <main className="dashboard-layout">
       <section>
