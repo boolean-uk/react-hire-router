@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate} from "react-router-dom";
 
 function EditForm(props) {
-  const [wage, setWage] = useState(1);
+  const [wage, setWage] = useState(0);
 
   const { person, hiredPeople, setHiredPeople } = props;
 
@@ -29,6 +29,7 @@ function EditForm(props) {
   };
 
   return (
+    
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Change Wage</label>
       <p></p>
@@ -37,7 +38,6 @@ function EditForm(props) {
         id="wage"
         name="wage"
         onChange={(e) => setWage(e.target.value)}
-        value={wage}
       />
       <p></p>
       <label htmlFor="first_name">Change First Name</label>
