@@ -1,10 +1,16 @@
 import { useState } from 'react'
+import PropTypes from "prop-types"
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
+  const { person, hiredPeople, setHiredPeople, navigate } = props
 
   function handleSubmit(event) {
     event.preventDefault()
+
+    setHiredPeople([...hiredPeople, {...person, wage: wage}])
+    // TODO setPeople?
+    navigate("/");
   }
 
   return (
@@ -20,6 +26,12 @@ function HireForm(props) {
       <button type="submit">Hire</button>
     </form>
   )
+}
+
+HireForm.propTypes = {
+  person: PropTypes.object,
+  hiredPeople: PropTypes.array,
+  setHiredPeople: PropTypes.func,
 }
 
 export default HireForm

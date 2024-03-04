@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
   const { id } = useParams()
-  const { people } = props
+  const { people, hiredPeople, setHiredPeople } = props
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -28,13 +28,19 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm 
+        person={person} 
+        hiredPeople={hiredPeople} 
+        setHiredPeople={setHiredPeople}
+        navigate={navigate}/>
     </article>
   )
 }
 
 PersonProfile.propTypes = {
-  people: PropTypes.array
-}
+  people: PropTypes.array,
+  hiredPeople: PropTypes.array,
+  setHiredPeople: PropTypes.func,
+};
 
 export default PersonProfile

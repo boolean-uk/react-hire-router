@@ -5,7 +5,7 @@ import Home from './pages/Dashboard';
 import PersonProfile from './pages/PersonProfile';
 
 export default function App() {
-  const [hiredPeople, ] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([])
   const [people, setPeople] = useState([])
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function App() {
           />
         <Route 
           path="/view/:id" 
-          element={<PersonProfile people={people}/>} 
+          element={<PersonProfile people={people} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>} 
         />
       </Routes>
     </>
