@@ -29,7 +29,6 @@ function EditForm(props) {
   };
 
   return (
-    
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Change Wage</label>
       <p></p>
@@ -37,6 +36,7 @@ function EditForm(props) {
         type="text"
         id="wage"
         name="wage"
+        placeholder={"Current: £" + person.wage}
         onChange={(e) => setWage(e.target.value)}
       />
       <p></p>
@@ -46,6 +46,7 @@ function EditForm(props) {
         type="text"
         id="first_name"
         name="first_name"
+        placeholder={"Current: " + person.name.first}
         onChange={(e) => changeFirstName(e)}
       />
       <p></p>
@@ -55,6 +56,7 @@ function EditForm(props) {
         type="text"
         id="last_name"
         name="last_name"
+        placeholder={"Current: " + person.name.last}
         onChange={(e) => changeLastName(e)}
       />
       <p></p>
