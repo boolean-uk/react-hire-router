@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
-function HireForm({person, hirePerson}) {
+function EditForm({person, hirePerson}) {
   const [wage, setWage] = useState(0)
 
   const navigate = useNavigate()
@@ -10,15 +10,15 @@ function HireForm({person, hirePerson}) {
   function handleSubmit(event) {
     event.preventDefault()
     person.wage=wage
-    hirePerson(person)
 
     navigate("/")
     
   }
 
-  return (
+  return (<>
+    <p>Edit</p>
     <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+      <label htmlFor="wage">Edit Wage Offer</label>
       <input
         type="text"
         id="wage"
@@ -28,7 +28,8 @@ function HireForm({person, hirePerson}) {
       />
       <button type="submit">Hire</button>
     </form>
+    </>
   )
 }
 
-export default HireForm
+export default EditForm
