@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import HireForm from "./components/HireForm";
 import { useParams } from "react-router-dom";
-import { fetchFromURL } from "../../utils/utils";
 import PropTypes from "prop-types";
 
 function PersonProfile({ people, onHire }) {
@@ -30,6 +29,7 @@ function PersonProfile({ people, onHire }) {
 
 PersonProfile.propTypes = {
   people: PropTypes.array.isRequired,
+  onHire: PropTypes.func.isRequired,
 };
 
 export default PersonProfile;

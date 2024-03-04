@@ -50,7 +50,13 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Dashboard people={people} hiredPeople={hiredPeople} />}
+            element={
+              <Dashboard
+                people={people}
+                hiredPeople={hiredPeople}
+                onHire={hire}
+              />
+            }
           />
           <Route
             path="/view/:id"

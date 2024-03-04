@@ -14,7 +14,9 @@ function HireForm({ onSubmit, person }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+      <label htmlFor="wage">
+        {person.wage ? "New wage offer " : "Wage Offer "}
+      </label>
       <input
         type="text"
         id="wage"
@@ -22,7 +24,7 @@ function HireForm({ onSubmit, person }) {
         onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">{person.wage ? "Update" : "Hire"}</button>
     </form>
   );
 }
