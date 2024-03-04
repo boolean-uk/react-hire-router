@@ -5,7 +5,7 @@ import HireForm from './components/HireForm'
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
   const { id } = useParams()
-  const { people } = props
+  const { people, hiredPeople, setHiredPeople } = props
 
   useEffect(() => {
     if (people && id) {
@@ -22,7 +22,16 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <img src={person.picture.medium} alt={`${person.name.title} ${person.name.first} ${person.name.last}`}/>
+      <h3>Contact information</h3>
+      <p>E-Mail: {person.email}</p>
+      <p>Phone: {person.phone}</p>
+      <p>Cellphone: {person.cell}</p>
+      <HireForm 
+        person={person} 
+        hiredPeople={hiredPeople}
+        setHiredPeople={setHiredPeople}
+      />
     </article>
   )
 }
