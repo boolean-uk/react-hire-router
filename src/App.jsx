@@ -38,6 +38,7 @@ export default function App() {
           element={
             <PersonProfile
               people={people}
+              setPeople={setPeople}
               hiredPeople={hiredPeople}
               setHiredPeople={setHiredPeople}
             />
@@ -50,6 +51,7 @@ export default function App() {
               hiredPeople={hiredPeople}
               setHiredPeople={setHiredPeople}
               people={people}
+              setPeople={setPeople}
             />
           }
         />

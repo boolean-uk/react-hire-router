@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function EditForm(props) {
   const [wage, setWage] = useState("");
-  const { hiredPeople, setHiredPeople } = props;
+  const { hiredPeople, setHiredPeople, people, setPeople } = props;
   const { id } = useParams();
   const [person, setPerson] = useState(null);
   const navigate = useNavigate();
@@ -20,15 +20,25 @@ function EditForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const personIndex = hiredPeople.findIndex((p) => p.id === person.id);
+    const hiredPersonIndex = hiredPeople.findIndex((p) => p.id === person.id);
 
     const updatedHiredPeople = hiredPeople.map((pers, index) => {
+      if (index === hiredPersonIndex) {
+        return { ...pers, wage: wage };
+      }
+      return pers;
+    });
+
+    const personIndex = people.findIndex((p) => p.id === person.id);
+
+    const updatedPeople = people.map((pers, index) => {
       if (index === personIndex) {
         return { ...pers, wage: wage };
       }
       return pers;
     });
 
+    setPeople(updatedPeople)
     setHiredPeople(updatedHiredPeople);
     navigate("/");
   }
@@ -58,6 +68,7 @@ EditForm.propTypes = {
   hiredPeople: PropTypes.array,
   people: PropTypes.array,
   setHiredPeople: PropTypes.array,
+  setPeople: PropTypes.func,
 };
 
 export default EditForm;

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 function PersonProfile(props) {
   const [person, setPerson] = useState(null);
   const { id } = useParams();
-  const { people, hiredPeople, setHiredPeople } = props;
+  const { people, setPeople, hiredPeople, setHiredPeople } = props;
 
   useEffect(() => {
     if (people && id) {
@@ -28,6 +28,8 @@ function PersonProfile(props) {
       </h2>
       <HireForm
         person={person}
+        people={people}
+        setPeople={setPeople}
         hiredPeople={hiredPeople}
         setHiredPeople={setHiredPeople}
       />
@@ -39,6 +41,7 @@ PersonProfile.propTypes = {
   people: PropTypes.array,
   hiredPeople: PropTypes.array,
   setHiredPeople: PropTypes.func,
+  setPeople: PropTypes.array,
 };
 
 export default PersonProfile;
