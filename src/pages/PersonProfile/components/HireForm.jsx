@@ -9,8 +9,10 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    setHiredPeople([...hiredPeople, {...person, wage: wage}])
-    navigate("/")
+    if(wage != 0) {
+      setHiredPeople([...hiredPeople, {...person, wage: wage}])
+      navigate("/")
+    }
   }
 
   return (

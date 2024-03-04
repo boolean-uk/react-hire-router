@@ -19,6 +19,7 @@ function PersonEdit(props) {
   
     if (!person) return <p>Loading...</p>
 
+    /* Setting new wages */
     const handleChange = (event) => {
         setNewWage(event.target.value)
     }
