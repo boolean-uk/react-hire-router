@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
   const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
+  const { people } = props
 
   return (
     <main className="dashboard-layout">
@@ -14,7 +13,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} editable={true}/>
       </section>
     </main>
   )
