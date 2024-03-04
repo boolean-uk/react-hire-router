@@ -14,7 +14,15 @@ function HireForm({person, setPerson, setHiredPeople, hiredPeople}) {
     }
 
     if (hiredPeople.find(hiredPerson => hiredPerson.id === person.id)) {
-      setHiredPeople(hiredPeople)
+      setHiredPeople(hiredPeople.map(hiredPerson => {
+        // Find the specific person by matching their 'id'
+        if (hiredPerson.id === person.id) {
+          // Update the person's wage with the new value
+          return { ...hiredPerson, wage };
+        }
+        // If it's not the person being updated, return the existing 'hiredPerson'
+        return hiredPerson;
+      }));
     }
     else {
       setHiredPeople([...hiredPeople, { ...person, wage }])
@@ -24,7 +32,11 @@ function HireForm({person, setPerson, setHiredPeople, hiredPeople}) {
 
   return (
     <form onSubmit={handleSubmit}>
+      {hiredPeople.find(hiredPerson => hiredPerson.id === person.id) ?
+      <label htmlFor="wage">Edit Wage</label>
+      :  
       <label htmlFor="wage">Wage Offer</label>
+    }
       <input
         type="text"
         id="wage"
