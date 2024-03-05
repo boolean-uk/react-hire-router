@@ -1,19 +1,48 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Link, Route, Routes } from 'react-router-dom';
 import './App.css'
-
+import PersonProfile from './pages/PersonProfile';
+import Dashboard from './pages/Dashboard';
+import EditHiredPeople from './pages/Dashboard/components/EditHiredPeople';
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
 
-  return (
-    <>
+  console.log(hiredPeople)
+
+    const [people, setPeople] = useState([])
+
+  useEffect(() => {
+    fetch(`https://randomuser.me/api/?results=5`)
+      .then(response => response.json())
+      .then(data => setPeople(data.results))
+      .catch(error => console.error("Fetching error: ", error));
+  }, []);
+
+ return (
+    <div className="App">
       <header>
-        <h1>Hire Your Team</h1>
+        <h1>Apple Shop</h1>
         <nav>
           <ul>
-            <li>Dashboard</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
           </ul>
         </nav>
       </header>
-    </>
-  )
+      <Routes>
+        <Route path="/" element={<Dashboard hiredPeople = {hiredPeople} people = {people} setHiredPeople={hiredPeople}/>} />
+
+        <Route path="profile/:id/edit" element={<EditHiredPeople people={people}/>} />
+        
+        <Route path="/profile/:id" element={<PersonProfile people={people} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople}/>} />
+          
+        <Route path="/profile" element={<PersonProfile />}/>
+
+      </Routes>
+    </div>
+  );
 }
