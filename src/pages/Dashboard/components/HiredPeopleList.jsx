@@ -1,4 +1,3 @@
-import PeopleListItem from './PeopleListItem'
 import HiredPeopleListItem from './HiredPeopleListItem.jsx'
 
 function PeopleList(props) {
