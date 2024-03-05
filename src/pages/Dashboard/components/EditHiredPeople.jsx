@@ -63,6 +63,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.name.first}
       />
+      <br />
       <label htmlFor="lastName">Last Name:</label>
       <input
         type="text"
@@ -71,7 +72,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.name.last}
       />
-      {/* Repeat for other fields */}
+     <br />
       <label htmlFor="city">City:</label>
       <input
         type="text"
@@ -80,6 +81,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.location.city}
       />
+      <br />
       <label htmlFor="state">State:</label>
       <input
         type="text"
@@ -88,6 +90,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.location.state}
       />
+      <br />
       <label htmlFor="email">Email:</label>
       <input
         type="email"
@@ -96,6 +99,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.email}
       />
+      <br />
       <label htmlFor="age">Age:</label>
       <input
         type="number"
@@ -104,6 +108,7 @@ function handleSubmit(event) {
         onChange={handleChange}
         value={productToUpdate.dob.age}
       />
+      <br />
       <button type="submit">Edit</button>
     </form>
   );
