@@ -8,6 +8,10 @@ function EditPerson(props) {
     const { hiredPeople, setHiredPeople } = props;
     const navigate = useNavigate();
 
+    /**
+    Wrapping the code in useEffect with dependencies [hiredPeople, id] ensures that the code inside the useEffect block 
+    runs after the component mounts and whenever there are changes in the hiredPeople or id variables. 
+    */
     useEffect(() => {
         if (hiredPeople && id) {
             const matchingPerson = hiredPeople.find((person) => person.login.uuid === id);
@@ -15,72 +19,40 @@ function EditPerson(props) {
         }
     }, [hiredPeople, id]);
 
+    const indexOfObjectToReplace = hiredPeople.findIndex(person => person.login.uuid === id);
+
     function handleChange(event) {
-        const inputName = event.target.name;
+        //const inputName = event.target.name;
         const inputValue = event.target.value;
 
-        if (inputName === 'firstName') {
-            //uppdatera first name
-            setPersonToUpdate({ ...personToUpdate, [inputName]: inputValue });
-        }
-        else if (inputName === 'lastName') {
-            //uppdatera last name
-            setPersonToUpdate({ ...personToUpdate, [inputName]: inputValue });
-        }
-        else if (inputName === 'wage') {
-            setPersonToUpdate({ ...personToUpdate, [inputName]: inputValue });
-        }
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-
-        const inputValue = event.target.value;
-
-        //ersätt gammalt objekt med nytt objekt
-        setHiredPeople((personToUpdate) => ({
+        //uppdatera state variabeln person objektet med ny value på propertyn wage
+        setPersonToUpdate((personToUpdate) => ({
             ...personToUpdate,
             wage: inputValue,
         }));
+    }
 
-        /**nestad under name.last och name.first
-        setHiredPeople((personToUpdate) => ({
-            ...personToUpdate,
-            name.first: inputValue,
-        }))*/
+    function handleSubmit(event) {
+        console.log(personToUpdate)
+
+        event.preventDefault();
+
+        //skapa en ny lista från hiredPeople genom att ersätta det gamla objektet med det nya
+        const updatedList = hiredPeople.map((person, index) =>
+            index === indexOfObjectToReplace ? personToUpdate : person
+        );
+
+        //uppdatera hiredPeople att vara den nya listan
+        setHiredPeople(updatedList)
 
         //navigera till dashboard
-        navigate(-2);
+        navigate('/');
     }
 
     if (!personToUpdate) return <div>Loading...</div>;
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="firstName">First name</label>
-            <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                onChange={handleChange}
-                value={personToUpdate.name.first}
-            />
-            <button type="submit">Update</button>
-
-            <br />
-
-            <label htmlFor="lastName">Last name</label>
-            <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                onChange={handleChange}
-                value={personToUpdate.name.last}
-            />
-            <button type="submit">Update</button>
-
-            <br />
-
             <label htmlFor="wage">Wage</label>
             <input
                 type="text"
