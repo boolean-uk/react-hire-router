@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { peopleContext } from '../../App'
 import HireForm from './components/HireForm'
 import { useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-function PersonProfile(props) {
+function PersonProfile() {
   const [person, setPerson] = useState()
   const { id } = useParams()
+  const { people } = useContext(peopleContext)
 
   useEffect(() => {
-    setPerson(props.people.filter((p) => p.login.uuid === id)[0])
-  }, [props.people, id])
+    setPerson(people.filter((p) => p.login.uuid === id)[0])
+  }, [people, id])
     
   if (!person) return <p>Loading...</p>
   return (
@@ -17,7 +19,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} hirePerson={props.hirePerson}/>
+      <HireForm person={person}/>
     </article>
   )
 }
