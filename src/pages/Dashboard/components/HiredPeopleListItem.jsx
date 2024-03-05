@@ -8,7 +8,7 @@ export default function HiredPeopleListItem(props){
         {hiredPeople.name.first} {hiredPeople.name.last}
       </h3>
       {hiredPeople.wage && <p>Wage: £{hiredPeople.wage}</p>}
-      <br />
+      <br/>
 
       <Link to={`/profile/${hiredPeople.name.first +hiredPeople.name.last}`}>
       View profile 
@@ -17,9 +17,6 @@ export default function HiredPeopleListItem(props){
       <Link to={`/profile/${hiredPeople.name.first + hiredPeople.name.last}/edit`}>
         Edit
       </Link>
-
     </li>
-
-
     )
 }

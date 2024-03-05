@@ -34,10 +34,11 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/" element={<Dashboard hiredPeople = {hiredPeople} people = {people} setHiredPeople={hiredPeople}/>} />
 
-        <Route path="profile/:id/edit" element={<EditHiredPeople people={people}/>} />
-        
+
+        <Route path="profile/:id/edit" element={<EditHiredPeople hiredPeople = {hiredPeople} people = {people} setHiredPeople={setHiredPeople}/>} />
+
+        <Route path="/" element={<Dashboard hiredPeople={hiredPeople} people={people} setHiredPeople={setHiredPeople} />} />
         <Route path="/profile/:id" element={<PersonProfile people={people} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople}/>} />
           
         <Route path="/profile" element={<PersonProfile />}/>

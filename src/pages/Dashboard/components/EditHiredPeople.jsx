@@ -1,79 +1,109 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-export default function EditHiredPeople(props) {
+export default function EditHiredPeople({ hiredPeople, setHiredPeople }) {
+  const navigate = useNavigate();
+  const [productToUpdate, setProductToUpdate] = useState({
+    name: { first: '', last: '' },
+    location: { city: '', state: '' },
+    email: '',
+    dob: { age: '' },
+  });
+  const { id } = useParams();
 
-  const [productToUpdate, setProductToUpdate] = useState(null);
-
-  const { people } = props;
-  const {id} = useParams();
-  
   useEffect(() => {
-    if (people && id) {
-      setProductToUpdate(people.find((aPeople) => (aPeople.name.first+aPeople.name.last) === (id)));
+    const foundPerson = hiredPeople.find(
+      (aPerson) => aPerson.name.first + aPerson.name.last === id
+    );
+    if (foundPerson) {
+      setProductToUpdate(foundPerson);
     }
-  }, [people, id]);
+  }, [hiredPeople, id]);
 
-  //   const handleSave = () => {
-  //   setSubmissions((prevSubmissions) =>
-  //     prevSubmissions.map((submission) =>
-  //       submission.id === submissionId
-  //         ? { ...submission, username: editedUsername, color: editedColor, spendTime: editedSpendTime, review: editedReview }
-  //         : submission
-  //     )
-  //   );
-  // };
-  console.log('Inside edit ',{ productToUpdate });
-
-
-  /** TODO: Write code to set the `productToUpdate` state with the product data
-   *  based on the ID that we get from the URL path parameter.
-   *  You will need to use: `props`, `useParams`, and `useEffect` to achieve this.
-   */
-
-function handleChange(event) {
-  const { name, value } = event.target;
-  if (name === "firstName") {
-    setProductToUpdate(prevState => ({
-      ...prevState,
-      name: { ...prevState.name, first: value }
-    }));
-  } else if (name === "lastName") {
-    setProductToUpdate(prevState => ({
-      ...prevState,
-      name: { ...prevState.name, last: value }
-    }));
-  } else {
-    setProductToUpdate(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+  function handleChange(event) {
+    const { name, value } = event.target;
+    if (name.includes('.')) {
+      const levels = name.split('.');
+      setProductToUpdate((prevState) => ({
+        ...prevState,
+        [levels[0]]: {
+          ...prevState[levels[0]],
+          [levels[1]]: value,
+        },
+      }));
+    } else {
+      setProductToUpdate((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  setHiredPeople(prevHiredPeople =>
+    prevHiredPeople.map(submission =>
+      (submission.name.first + submission.name.last) === id
+        ? { ...submission, ...productToUpdate } // Correctly spread productToUpdate
+        : submission
+    )
+  );
+  navigate('/')
 }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
 
-  if (!productToUpdate) return <div>Loading...</div>;
-
+  // Render form with controlled components
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Product Name</label>
+      <label htmlFor="firstName">First Name:</label>
       <input
         type="text"
         id="firstName"
-        name="firstName"
+        name="name.first"
         onChange={handleChange}
         value={productToUpdate.name.first}
-        />
+      />
+      <label htmlFor="lastName">Last Name:</label>
       <input
         type="text"
         id="lastName"
-        name="lastName" 
+        name="name.last"
         onChange={handleChange}
         value={productToUpdate.name.last}
-        />
+      />
+      {/* Repeat for other fields */}
+      <label htmlFor="city">City:</label>
+      <input
+        type="text"
+        id="city"
+        name="location.city"
+        onChange={handleChange}
+        value={productToUpdate.location.city}
+      />
+      <label htmlFor="state">State:</label>
+      <input
+        type="text"
+        id="state"
+        name="location.state"
+        onChange={handleChange}
+        value={productToUpdate.location.state}
+      />
+      <label htmlFor="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        onChange={handleChange}
+        value={productToUpdate.email}
+      />
+      <label htmlFor="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        name="dob.age"
+        onChange={handleChange}
+        value={productToUpdate.dob.age}
+      />
       <button type="submit">Edit</button>
     </form>
   );
