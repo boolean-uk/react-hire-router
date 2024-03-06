@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
   const { hiredPeople } = props
 
   const [people, setPeople] = useState([])
+
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=50")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.results)
+        setPeople(data.results)})
+  }, [])
 
   return (
     <main className="dashboard-layout">
