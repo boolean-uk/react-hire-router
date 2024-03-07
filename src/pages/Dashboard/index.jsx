@@ -1,23 +1,26 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
 import PeopleList from './components/PeopleList'
+import { useNavigate } from 'react-router-dom';
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+export default function Dashboard(props) {
+  const { people, hiredPeople, handleHire } = props
 
-  const [people, setPeople] = useState([])
+  const navigate = useNavigate()
+
+  const handleView = (path) => {
+    navigate(`/view/${path}`)
+  }
 
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        <PeopleList people={people} handleHire={handleHire} handleView={handleView}/>
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} handleHire={handleHire} handleView={handleView} />
       </section>
     </main>
   )
 }
-
-export default Dashboard
