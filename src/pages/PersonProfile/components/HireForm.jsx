@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HireForm(props) {
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState(0);
+  const { person, hiredPeople, setHiredPeople } = props;
+  const nav = useNavigate();
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    nav("/");
+    const hireNewPeople = { ...person, wage: wage };
+    setHiredPeople([...hiredPeople, hireNewPeople]);
   }
 
   return (
@@ -14,12 +20,12 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PeopleList from "./components/PeopleList";
 
 const apiUrl = "https://randomuser.me/api?inc=name,id&results=50";
@@ -12,13 +12,17 @@ function Dashboard(props) {
     const fetchList = await fetch(`${apiUrl}`);
     if (fetchList.ok) {
       const data = await fetchList.json();
+      setPeople(data.results);
+      console.log("this is data", data);
       return data;
     } else {
       throw new Error("Failed to fetch data");
     }
   };
 
-  useEffect(getList, []);
+  useEffect(() => {
+    getList();
+  }, []);
 
   return (
     <main className="dashboard-layout">
