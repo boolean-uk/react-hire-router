@@ -1,6 +1,7 @@
 import PeopleList from './components/PeopleList'
 
 function Dashboard({ hiredPeople, people }) {
+  const editButton = true
   return (
     <main className="dashboard-layout">
       <section>
@@ -9,7 +10,7 @@ function Dashboard({ hiredPeople, people }) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList people={hiredPeople} editButton={editButton}/>
       </section>
     </main>
   )

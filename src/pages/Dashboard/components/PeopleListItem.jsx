@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-function PeopleListItem({ person }) {
+function PeopleListItem({ person, editButton }) {
+  const navigation = useNavigate()
+  function handleClick() {
+    navigation(`/edit/${person.index}`)
+  }
+
   return (
     <li>
       <Link to={`/view/${person.index}`}>
@@ -9,7 +14,7 @@ function PeopleListItem({ person }) {
         </h3>
         {person.wage && <p>Wage: £{person.wage}</p>}
       </Link>
-
+      {editButton && <button onClick={handleClick} >Edit</button>}
     </li>
   )
 }
