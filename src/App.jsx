@@ -5,8 +5,8 @@ import PersonProfile from "./pages/PersonProfile"
 import "./App.css";
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([]);
   const [people, setPeople] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([]);
   
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function App() {
   }, [])
 
  
-
 
   return (
     <>
@@ -38,8 +37,8 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route path="/dashboard" element={<Dashboard people={people}/>} />
-        <Route path="/:id" element={<PersonProfile people={people}/>}/>
+        <Route path="/dashboard" element={<Dashboard hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} people={people}/>} />
+        <Route path="/:id" element={<PersonProfile hiredPeople={hiredPeople} setHiredPeople={setHiredPeople} people={people}/>}/>
 
         <Route path="/" element={<p>Find people to hire!</p>} />
       </Routes>
