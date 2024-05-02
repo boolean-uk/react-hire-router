@@ -4,7 +4,6 @@ import PeopleList from './components/PeopleList'
 function Dashboard(props) {
   const { hiredPeople, people } = props
 
-  console.log(hiredPeople)
   return (
     <main className="dashboard-layout">
       <section>
@@ -13,7 +12,7 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList editable={true} people={hiredPeople} />
       </section>
     </main>
   )
