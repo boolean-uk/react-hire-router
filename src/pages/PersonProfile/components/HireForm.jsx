@@ -9,6 +9,8 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    person.wage = wage
+    console.log(person)
     hiredPeople.includes(person) ? null : setHiredPeople([...hiredPeople, person])
     navigate('/dashboard')
   }
