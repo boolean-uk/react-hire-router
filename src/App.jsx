@@ -37,7 +37,7 @@ export default function App() {
 
       <Route 
         path='/view/:index'
-        element={<PersonProfile people={people} />}
+        element={<PersonProfile people={people} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople}/>}
       />
 
     </Routes>
