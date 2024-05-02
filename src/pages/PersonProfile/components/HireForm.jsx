@@ -9,7 +9,7 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    person.wage = wage
+    if (wage > 0) {person.wage = wage}
     hiredPeople.includes(person) ? null : setHiredPeople([...hiredPeople, person])
     navigate('/dashboard')
   }
