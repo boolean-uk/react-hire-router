@@ -7,11 +7,14 @@ function HireForm({ setHiredPeople, hiredPeople, person }) {
     event.preventDefault()
 
     if(!hiredPeople.includes(person)) {
+      person.wage = wage
       setHiredPeople([
         ...hiredPeople,
         person])
     }
   }
+
+  console.log(hiredPeople)
 
   return (
     <form onSubmit={handleSubmit}>
