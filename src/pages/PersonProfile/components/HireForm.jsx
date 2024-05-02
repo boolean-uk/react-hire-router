@@ -24,7 +24,7 @@ function HireForm(props) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">{hiredPeople.includes(person) ? 'Update' : 'Hire'}</button>
     </form>
   )
 }
