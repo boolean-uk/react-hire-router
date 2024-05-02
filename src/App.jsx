@@ -1,5 +1,9 @@
-import { useState } from 'react'
 import './App.css'
+
+import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+
+import Dashboard from './pages/Dashboard'
 
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
@@ -14,6 +18,13 @@ export default function App() {
           </ul>
         </nav>
       </header>
+
+      <Routes>
+        <Route 
+          path='/'
+          element={<Dashboard hiredPeople={hiredPeople} />}
+        />
+      </Routes>
     </>
   )
 }
