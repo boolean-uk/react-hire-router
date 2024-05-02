@@ -9,6 +9,10 @@ import PersonProfile from './pages/PersonProfile'
 export default function App() {
   const [hiredPeople, setHiredPeople] = useState([])
 
+  const hire = (person) => {
+    setHiredPeople([...hiredPeople, person])
+  }
+
   return (
     <>
       <header>
@@ -28,7 +32,7 @@ export default function App() {
 
         <Route 
           path='/view/:id'
-          element={<PersonProfile />}
+          element={<PersonProfile hire={hire} />}
         />
       </Routes>
     </>

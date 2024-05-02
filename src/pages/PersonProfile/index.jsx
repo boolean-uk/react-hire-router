@@ -22,7 +22,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} hire={props.hire} />
     </article>
   )
 }
