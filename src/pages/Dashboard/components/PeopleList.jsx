@@ -1,12 +1,11 @@
 import PeopleListItem from './PeopleListItem'
 
 function PeopleList(props) {
-  const { people } = props
-
+  const { people, editable } = props
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+      {people?.map((person, index) => (
+        <PeopleListItem editable={editable} key={index} person={person} />
       ))}
     </ul>
   )

@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom";
+
 function PeopleListItem(props) {
-  const { person } = props
+  const { person, editable } = props
+
 
   return (
     <li>
       <h3>
-        {person.name.first} {person.name.last}
+     <Link to={`/${person.login.uuid}`}>{person.name.first} {person.name.last}</Link>
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      {person.wage && editable && <p>Wage: £{person.wage}</p>}
+      {editable && <Link to={`/${person.login.uuid}`}><button>Edit</button></Link>}
     </li>
   )
 }
