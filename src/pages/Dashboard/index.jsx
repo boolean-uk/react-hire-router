@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom"
 import PersonProfile from "../PersonProfile"
 
 function Dashboard(props) {
-    const { hiredPeople } = props
+    const { hiredPeople, setHiredPeople} = props
 
     const [people, setPeople] = useState([])
 
@@ -32,7 +32,7 @@ function Dashboard(props) {
             <Routes>
                 <Route
                     path="/person/:username"
-                    element={<PersonProfile people={people} />}
+                    element={<PersonProfile people={people} hiredPeople={hiredPeople} setHiredPeople={setHiredPeople}/>}
                 />
             </Routes>
         </>
