@@ -1,10 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function HireForm(props) {
+function HireForm({person, setHiredPeople, hiredPeople}) {
   const [wage, setWage] = useState(0)
+
+  const navigate = useNavigate()
 
   function handleSubmit(event) {
     event.preventDefault()
+    person.wage = event.target.value
+    setHiredPeople([...hiredPeople, person])
+    navigate('/dashboard')
   }
 
   return (
