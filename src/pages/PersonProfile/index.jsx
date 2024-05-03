@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
-import HireForm from './components/HireForm'
 import { useParams } from 'react-router-dom'
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
-  const { uuid } = useParams()
+import HireForm from './components/HireForm'
 
-  useEffect(() => {
-    fetch('https://randomuser.me/api/?results=50')
-      .then(res => res.json())
-      .then(p => {
-        const personProfile = p.results.find(profile => profile.uuid === uuid)
-        setPerson(personProfile)
-      })
-  }, [uuid])
+function PersonProfile(props) {
+  const { people, displayHiredPeople } = props
+
+  const [person, setPerson] = useState(null)
+
+  const params = useParams()
+
+  useEffect(() => {   
+    for (let i = 0; i < people.length; i++) {
+      if (params.id === people[i].login.uuid) 
+        setPerson(people[i])
+    }
+  }, [params, people])
 
   if (!person) return <p>Loading...</p>
 
@@ -22,7 +24,10 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} hire={props.hire} />
+      <HireForm 
+        person={person} 
+        displayHiredPeople={displayHiredPeople}
+      />
     </article>
   )
 }
