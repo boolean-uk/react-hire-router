@@ -18,14 +18,18 @@ function PersonProfile(props) {
 
 useEffect(() => {fetchApiData()}, [])
 
-  if (!person) return <p>Loading...{id}</p>
+function hirePerson(wageValue) {
+    props.addHiredPerson({...person, wage: wageValue})
+}
+
+  if (!person) return <p>Loading... </p>
 
   return (
     <article>
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} addUser={hirePerson} />
     </article>
   )
 }

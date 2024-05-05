@@ -5,6 +5,7 @@ function HireForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    props.addUser(wage)
   }
 
   return (
