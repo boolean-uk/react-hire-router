@@ -7,7 +7,7 @@ function PeopleListItem(props) {
     return (
         <li>
             <h3>
-                <Link to={`person/${person.login.username}`}>
+                <Link to={`/person/${person.login.username}`}>
                     {person.name.first} {person.name.last}
                 </Link>
             </h3>
