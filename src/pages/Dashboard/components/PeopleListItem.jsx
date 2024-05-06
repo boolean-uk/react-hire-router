@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 
 function PeopleListItem(props) {
-    const { person } = props
+    const { person , hiredList} = props
 
     return (
         <li>
@@ -11,7 +11,7 @@ function PeopleListItem(props) {
                     {person.name.first} {person.name.last}
                 </Link>
             </h3>
-            {person.wage && <p>Wage: £{person.wage}</p>}
+            {person.wage && hiredList && <><p>Wage: £{person.wage}</p> <Link to={`/person/${person.login.username}`}><button>Edit</button></Link></>}
         </li>
     )
 }
