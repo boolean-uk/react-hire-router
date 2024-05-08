@@ -1,19 +1,30 @@
-import { useState } from 'react'
-import HireForm from './components/HireForm'
+/* eslint-disable react/prop-types */
+import { useParams, useLocation } from "react-router-dom";
+import HireForm from "./components/HireForm";
 
 function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+  let { state } = useLocation();
+  let person = state != null ? state.person : null;
 
-  if (!person) return <p>Loading...</p>
+  const { addToHiredPeople } = props;
+  let { id } = useParams();
+
+  if (!person) return <p>Loading...</p>;
 
   return (
     <article>
       <h2>
-        {person.name.first} {person.name.last}
+        {person.name.title} {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <p>Email: {person.email}</p>
+      <p>Phone: {person.phone}</p>
+      <HireForm
+        person={person}
+        index={id}
+        addToHiredPeople={addToHiredPeople}
+      />
     </article>
-  )
+  );
 }
 
-export default PersonProfile
+export default PersonProfile;
