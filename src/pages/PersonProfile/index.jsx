@@ -1,19 +1,29 @@
-import { useState } from 'react'
-import HireForm from './components/HireForm'
+import { useState, useEffect } from 'react';
+import PeopleList from './components/PeopleList';
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+function Dashboard(props) {
+  const { hiredPeople } = props;
+  const [people, setPeople] = useState([]);
 
-  if (!person) return <p>Loading...</p>
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?results=50')
+      .then((response) => response.json())
+      .then((data) => setPeople(data.results))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
-    <article>
-      <h2>
-        {person.name.first} {person.name.last}
-      </h2>
-      <HireForm person={person} />
-    </article>
-  )
+    <main className="dashboard-layout">
+      <section>
+        <h2>People</h2>
+        <PeopleList people={people} />
+      </section>
+      <section>
+        <h2>Hired People</h2>
+        <PeopleList people={hiredPeople} />
+      </section>
+    </main>
+  );
 }
 
-export default PersonProfile
+export default Dashboard;
