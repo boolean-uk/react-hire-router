@@ -1,14 +1,13 @@
-function PeopleListItem(props) {
-  const { person } = props
+import React from 'react';
+import { Link } from 'react-router-dom';
 
+function PeopleListItem({ person, onHire }) {
   return (
     <li>
-      <h3>
-        {person.name.first} {person.name.last}
-      </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      <Link to={`/view/${person.login.uuid}`}>{person.name.first} {person.name.last}</Link>
+      {onHire && <button onClick={() => onHire(person)}>Hire</button>}
     </li>
-  )
+  );
 }
 
-export default PeopleListItem
+export default PeopleListItem;
