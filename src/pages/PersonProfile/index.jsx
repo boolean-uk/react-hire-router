@@ -1,8 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import HireForm from './components/HireForm'
+import { useParams } from 'react-router-dom'
 
-function PersonProfile(props) {
+import { AppContext } from '../../App'
+
+function PersonProfile() {
+  const { people, hiredPeople } = useContext(AppContext)
   const [person, setPerson] = useState(null)
+  
+  const uuid = useParams()
+
+  useEffect(() => {
+    people.find((person) => {
+      if (person.login.uuid === uuid.id) {
+        setPerson(person)
+      }
+    })
+  }, [])
 
   if (!person) return <p>Loading...</p>
 
@@ -11,7 +25,7 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      {hiredPeople.find((hp) => hp.login.uuid === person.login.uuid) ? <p>Hired</p> : <HireForm person={person} />}
     </article>
   )
 }
