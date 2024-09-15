@@ -1,13 +1,28 @@
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
 function PeopleListItem(props) {
-  const { person } = props
+  const { person, keyData } = props
+  const navigate = useNavigate()
+
+  function log(){
+    console.log('item:', person, keyData)
+  }
 
   return (
-    <li>
+    <li key={keyData}>
       <h3>
-        {person.name.first} {person.name.last}
+      <Link to={`/view/${keyData}`} onClick={log}>{person.name.first} {person.name.last} </Link>
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      <h4>
+        {person.wage && <p>Wage: £{person.wage}</p>}
+      </h4>
+      <button onClick={() => navigate(`/view/${keyData}`)}>
+        Edit
+      </button>
+      
+      
     </li>
+    
   )
 }
 
