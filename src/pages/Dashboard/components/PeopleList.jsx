@@ -1,15 +1,26 @@
-import PeopleListItem from './PeopleListItem'
+import PeopleListItem from "./PeopleListItem";
+
+import PropTypes from "prop-types";
 
 function PeopleList(props) {
-  const { people } = props
-
+  const { people } = props;
   return (
-    <ul>
+    <ul className="people-list">
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <PeopleListItem
+          key={index}
+          person={person}
+          id={index}
+          isHiredItem={props.isHiredList}
+        />
       ))}
     </ul>
-  )
+  );
 }
 
-export default PeopleList
+PeopleList.propTypes = {
+  people: PropTypes.array.isRequired,
+  isHiredList: PropTypes.bool,
+};
+
+export default PeopleList;
