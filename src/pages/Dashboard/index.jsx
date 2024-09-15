@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+// Dashboard.js
+import React, { useEffect, useState } from "react";
+import PeopleList from "./components/PeopleList";
+import { Link } from "react-router-dom";
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+function Dashboard({ people, hiredPeople }) {
+  console.log(hiredPeople);
   return (
     <main className="dashboard-layout">
       <section>
@@ -17,7 +16,7 @@ function Dashboard(props) {
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
