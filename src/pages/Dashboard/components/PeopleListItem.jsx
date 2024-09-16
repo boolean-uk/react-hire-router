@@ -1,14 +1,17 @@
 function PeopleListItem(props) {
-  const { person } = props
+
+  const { person, onHire, onView } = props
 
   return (
     <li>
       <h3>
-        {person.name.first} {person.name.last}
+        {person.name.first} {person.name.last} <br /> Wage: £
+        {person.wage || "0"}
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
+      <button onClick={() => onHire(person)}>Hire</button>
+      <button onClick={() => onView(person.login.uuid)}>View Profile</button>
     </li>
-  )
+  );
 }
 
-export default PeopleListItem
+export default PeopleListItem;
