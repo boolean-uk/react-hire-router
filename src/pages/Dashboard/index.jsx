@@ -1,16 +1,18 @@
-import { useState } from 'react'
 import PeopleList from './components/PeopleList'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+import PropTypes from 'prop-types'
 
-  const [people, setPeople] = useState([])
+Dashboard.propTypes = {
+  hiredPeople: PropTypes.array,
+  people: PropTypes.array
+}
 
+function Dashboard({ hiredPeople, people }) {
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        <PeopleList people={people} ignoreHired={true} />
       </section>
       <section>
         <h2>Hired People</h2>

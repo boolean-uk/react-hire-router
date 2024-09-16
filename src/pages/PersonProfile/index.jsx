@@ -1,17 +1,28 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import HireForm from './components/HireForm'
+import { useParams } from 'react-router-dom'
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+import PropTypes from 'prop-types'
 
-  if (!person) return <p>Loading...</p>
+PersonProfile.propTypes = {
+  people: PropTypes.array,
+  hiredCallback: PropTypes.func
+}
+
+function PersonProfile({ people, hiredCallback }) {
+  //const [person, setPerson] = useState(null)
+  //const id = useParams().id
+
+  //if (person === null || person === undefined) return <p>Loading...</p>
+
+  const _presonOut = people[useParams().id]
 
   return (
     <article>
       <h2>
-        {person.name.first} {person.name.last}
+        {_presonOut.name.first} {_presonOut.name.last}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={_presonOut} hiredCallback={hiredCallback} />
     </article>
   )
 }
