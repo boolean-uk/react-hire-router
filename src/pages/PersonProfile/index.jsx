@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useParams } from 'react'
 import HireForm from './components/HireForm'
 
 function PersonProfile(props) {
