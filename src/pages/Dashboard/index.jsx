@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import PeopleList from "./components/PeopleList";
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { hiredPeople, people, setHiredPeople } = props;
 
-  const [people, setPeople] = useState([])
+  const hirePerson = (person) => {
+    setHiredPeople(...hiredPeople, person);
+  };
 
   return (
     <main className="dashboard-layout">
@@ -14,10 +15,15 @@ function Dashboard(props) {
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList
+          people={hiredPeople}
+          hirePerson={hirePerson}
+          hiredPeople={hiredPeople}
+          setHiredPeople={setHiredPeople}
+        />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
