@@ -14,7 +14,7 @@
 
 ## Deliverables
 
-- A user can visit a "/" route (Dashboard) that shows a list of 50 people from 
+- A user can visit a "/" route (Dashboard) that shows a list of 50 people from
 [https://randomuser.me/documentation](https://randomuser.me/documentation) and an empty hired list
 - A user can click a link to view the person's profile
 - A user can visit a "/view/:id" route to view a person's profile
@@ -23,4 +23,4 @@
 ## Extensions
 
 - A user can click "Edit" in the hired column
-- A user can edit the page of the hired person AND be redirected to the dashboard and see those changes.
+- A user can edit the page of the hired person AND be redirected to the dashboard and see those changes
