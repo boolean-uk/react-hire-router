@@ -1,20 +1,29 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react'
 import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { people, hiredPeople } = props
+  const [peopleList, setPeopleList] = useState();
+  const [hiredPeopleList, setHiredPeopleList] = useState();
 
-  const [people, setPeople] = useState([])
+  useEffect(() => {
+    setPeopleList(<PeopleList people={people} edit={false} />)
+  }, [people]);
+
+  useEffect(() => {
+    setHiredPeopleList(<PeopleList people={hiredPeople} edit={true} />)
+  }, [hiredPeople]);
 
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        {peopleList && peopleList}
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        {hiredPeopleList && hiredPeopleList}
       </section>
     </main>
   )
