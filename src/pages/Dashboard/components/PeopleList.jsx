@@ -5,9 +5,11 @@ function PeopleList(props) {
 
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
-      ))}
+      {
+        people.map((person, index) => (
+          <PeopleListItem key={index} person={person} />
+        ))
+      }
     </ul>
   )
 }
