@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 function PeopleListItem(props) {
   const { person } = props
 
@@ -7,6 +8,9 @@ function PeopleListItem(props) {
         {person.name.first} {person.name.last}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
+      <Link to={`/profile/${person.name.first + person.name.last}`}>
+      View profile
+      </Link>
     </li>
   )
 }
