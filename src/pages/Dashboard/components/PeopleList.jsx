@@ -1,15 +1,22 @@
-import PeopleListItem from './PeopleListItem'
+import { Link } from 'react-router-dom';
+import PeopleListItem from './PeopleListItem';
 
 function PeopleList(props) {
-  const { people } = props
-
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+      {props.people?.map((person) => (
+        <li key={person.login.uuid}>
+          <PeopleListItem person={person} />
+          <Link
+            to={`/dashboard/${person.login.uuid}`}
+            state={{ person: person }}
+          >
+            See Person Details
+          </Link>
+        </li>
       ))}
     </ul>
-  )
+  );
 }
 
-export default PeopleList
+export default PeopleList;
