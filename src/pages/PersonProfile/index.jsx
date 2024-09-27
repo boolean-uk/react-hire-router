@@ -1,8 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import HireForm from './components/HireForm'
 
 function PersonProfile(props) {
   const [person, setPerson] = useState(null)
+  const { id } = useParams()
+  const { people, hiredPeople, setHiredPeople } = props
+
+  useEffect(() => {
+    if (people && id) {
+      const matchingPerson = people.results.find((person) =>
+      person.login.uuid === id)
+      setPerson(matchingPerson)
+    }
+  }, [people, id])
 
   if (!person) return <p>Loading...</p>
 
@@ -11,7 +22,19 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <img src={person.picture.large} alt={`${person.name.title} ${person.name.first} ${person.name.last}`}/>
+      <h3>Contact information</h3>
+      <p>E-Mail: {person.email}</p>
+      <p>Phone: {person.phone}</p>
+      <p>Cellphone: {person.cell}</p>
+      {/* Display hire form if the perosn is not already hired */
+        hiredPeople.filter((hiredPerson) => hiredPerson.login.uuid === person.login.uuid).length === 0 && (
+        <HireForm 
+          person={person} 
+          hiredPeople={hiredPeople}
+          setHiredPeople={setHiredPeople}
+        />
+      )}
     </article>
   )
 }
