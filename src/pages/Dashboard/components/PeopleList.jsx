@@ -1,6 +1,6 @@
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
+export default function PeopleList(props) {
   const { people } = props
 
   return (
@@ -11,5 +11,3 @@ function PeopleList(props) {
     </ul>
   )
 }
-
-export default PeopleList
