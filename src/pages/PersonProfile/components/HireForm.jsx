@@ -1,25 +1,34 @@
-import { useState } from 'react'
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 function HireForm(props) {
-  const [wage, setWage] = useState(0)
+  const { onPersonUpdate, person } = props;
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const [wage, setWage] = useState(person?.wage || "0");
+  
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const updatedPerson = { ...person, wage };
+    onPersonUpdate(id, updatedPerson);
+    navigate(-1);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+      <label htmlFor="wage">Wage:</label>
       <input
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
         value={wage}
+        onChange={(e) => setWage(e.target.value)}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">Update Wage</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
