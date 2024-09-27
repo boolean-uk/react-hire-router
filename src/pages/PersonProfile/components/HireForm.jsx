@@ -1,10 +1,16 @@
-import { useState } from 'react'
-
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
-
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+function HireForm({ person, setHiredPeople, hiredPeople }) {
+  const [wage, setWage] = useState(0);
+  const navigate = useNavigate();
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    person.wage = wage;
+    console.log(person);
+    setHiredPeople([...hiredPeople, person]);
+    console.log(hiredPeople);
+    navigate("/");
   }
 
   return (
@@ -14,12 +20,12 @@ function HireForm(props) {
         type="text"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={(e) => setWage(e.target.value)}
         value={wage}
       />
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
