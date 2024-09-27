@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { peopleContext } from '../../../App'
+import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
+const HireForm = (props) => {
+  const { hirePerson } = useContext(peopleContext)
+  const [wage, setWage] = useState(props.person.wage || 0)
+  const navigate = useNavigate()
 
-  function handleSubmit(event) {
-    event.preventDefault()
+  function handleSubmit(e) {
+    e.preventDefault()
+    hirePerson(props.person, e.target.children[1].value)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    navigate("/")
   }
 
   return (
@@ -20,6 +28,11 @@ function HireForm(props) {
       <button type="submit">Hire</button>
     </form>
   )
+}
+
+HireForm.propTypes = {
+  hirePerson: PropTypes.func,
+  person: PropTypes.object,
 }
 
 export default HireForm
