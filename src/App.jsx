@@ -34,7 +34,7 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path="/people/:id" element={<PeopleProfile people={people}  setHiredPeople={setHiredPeople}/>} />
+        <Route path="/people/:id" element={<PeopleProfile people={people} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople}/>} />
         <Route path="/dashboard" element={<Dashboard hiredPeople={hiredPeople} people={people} />} />
       </Routes>
     </>
