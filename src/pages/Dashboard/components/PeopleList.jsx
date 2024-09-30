@@ -1,15 +1,27 @@
-import PeopleListItem from './PeopleListItem'
+import { useState } from "react";
+import PeopleListItem from "./PeopleListItem";
 
-function PeopleList(props) {
-  const { people } = props
+export default function PeopleList({ people, setPeople, editable }) {
+  const [editing, setEditing] = useState(false);
 
   return (
-    <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
-      ))}
-    </ul>
-  )
+    <>
+      {editable && (
+        <button onClick={() => setEditing((prevEditing) => !prevEditing)}>
+          {editing ? "Done" : "Edit"}
+        </button>
+      )}
+      <ul>
+        {people.map((person) => (
+          <PeopleListItem
+            key={person.login.uuid}
+            person={person}
+            people={people}
+            setPeople={setPeople}
+            editable={editable && editing}
+          />
+        ))}
+      </ul>
+    </>
+  );
 }
-
-export default PeopleList

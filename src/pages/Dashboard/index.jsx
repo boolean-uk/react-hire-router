@@ -1,23 +1,20 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import PeopleList from "./components/PeopleList";
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+export default function Dashboard({ people, hiredPeople, setHiredPeople }) {
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        <PeopleList people={people} editable={false} />
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <PeopleList
+          people={hiredPeople}
+          setPeople={setHiredPeople}
+          editable={true}
+        />
       </section>
     </main>
-  )
+  );
 }
-
-export default Dashboard
