@@ -1,5 +1,4 @@
 import PeopleListItem from './PeopleListItem'
-
 function PeopleList(props) {
   const { people } = props
 
@@ -7,6 +6,7 @@ function PeopleList(props) {
     <ul>
       {people.map((person, index) => (
         <PeopleListItem key={index} person={person} />
+        
       ))}
     </ul>
   )
