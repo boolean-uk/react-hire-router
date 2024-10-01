@@ -1,18 +1,16 @@
-import { useState } from 'react'
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+
 import PeopleList from './components/PeopleList'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+export default function Dashboard({people, hiredPeople}) {
   return (
     <main className="dashboard-layout">
-      <section>
+      <section className='people'>
         <h2>People</h2>
         <PeopleList people={people} />
       </section>
-      <section>
+      <section className='hired-people'>
         <h2>Hired People</h2>
         <PeopleList people={hiredPeople} />
       </section>
@@ -20,4 +18,3 @@ function Dashboard(props) {
   )
 }
 
-export default Dashboard

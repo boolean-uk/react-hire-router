@@ -6,5 +6,55 @@
 .dashboard-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+}
+
+input {
+  margin-inline: 1rem;
+}
+
+.person-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.person img {
+  border-radius: 5%;
+  margin-left: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 2rem;  
+}
+
+button {
+  background-color: #7bb97b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e713e;
+
+}
+
+.hired-people li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+
+.people li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
 }

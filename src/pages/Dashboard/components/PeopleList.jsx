@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
-  const { people } = props
-
+export default function PeopleList({people}) {
   return (
     <ul>
       {people.map((person, index) => (
@@ -12,4 +12,3 @@ function PeopleList(props) {
   )
 }
 
-export default PeopleList
