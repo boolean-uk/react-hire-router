@@ -1,19 +1,31 @@
-import { useState } from 'react'
 import HireForm from './components/HireForm'
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 
-function PersonProfile(props) {
+function PersonProfile({people, setHiredPeople, hiredPeople, wage, setWage}) {
   const [person, setPerson] = useState(null)
 
-  if (!person) return <p>Loading...</p>
+  const { id } = useParams()
+
+  useEffect(() => {
+    setPerson(people.find(p => p.id === parseInt(id)))
+  }, [])
+
+  if(!person) return <h3>Loading...</h3>
 
   return (
     <article>
       <h2>
-        {person.name.first} {person.name.last}
+        {person.name.first}
       </h2>
-      <HireForm person={person} />
+      <HireForm person={person} setHiredPeople={setHiredPeople} hiredPeople={hiredPeople} wage={wage} setWage={setWage}/>
     </article>
   )
 }
 
 export default PersonProfile
+
+PersonProfile.propType = {
+  person: PropTypes.array,
+}
