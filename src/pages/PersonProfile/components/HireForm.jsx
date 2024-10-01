@@ -1,12 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 
 function HireForm(props) {
+  const { onHire } = props;
   const [wage, setWage] = useState(0)
+ 
 
   function handleSubmit(event) {
     event.preventDefault()
+    onHire(wage);
   }
-
+    
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="wage">Wage Offer</label>
