@@ -1,12 +1,13 @@
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
-  const { people } = props
+// eslint-disable-next-line react/prop-types
+function PeopleList({people, hired}) {
 
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+      {/* eslint-disable-next-line react/prop-types*/}
+      {people.map((person) => (
+        <PeopleListItem key={person.email} person={person} hired={hired} />
       ))}
     </ul>
   )
