@@ -2,9 +2,10 @@ import { useState } from 'react'
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
-
+  const {person, onHire}= props
   function handleSubmit(event) {
     event.preventDefault()
+    onHire(wage)
   }
 
   return (
