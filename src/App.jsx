@@ -1,19 +1,29 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import PersonProfile from "./pages/PersonProfile";
 
 export default function App() {
-  const [hiredPeople, setHiredPeople] = useState([])
+  const [hiredPeople, setHiredPeople] = useState([]);
+  const [people, setPeople] = useState([]);
+
+  const navigate = useNavigate();
+
+  const hirePerson = (person) => {
+    setHiredPeople([...hiredPeople, person]);
+    navigate("/"); 
+  };
 
   return (
-    <>
-      <header>
-        <h1>Hire Your Team</h1>
-        <nav>
-          <ul>
-            <li>Dashboard</li>
-          </ul>
-        </nav>
-      </header>
-    </>
-  )
+    <Routes>
+      <Route 
+        path="/" 
+        element={<Dashboard people={people} setPeople={setPeople} hiredPeople={hiredPeople} />} 
+      />
+      <Route 
+        path="/view/:id" 
+        element={<PersonProfile people={people} onHire={hirePerson} />} 
+      />
+    </Routes>
+  );
 }
