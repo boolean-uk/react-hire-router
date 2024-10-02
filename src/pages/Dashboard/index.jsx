@@ -1,11 +1,7 @@
-import { useState } from 'react'
 import PeopleList from './components/PeopleList'
+import { Link } from 'react-router-dom'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+function Dashboard({ people, hiredPeople }) {
   return (
     <main className="dashboard-layout">
       <section>

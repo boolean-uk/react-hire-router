@@ -1,17 +1,20 @@
-import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import HireForm from './components/HireForm'
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+function PersonProfile({ people, hirePerson }) {
+  const { id } = useParams()
 
-  if (!person) return <p>Loading...</p>
+  const person = people.find((p) => p.login.uuid === id)
 
   return (
     <article>
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      <img src={person.picture.large} alt={`${person.name.first} ${person.name.last}`} />
+      <p>Location: {person.location.city}, {person.location.country}</p>
+
+      <HireForm person={person} hirePerson={hirePerson} />
     </article>
   )
 }
