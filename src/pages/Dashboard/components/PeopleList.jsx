@@ -1,11 +1,14 @@
 import PeopleListItem from './PeopleListItem'
+import { usePeople } from '../../../context/PersonProvider'
 
-function PeopleList(props) {
-  const { people } = props
+function PeopleList() {
+  const { people } = usePeople();
+
+  const notHired = people.filter(person => !person.hired);
 
   return (
     <ul>
-      {people.map((person, index) => (
+      {notHired.map((person, index) => (
         <PeopleListItem key={index} person={person} />
       ))}
     </ul>
