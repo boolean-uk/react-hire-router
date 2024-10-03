@@ -1,13 +1,12 @@
-import { useState } from 'react'
+
 import PeopleList from './components/PeopleList'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+// eslint-disable-next-line react/prop-types
+export default function Dashboard({people, hiredPeople}) { //two props, people which is array fetched from api and hiredPeople which is people hired.
+  
 
-  const [people, setPeople] = useState([])
-
-  return (
-    <main className="dashboard-layout">
+  return (                                       
+    <main className="dashboard-layout">        
       <section>
         <h2>People</h2>
         <PeopleList people={people} />
@@ -20,4 +19,4 @@ function Dashboard(props) {
   )
 }
 
-export default Dashboard
+{/* dashboard layout with two sections. One for people and one for hired people. */}
