@@ -1,0 +1,60 @@
+/* Profile article container */
+article.profile {
+    background-color: #f4f4f9;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Profile name styling */
+  .profilename {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Profile information container */
+  .profile-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Profile picture styling */
+  .profile-info img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  /* Basic info container */
+  .basic-info {
+    flex-grow: 1;
+  }
+  
+  /* Basic info list */
+  .basic-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .basic-info li {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  /* Bolded labels for email and phone */
+  .basic-info li strong {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  /* General text color for email and phone */
+  .basic-info li {
+    color: #555;
+  }
