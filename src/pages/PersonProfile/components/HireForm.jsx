@@ -1,25 +1,27 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
+function HireForm({ person, setHiredPeople, hiredPeople }) {
+  const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const handleHire = (event) => {
+    event.preventDefault();
+
+    const isHired = hiredPeople.some((p) => p.login.uuid === person.login.uuid);
+
+    if (!isHired) {
+      setHiredPeople([...hiredPeople, person]);
+    }
+
+    navigate('/');  // Redirect to the dashboard after hiring
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
-      <input
-        type="text"
-        id="wage"
-        name="wage"
-        onChange={e => setWage(e.target.value)}
-        value={wage}
-      />
+    <form onSubmit={handleHire}>
       <button type="submit">Hire</button>
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
+
+

@@ -1,23 +1,28 @@
-import { useState } from 'react'
-import PeopleList from './components/PeopleList'
+import PropTypes from 'prop-types';
+import PeopleList from './components/PeopleList';
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
-
+function Dashboard({ people, hiredPeople }) {
   return (
     <main className="dashboard-layout">
       <section>
-        <h2>People</h2>
-        <PeopleList people={people} />
+        <h2>Available People</h2>
+        <PeopleList people={people.filter(person => !hiredPeople.some(hired => hired.login.uuid === person.login.uuid))} />
       </section>
       <section>
         <h2>Hired People</h2>
         <PeopleList people={hiredPeople} />
       </section>
     </main>
-  )
+  );
 }
 
-export default Dashboard
+Dashboard.propTypes = {
+  people: PropTypes.array.isRequired,
+  hiredPeople: PropTypes.array.isRequired,
+};
+
+export default Dashboard;
+
+
+
+
