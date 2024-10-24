@@ -1,10 +1,18 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function HireForm(props) {
+  const { person, handleClickHirePerson } = props
   const [wage, setWage] = useState(0)
-
+  
   function handleSubmit(event) {
     event.preventDefault()
+    if (wage === 0) {
+      alert('Please enter a valid wage (can\'t be 0)')
+      return      
+    }
+    const personToHire = { ...person, wage: parseFloat(wage) };
+    handleClickHirePerson(personToHire) 
   }
 
   return (
