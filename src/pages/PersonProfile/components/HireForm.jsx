@@ -1,25 +1,47 @@
-import { useState } from 'react'
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
+import { noXssOrSql } from '../../Validation';
 
 function HireForm(props) {
-  const [wage, setWage] = useState(0)
+  const [wage, setWage] = useState("");
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
+  const {person, onHire} = props;
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setWage(value);
+    setIsInvalidInput(noXssOrSql(value));
+  };
+  
+  const handleSubmit = (event)  => {
+    event.preventDefault();
+    onHire(person);
+    person.wage = wage;
+    person.isHired = true;
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="wage">Wage Offer</label>
+    <form className='text-box-container' onSubmit={handleSubmit}>
+      <div className='text-box'>
+      <label htmlFor="wage">Wage Offer ($/hour): </label>
       <input
-        type="text"
+        type="number"
         id="wage"
         name="wage"
-        onChange={e => setWage(e.target.value)}
+        onChange={handleInputChange}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      </div>
+      
+      <button type="submit" disabled={isInvalidInput}>Hire</button>
+      {isInvalidInput && 
+      <small 
+        style={{ color: 'red' }}>Potential harmful code detected
+      </small>
+      }
     </form>
-  )
+  );
 }
 
-export default HireForm
+export default HireForm;
