@@ -8,3 +8,22 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+.mb-3 li input{
+  display: flex;
+  flex-direction: row;
+  text-transform: capitalize;
+  width: max-content;
+  float: right;
+}
+.mb-3 li label{
+  display: flex; 
+  flex-direction: row;
+  text-transform: capitalize; 
+  width: max-content;
+  float: left;
+}
+.mb-3 li {
+  width: 250px;
+  
+}
