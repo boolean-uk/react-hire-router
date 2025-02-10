@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function HireForm(props) {
+function HireForm({person, hiredPeople, setHiredPeople}) {
   const [wage, setWage] = useState(0)
+  const navigate = useNavigate()
+
 
   function handleSubmit(event) {
     event.preventDefault()
+
+    person.wage = wage;
+
+    setHiredPeople(hiredPeople => [...hiredPeople, person]);
+    console.log(hiredPeople)
+    navigate("/");
   }
 
   return (
@@ -23,3 +33,7 @@ function HireForm(props) {
 }
 
 export default HireForm
+
+HireForm.propTypes = {
+  setHiredPeople: PropTypes.func
+}
