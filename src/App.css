@@ -8,3 +8,22 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+h1{
+  color: black ;
+  font-size: 40px;
+
+}
+
+h2{
+
+  font-size: 30px;
+}
+
+.container {
+  background-color: #f8f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  list-style-type: none;
+}
+

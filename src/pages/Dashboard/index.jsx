@@ -1,20 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PeopleList from './components/PeopleList'
+import {json, useNavigate} from 'react-router-dom'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
+function Dashboard({hiredPeople, SetHiredPeopl,people}) {
+  const navigate = useNavigate()
+  
+  const handleEdit = (person) => {
 
-  const [people, setPeople] = useState([])
+    navigate(`/edit/${person.login.uuid}`)
+  }
+
+
 
   return (
     <main className="dashboard-layout">
       <section>
-        <h2>People</h2>
+        <h2>People:</h2>
         <PeopleList people={people} />
       </section>
       <section>
-        <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        <h2>Hired People:</h2>
+        <PeopleList people={hiredPeople} onEdit={handleEdit} />
       </section>
     </main>
   )
