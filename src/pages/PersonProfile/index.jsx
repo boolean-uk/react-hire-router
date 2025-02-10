@@ -1,18 +1,24 @@
-import { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import HireForm from './components/HireForm'
+import Card from '../Dashboard/components/Card'
+function PersonProfile({ people, onHire }) {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const person = people.find(p => p.id === parseInt(id))
 
-function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+  if (!person) return <p className="text-center">Loading...</p>
 
-  if (!person) return <p>Loading...</p>
+  const handleHire = (wage) => {
+    onHire(person, wage)
+    navigate('/')
+  }
 
   return (
-    <article>
-      <h2>
-        {person.name.first} {person.name.last}
-      </h2>
-      <HireForm person={person} />
-    </article>
+    <div className="mx-auto" style={{maxWidth: '500px'}}>
+      <Card title={`${person.name.first} ${person.name.last}`}>
+        <HireForm onHire={handleHire} />
+      </Card>
+    </div>
   )
 }
 
