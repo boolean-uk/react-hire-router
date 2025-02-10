@@ -1,8 +1,20 @@
-import { useState } from 'react'
+import HiredPersonForm from './components/HiredPersonForm'
 import HireForm from './components/HireForm'
+import { useParams } from 'react-router-dom'
 
 function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+  // const [person, setPerson] = useState(null)
+  const people = props.people
+  const id = useParams()
+  const hirePerson = props.hirePerson
+
+  const hireHandler = (wage) => {
+    person.wage = wage
+    hirePerson(person)
+  }
+
+  const person = people.find((p) =>
+    p.id == id.id)
 
   if (!person) return <p>Loading...</p>
 
@@ -11,7 +23,11 @@ function PersonProfile(props) {
       <h2>
         {person.name.first} {person.name.last}
       </h2>
-      <HireForm person={person} />
+      {person.wage == null ?
+        <HireForm person={person} hireHandler={hireHandler} />
+        :
+        <HiredPersonForm person={person} hireHandler={hireHandler} />
+      }
     </article>
   )
 }
