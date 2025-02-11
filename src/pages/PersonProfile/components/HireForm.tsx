@@ -1,10 +1,13 @@
+import React from 'react'
 import { useState } from 'react'
 
 function HireForm(props) {
   const [wage, setWage] = useState(0)
-
+  const {hiredPeople} = props;
+  const {Person}  = props;
   function handleSubmit(event) {
     event.preventDefault()
+    props.setHiredPeople(()=> [...hiredPeople, Person])
   }
 
   return (
