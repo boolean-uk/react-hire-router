@@ -1,14 +1,15 @@
-function PeopleListItem(props) {
-  const { person } = props
 
+
+function PeopleListItem({ person }) {
   return (
-    <li>
+    <div>
       <h3>
         {person.name.first} {person.name.last}
       </h3>
       {person.wage && <p>Wage: £{person.wage}</p>}
-    </li>
-  )
+    </div>
+  );
 }
 
-export default PeopleListItem
+export default PeopleListItem;
+
