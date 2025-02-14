@@ -8,3 +8,39 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+.no-bullet-points {
+  list-style-type: none;
+}
+
+.person-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.person-card:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.person-card img {
+  width: 100%;
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.person-card-left h3 {
+  margin: auto 0;
+  padding-left: 2rem;
+}
+
+.person-card-left {
+  display: flex;
+}
+
+.person-card-right {
+  margin: auto 0;
+}

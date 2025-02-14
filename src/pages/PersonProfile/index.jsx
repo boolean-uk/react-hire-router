@@ -1,19 +1,54 @@
-import { useState } from 'react'
-import HireForm from './components/HireForm'
+import {useEffect, useState} from 'react'
+import personShape from "../../validators/personShape.js";
+import PropTypes from "prop-types";
+import {useNavigate, useParams} from "react-router-dom";
 
 function PersonProfile(props) {
-  const [person, setPerson] = useState(null)
+  const {people, setPeople} = props
+  const [form, setForm] = useState(null)
+  const id = Number.parseInt(useParams().id)
+  const navigate = useNavigate()
 
-  if (!person) return <p>Loading...</p>
+    useEffect(() => {
+        setForm(people[id])
+    }, [id, people])
+
+  if (!form) return <p>Loading...</p>
+
+    const handleChange = (event) => {
+        let wage = Number.parseInt(event.target.value)
+
+        setForm({...form, wage: Number.isNaN(wage) ? 0 : wage})
+    }
+
+    const handleUpdatePerson = () => {
+        setPeople((people) => {
+            return people.map((p) => {
+                if (p.id.value === form.id.value) {
+                    return form
+                }
+                return p
+            })
+        })
+        alert("Saved!")
+        navigate("/")
+    }
 
   return (
     <article>
       <h2>
-        {person.name.first} {person.name.last}
+        {form.name.first} {form.name.last}
       </h2>
-      <HireForm person={person} />
+        {/*<HireForm person={person} />*/}
+        <input type={"text"} placeholder={"Wage"} onChange={handleChange} value={form.wage ?? 0}/>
+        <button onClick={handleUpdatePerson}>Save</button>
     </article>
   )
+}
+
+PersonProfile.propTypes = {
+  people: PropTypes.arrayOf(personShape),
+  setPeople: PropTypes.func.isRequired
 }
 
 export default PersonProfile
