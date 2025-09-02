@@ -1,10 +1,121 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+:root {
+  --primary-bg: #F1F0E4;
+  --header-bg: #3E3F29;
+  --header-text: #F1F0E4;
+  --nav-bg: #7D8D86;
+  --nav-link: #F1F0E4;
+  --nav-link-hover: #BCA88D;
+  --card-bg: #fff;
+  --accent: #BCA88D;
+  --accent-hover: #7D8D86;
+  --text-main: #3E3F29;
+  --text-secondary: #7D8D86;
+  --border: #BCA88D;
+}
+
+body, .App {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--primary-bg);
+  min-height: 100vh;
+  color: var(--text-main);
+  margin: 0;
+}
+
+header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 2rem 0 1rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(62, 63, 41, 0.08);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background: var(--nav-bg);
+  border-radius: 8px;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  color: var(--nav-link);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background: var(--nav-link-hover);
+  color: var(--header-bg);
 }
 
 .dashboard-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+}
+
+.user_profile {
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin: 10px 0;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(62, 63, 41, 0.08);
+  list-style: none;
+  border: 1px solid var(--border);
+}
+
+.user_profile li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user_profile img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  background: var(--primary-bg);
+}
+
+.profile_name {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: var(--text-main);
+}
+
+.profile_name a {
+  text-decoration: none;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+.profile_name a:hover {
+  color: var(--accent-hover);
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
 }
