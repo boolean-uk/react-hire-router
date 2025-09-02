@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 
-function HireForm({hirePerson, navigate}) {
+function HireForm({hirePerson, navigate, personId}) {
   const [wage, setWage] = useState(0)
 
   function handleSubmit(event) {
     event.preventDefault()
-    hirePerson(wage)
+    hirePerson(wage, personId)
     navigate("/")
   }
-
-
 
   return (
     <form onSubmit={handleSubmit}>

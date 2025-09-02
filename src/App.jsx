@@ -9,9 +9,6 @@ export default function App() {
   const [hiredPeople, setHiredPeople] = useState([]);
   const [people, setPeople] = useState([]);
 
-  const [user, setUser] = useState({
-    login: {uuid: ""}});
-
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -24,16 +21,17 @@ export default function App() {
   }, []);
 
   const goToProfile = (user) => (
-    setUser(user)
-  )
-  
-  useEffect(() => {
     navigate(`/view/${user.login.uuid}`)
-  }, [user])
+  )
 
-  const hirePerson = (wage) => {
-    user.wage = wage;
-    setHiredPeople(prevHiredPeople => [...prevHiredPeople, user]);
+  const hirePerson = (wage, id) => {
+    const person = people.find(p => p.login.uuid === id);
+    if (hiredPeople.includes(person)) {
+      person.wage = wage;
+    } else {
+      person.wage = wage;
+      setHiredPeople(prevHiredPeople => [...prevHiredPeople, person]);
+    }
   }
 
   return (
@@ -50,7 +48,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Dashboard hiredPeople={hiredPeople} people={people} goToProfile={goToProfile}/>} />
-            <Route path="/view/:id" element={<PersonProfile person={user} hirePerson={hirePerson} navigate={navigate}/>}/>
+            <Route path="/view/:id" element={<PersonProfile people={people} hirePerson={hirePerson} navigate={navigate}/>}/>
           </Routes>
         </main>
       </header>
