@@ -1,0 +1,27 @@
+.dashboard-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard-layout section {
+  flex: 1 1 400px;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-layout h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}

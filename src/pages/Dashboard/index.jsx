@@ -1,20 +1,18 @@
-import { useState } from 'react'
+import HiredList from './components/HiredList'
 import PeopleList from './components/PeopleList'
+import './Dashboard.css'
 
-function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
+function Dashboard({people, hiredPeople}) {
 
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+        {people && <PeopleList people={people}/>}
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+        {hiredPeople && <HiredList people={hiredPeople}/>}
       </section>
     </main>
   )

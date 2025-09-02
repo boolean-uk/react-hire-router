@@ -1,10 +1,62 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #5985b1;
+  color: #333;
 }
 
-.dashboard-layout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+header {
+  background-color: #86a8df;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #86a8df;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-family: 'Franklin Gothic Medium';
+  margin: 0;
+  color: #16145f;
+}
+
+header h1:hover {
+  background-color: #e6f2fb;
+  color: #005fa3;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+header nav li {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: #16145f;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+header nav a:hover {
+  background-color: #e6f2fb;
+  color: #005fa3;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }

@@ -1,0 +1,15 @@
+article {
+  background-color: #ffffff;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+article h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
