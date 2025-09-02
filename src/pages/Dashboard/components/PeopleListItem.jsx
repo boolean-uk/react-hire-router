@@ -1,12 +1,20 @@
+import { Link, useNavigate } from "react-router-dom"
+import './PeopleListItem.css'
+import { Navigate } from "react-router-dom"
+
 function PeopleListItem(props) {
   const { person } = props
+  const nav = useNavigate()
+
+  const handleNavigate = () => {nav(`/view/${person.login.uuid}`)}
 
   return (
-    <li>
+    <li className="people-list-item" onClick={handleNavigate}>
       <h3>
-        {person.name.first} {person.name.last}
+      <img src={person.picture.thumbnail}></img>
+      {person.name.first} {person.name.last}
+      <p className="email">{person.email}</p>
       </h3>
-      {person.wage && <p>Wage: £{person.wage}</p>}
     </li>
   )
 }
