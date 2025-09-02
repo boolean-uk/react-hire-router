@@ -1,13 +1,22 @@
-function PeopleListItem(props) {
-  const { person } = props
 
+import { Link, useParams } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import PersonProfile from "../../PersonProfile";
+
+function PeopleListItem({data, hired, setHired}) {
+  const { id } = useParams();
+  const person = data.find((x) => x.login.uuid === String(id));
+  console.log(hired)
   return (
+    <>
     <li>
-      <h3>
-        {person.name.first} {person.name.last}
-      </h3>
+
       {person.wage && <p>Wage: £{person.wage}</p>}
+      <PersonProfile personn={person} hired={hired} setHired={setHired}/>
     </li>
+
+    </>
+
   )
 }
 
