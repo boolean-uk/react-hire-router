@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 .App {
-  font-family: sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   text-align: center;
 }
 
@@ -7,4 +9,39 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+}
+
+button{
+    height: 2rem;
+    background-color: rgb(126, 134, 80);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: rgb(185, 197, 119);
+}
+
+ul {
+  list-style: none;
+}
+
+form > * {
+  margin: 0.5rem;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  -ms-flex-align: center;
+}
+
+.form-col > button {
+  width: fit-content;
+  align-self: center;
+}
+
+.pic{
+  align-self: center;
 }

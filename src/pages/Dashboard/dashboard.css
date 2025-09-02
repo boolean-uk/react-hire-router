@@ -1,0 +1,25 @@
+.person-li{
+    font-family: "Nunito";
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  padding: 0.5rem;
+}
+
+.person-li :hover{
+  background-color: rgb(240, 238, 232);
+}
+
+li img{
+    border-radius: 50%;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

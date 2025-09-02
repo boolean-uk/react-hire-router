@@ -1,10 +1,10 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
 import PeopleList from './components/PeopleList'
+import './dashboard.css'
 
 function Dashboard(props) {
-  const { hiredPeople } = props
-
-  const [people, setPeople] = useState([])
+  const { hiredPeople, people } = props
+  
 
   return (
     <main className="dashboard-layout">
