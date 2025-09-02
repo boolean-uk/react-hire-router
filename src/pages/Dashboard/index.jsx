@@ -1,21 +1,25 @@
-import { useState } from 'react'
+import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import { useState, useEffect } from 'react'
 import PeopleList from './components/PeopleList'
+import PersonProfile from '../PersonProfile';
 
 function Dashboard(props) {
-  const { hiredPeople } = props
+  const { hiredPeople, setHiredPeople, people} = props
 
-  const [people, setPeople] = useState([])
+  
 
   return (
     <main className="dashboard-layout">
       <section>
         <h2>People</h2>
-        <PeopleList people={people} />
+          <PeopleList people={people} />
       </section>
       <section>
         <h2>Hired People</h2>
-        <PeopleList people={hiredPeople} />
+          <PeopleList people={hiredPeople} />
       </section>
+
+
     </main>
   )
 }

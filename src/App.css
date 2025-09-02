@@ -1,3 +1,76 @@
+body {
+  background: #ffe4f7;
+  color: #d72660;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(90deg, #ffb6e6 0%, #ff69b4 100%);
+  color: white;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 8px #ffb6e6;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+main {
+  background: #fff0f6;
+  border-radius: 16px;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 800px;
+  box-shadow: 0 4px 24px #ffb6e6;
+}
+
+article {
+  background: #fff6fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px #ffb6e6;
+}
+
+h2, h3 {
+  color: #d72660;
+}
+
+a {
+  color: #d72660;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #ff69b4;
+  text-decoration: underline;
+}
+
+button, input[type="submit"] {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+
+button:hover, input[type="submit"]:hover {
+  background: #d72660;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
