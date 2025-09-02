@@ -1,5 +1,6 @@
-function PeopleListItem(props) {
-  const { person } = props
+/* eslint-disable react/prop-types */ 
+
+function PeopleListItem({ person }) {
 
   return (
     <li>
