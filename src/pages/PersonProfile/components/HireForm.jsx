@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-function HireForm(props) {
+function HireForm({hirePerson, navigate}) {
   const [wage, setWage] = useState(0)
 
   function handleSubmit(event) {
     event.preventDefault()
+    hirePerson(wage)
+    navigate("/")
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>
