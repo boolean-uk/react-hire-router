@@ -3,8 +3,8 @@ import PeopleList from './components/PeopleList'
 
 function Dashboard(props) {
   const { hiredPeople } = props
+  const { people } = props
 
-  const [people, setPeople] = useState([])
 
   return (
     <main className="dashboard-layout">
