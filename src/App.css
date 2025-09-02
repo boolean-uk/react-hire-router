@@ -8,3 +8,37 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+h2 {
+  text-align:center;
+}
+
+.no-bullets li{
+  list-style-type: none;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom:20px;
+  padding:20px;
+  padding-right:22px;
+}
+
+.profiles {
+  border: 1px solid blue;
+  background:lightgrey;
+  margin-right:40px
+}
+
+.profile-image {
+  width:150px
+}
+
+hr {
+  height:3px;
+  background:black;
+  width:300px
+}
+
+
+
+
