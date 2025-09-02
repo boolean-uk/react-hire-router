@@ -1,11 +1,39 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-function HireForm(props) {
+function HireForm({ person, setHiredPeople }) {
+
+  const navigate = useNavigate();
   const [wage, setWage] = useState(0)
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (person.hired) {
+        // Update existing wage
+        setHiredPeople((prev) => 
+          prev.map((p) => p.login.uuid == person.login.uuid
+            ? { ...p, wage: wage }
+            : p
+          )
+        );
+      }
+      else {
+        // Add new person with wage
+        person.wage = wage;
+        person.hired = true;
+
+        setHiredPeople((prev) => [
+          ...prev,
+          person
+        ])
+      }
+      navigate('/dashboard');
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
