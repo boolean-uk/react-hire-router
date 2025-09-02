@@ -1,5 +1,4 @@
-function PeopleListItem(props) {
-  const { person } = props
+function PeopleListItem( { person }) {
 
   return (
     <li>
@@ -11,4 +10,4 @@ function PeopleListItem(props) {
   )
 }
 
-export default PeopleListItem
+export default PeopleListItem;
