@@ -1,12 +1,11 @@
 import PeopleListItem from './PeopleListItem'
 
-function PeopleList(props) {
-  const { people } = props
+function PeopleList({ people, showWage = false, isHired = false }) {
 
   return (
     <ul>
-      {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+      {people.map((person) => (
+        <PeopleListItem key={person.id} person={person} id={person.id} showWage={showWage} isHired={isHired} />
       ))}
     </ul>
   )

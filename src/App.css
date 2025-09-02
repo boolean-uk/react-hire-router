@@ -8,3 +8,50 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+
+header {
+  background-color: #041a30;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  font-size: large;
+}
+
+main {
+  background-color: #073349;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin-left: 10px;
+  background-color: #534a4a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #23292c, #343637);
+  transform: translateY(-1px);
+}
+
+li {
+  list-style: none;
+  background: rgb(248, 243, 243);
+  border-radius: 12px;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+}
+
+li:hover {
+  transform: scale(1.02);
+}
