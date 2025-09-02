@@ -9,7 +9,7 @@ function PeopleList(props) {
     <ul>
       {people.map((person, index) => (
         <>
-        <Link to={`/view/${person.id.value}`}>
+        <Link to={`/view/${person.login.uuid}`}>
           <PeopleListItem key={index} person={person} />
         </Link>
         </>
