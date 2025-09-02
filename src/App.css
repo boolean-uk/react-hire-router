@@ -1,3 +1,29 @@
+/* Base Styles */
+body {
+  background-color: #f3f4f6; /* Neutral modern background */
+  font-family: 'Inter', Arial, sans-serif;
+  color: #1f2937; /* Dark gray for readability */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #C2CFB2; /* Modern blue accent */
+  color: 7E8987;
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Layout */
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -5,6 +31,83 @@
 
 .dashboard-layout {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  background-color: #8DB580; /* Warm cream color for a welcoming and soft look */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #8DB580;
+}
+
+section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  color: #4B4A67;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #eff6ff; /* Light blue for subtle contrast */
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-left: 4px solid #7E8987;
+}
+
+li:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #8DB580;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #7E8987; /* Darker blue for hover */
+}
+
+/* Buttons */
+button {
+  background-color: #8DB580;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+button:hover {
+  background-color: #7E8987;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #7E8987;
 }
