@@ -1,11 +1,14 @@
 import { useState } from 'react'
 
-function HireForm(props) {
-  const [wage, setWage] = useState(0)
+function HireForm({person, hirePerson}) {
+  const [wage, setWage] = useState(person.wage)
+  console.log("Hireform")
+  console.log(person)
 
-  function handleSubmit(event) {
-    event.preventDefault()
-  }
+  const handleSubmit = (e) => {
+  e.preventDefault()
+  hirePerson({ ...person, wage })
+}
 
   return (
     <form onSubmit={handleSubmit}>
@@ -18,7 +21,7 @@ function HireForm(props) {
         value={wage}
       />
       <button type="submit">Hire</button>
-    </form>
+</form>
   )
 }
 
