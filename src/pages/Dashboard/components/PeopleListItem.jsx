@@ -4,19 +4,19 @@ import { Link, Route, Routes } from "react-router-dom"
 
 /* eslint-disable react/prop-types */
 function PeopleListItem(props) {
-  const { person, id} = props
+  const { person, id, hired } = props
 
 
   return (
     <>
-      <Link to={`/view/${id}`}>
+      
         <li>
           <h3>
             {person.name.first} {person.name.last}
           </h3>
           {person.wage && <p>Wage: £{person.wage}</p>}
         </li>
-      </Link>
+        {!hired ? <Link to={`/view/${id}`}><button>View</button></Link> : <Link to={`/view/${id}`}><button>Edit</button></Link>}
     </>
   )
 }
