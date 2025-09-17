@@ -1,15 +1,14 @@
-import PeopleListItem from './PeopleListItem'
+/* eslint-disable react/prop-types */
+import PeopleListItem from "./PeopleListItem";
 
-function PeopleList(props) {
-  const { people } = props
-
+function PeopleList({ people, showEdit }) {
   return (
     <ul>
       {people.map((person, index) => (
-        <PeopleListItem key={index} person={person} />
+        <PeopleListItem key={index} person={person} showEdit={showEdit} />
       ))}
     </ul>
-  )
+  );
 }
 
-export default PeopleList
+export default PeopleList;
